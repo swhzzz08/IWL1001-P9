@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0629cdea-1ddf-4be2-9836-fe486d73cfdb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/iwl1009-p9.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="c8b345cd-844c-4cca-a628-d84c8903fb92" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock-market-app/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock-market-app/AGENTS.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock-market-app/CLAUDE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock-market-app/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock-market-app/eslint.config.mjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock-market-app/jsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock-market-app/next.config.mjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock-market-app/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock-market-app/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock-market-app/postcss.config.mjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock-market-app/public/file.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock-market-app/public/globe.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock-market-app/public/next.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock-market-app/public/vercel.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock-market-app/public/window.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock-market-app/src/app/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock-market-app/src/app/globals.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock-market-app/src/app/layout.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock-market-app/src/app/page.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,11 +32,20 @@
   <component name="CopilotChats">
     <option name="panelChat">
       <chat>
-        <option name="activeSessionId" value="e7612b0e-f9a8-491b-ab5d-e453cb19ea7a" />
+        <option name="activeSessionId" value="7f411d29-1d3f-48e4-b7d5-7162f6f6bd3b" />
         <option name="sessions">
           <session>
             <option name="chatType" value="PANEL" />
-            <option name="id" value="e7612b0e-f9a8-491b-ab5d-e453cb19ea7a" />
+            <option name="id" value="903dc9b4-b9e2-4d6c-9ca3-b225ceb231d3" />
+            <option name="modeId" value="Ask" />
+            <option name="modelType" value="builtin_family" />
+            <option name="modelValue" value="auto" />
+            <option name="status" value="Completed" />
+            <option name="targetType" value="LOCAL" />
+          </session>
+          <session>
+            <option name="chatType" value="PANEL" />
+            <option name="id" value="7f411d29-1d3f-48e4-b7d5-7162f6f6bd3b" />
             <option name="modeId" value="Ask" />
             <option name="modelType" value="builtin_family" />
             <option name="modelValue" value="auto" />
@@ -31,8 +58,14 @@
   </component>
   <component name="CopilotPersistence">
     <persistenceIdMap>
-      <entry key="_C:/Users/Raiha/WebstormProjects/iwl1001-p9" value="3DyNhn0XPJxGz1pvHbzE3vmORtq" />
+      <entry key="_C:/Users/Raiha/WebstormProjects/iwl1001-p9" value="3DydgMNAxVCy3y2gDTyYno18mGs" />
     </persistenceIdMap>
+  </component>
+  <component name="CopilotUserSelectedModel">
+    <selectedModels>
+      <entry key="agent-panel" value="Auto" />
+      <entry key="chat-panel" value="Auto" />
+    </selectedModels>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -50,32 +83,54 @@
   }
 }]]></component>
   <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
   "associatedIndex": 2
 }]]></component>
-  <component name="ProjectId" id="3DyNhn0XPJxGz1pvHbzE3vmORtq" />
+  <component name="ProjectId" id="3DydgMNAxVCy3y2gDTyYno18mGs" />
+  <component name="ProjectSessionTemplates">
+    <option name="panelTemplate">
+      <template>
+        <option name="modeId" value="Ask" />
+        <option name="model">
+          <model>
+            <option name="modelType" value="builtin_family" />
+            <option name="modelValue" value="auto" />
+          </model>
+        </option>
+        <option name="targetType" value="LOCAL" />
+      </template>
+    </option>
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JavaScript Debug.localhost:3000.executor": "Debug",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "javascript.nodejs.core.library.configured.version": "24.11.1",
-    "javascript.nodejs.core.library.typings.version": "24.11.2",
-    "javascript.preferred.runtime.type.id": "node",
+    "git-widget-placeholder": "nextjs-work",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_interpreter_path": "node",
     "nodejs_package_manager_path": "npm",
-    "npm.test.executor": "Run",
+    "ts.external.directory.path": "C:\\Users\\Raiha\\WebstormProjects\\iwl1001-p9\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="localhost:3000" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:3000">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.localhost:3000" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -85,12 +140,12 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0629cdea-1ddf-4be2-9836-fe486d73cfdb" name="Changes" comment="" />
-      <created>1779250470304</created>
+      <changelist id="c8b345cd-844c-4cca-a628-d84c8903fb92" name="Changes" comment="" />
+      <created>1779258354756</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1779250470304</updated>
-      <workItem from="1779250471322" duration="626000" />
+      <updated>1779258354756</updated>
+      <workItem from="1779258355807" duration="1025000" />
     </task>
     <servers />
   </component>
