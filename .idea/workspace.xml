@@ -2,27 +2,45 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c8b345cd-844c-4cca-a628-d84c8903fb92" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/__tests__/components/learn/FilterTabs.test.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__tests__/hooks/useHints.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__tests__/lib/formatters.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/api/stocks/quote/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/api/stocks/timeseries/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/learn/[category]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/learn/[slug]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/learn/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/stocks/[symbol]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/dashboard/MarketIndexCard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/dashboard/MarketOverview.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/dashboard/TrendingStockRow.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/dashboard/TrendingStocks.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/hints/HintCard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/hints/HintPanel.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/hints/HintTrigger.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/layout/Footer.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/layout/Navbar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/learn/CategoryCard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/learn/CategoryGrid.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/learn/FilterTabs.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/learn/LearnSearchBar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/learn/ResourceCard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/learn/ResourceList.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/stocks/StockChart.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/stocks/StockHeader.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/stocks/StockStats.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/stocks/TimeframePicker.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/LoadingSpinner.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/PriceChange.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/education.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/hints.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hooks/useHints.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hooks/useStockData.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/formatters.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/stockApi.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/types/education.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/types/stock.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock-market-app/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock-market-app/AGENTS.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock-market-app/CLAUDE.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock-market-app/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock-market-app/eslint.config.mjs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock-market-app/jsconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock-market-app/next.config.mjs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock-market-app/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock-market-app/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock-market-app/postcss.config.mjs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock-market-app/public/file.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock-market-app/public/globe.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock-market-app/public/next.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock-market-app/public/vercel.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock-market-app/public/window.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock-market-app/src/app/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock-market-app/src/app/globals.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock-market-app/src/app/layout.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock-market-app/src/app/page.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,24 +85,31 @@
       <entry key="chat-panel" value="Auto" />
     </selectedModels>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "r4ihn"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;r4ihn&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/swhzzz08/IWL1001-P9.git",
-    "accountId": "1a9c8730-4b1c-4400-8428-746a92779054"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/swhzzz08/IWL1001-P9.git&quot;,
+    &quot;accountId&quot;: &quot;1a9c8730-4b1c-4400-8428-746a92779054&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="3DydgMNAxVCy3y2gDTyYno18mGs" />
   <component name="ProjectSessionTemplates">
     <option name="panelTemplate">
@@ -113,6 +138,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "git-widget-placeholder": "nextjs-work",
+    "last_opened_file_path": "C:/Users/Raiha/WebstormProjects/iwl1001-p9/__tests__/components",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_interpreter_path": "node",
@@ -121,6 +147,19 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Raiha\WebstormProjects\iwl1001-p9\__tests__\components" />
+      <recent name="C:\Users\Raiha\WebstormProjects\iwl1001-p9\hooks" />
+      <recent name="C:\Users\Raiha\WebstormProjects\iwl1001-p9\lib" />
+      <recent name="C:\Users\Raiha\WebstormProjects\iwl1001-p9\components\learn" />
+      <recent name="C:\Users\Raiha\WebstormProjects\iwl1001-p9\components\hints" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Raiha\WebstormProjects\iwl1001-p9" />
+      <recent name="C:\Users\Raiha\WebstormProjects\iwl1001-p9\app\learn" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="localhost:3000" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:3000">
       <method v="2" />
