@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c8b345cd-844c-4cca-a628-d84c8903fb92" name="Changes" comment="feat: added the navbar, footer and update root layout">
-      <change beforePath="$PROJECT_DIR$/components/dashboard/MarketIndexCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/MarketIndexCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/dashboard/MarketOverview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/MarketOverview.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/dashboard/TrendingStockRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/TrendingStockRow.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/dashboard/TrendingStocks.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/TrendingStocks.tsx" afterDir="false" />
+    <list default="true" id="c8b345cd-844c-4cca-a628-d84c8903fb92" name="Changes" comment="feat: preppring for actual dashboard page by adding dashboard components like MarketOverview.tsx &amp; TrendingStocks.tsx">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,7 +199,15 @@
       <option name="project" value="LOCAL" />
       <updated>1780405421714</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="feat: preppring for actual dashboard page by adding dashboard components like MarketOverview.tsx &amp; TrendingStocks.tsx">
+      <option name="closed" value="true" />
+      <created>1780406218924</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1780406218924</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,7 +230,8 @@
     <MESSAGE value="feat: added hint data and useHints.test.ts" />
     <MESSAGE value="feat: added education content (static)" />
     <MESSAGE value="feat: added the navbar, footer and update root layout" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: added the navbar, footer and update root layout" />
+    <MESSAGE value="feat: preppring for actual dashboard page by adding dashboard components like MarketOverview.tsx &amp; TrendingStocks.tsx" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: preppring for actual dashboard page by adding dashboard components like MarketOverview.tsx &amp; TrendingStocks.tsx" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
