@@ -3,7 +3,7 @@
 import { cn } from '@/lib/utils'
 import type { Timeframe } from '@/types/stock.ts'
 
-const TIMEFRAMES: Timeframe[] = ['1D', '1W', '1M', '3M', '1Y', 'ALL']
+const TIMEFRAMES: Timeframe[] = ['1W', '1M', '3M', '1Y', 'ALL']
 
 interface Props {
     selected: Timeframe

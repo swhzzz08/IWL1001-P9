@@ -30,7 +30,6 @@ export async function fetchQuote(symbol: string): Promise<StockQuote> {
 }
 
 const TIMEFRAME_FUNCTION: Record<Timeframe, string> = {
-  '1D': 'TIME_SERIES_INTRADAY',
   '1W': 'TIME_SERIES_DAILY',
   '1M': 'TIME_SERIES_DAILY',
   '3M': 'TIME_SERIES_DAILY',
@@ -39,7 +38,6 @@ const TIMEFRAME_FUNCTION: Record<Timeframe, string> = {
 }
 
 const TIMEFRAME_KEY: Record<Timeframe, string> = {
-  '1D': 'Time Series (60min)',
   '1W': 'Time Series (Daily)',
   '1M': 'Time Series (Daily)',
   '3M': 'Time Series (Daily)',
@@ -50,7 +48,7 @@ const TIMEFRAME_KEY: Record<Timeframe, string> = {
 function cutoffDate(timeframe: Timeframe): Date {
   const now = new Date()
   const offsets: Record<Timeframe, number> = {
-    '1D': 1, '1W': 7, '1M': 30, '3M': 90, '1Y': 365, 'ALL': 99999,
+    '1W': 7, '1M': 30, '3M': 90, '1Y': 365, 'ALL': 99999,
   }
   const d = new Date(now)
   d.setDate(d.getDate() - offsets[timeframe])
@@ -62,12 +60,15 @@ export async function fetchTimeSeries(
     timeframe: Timeframe
 ): Promise<TimeSeriesPoint[]> {
   const fn = TIMEFRAME_FUNCTION[timeframe]
-  const extra = timeframe === '1D' ? '&interval=60min' : '&outputsize=full'
+  const extra = ''
   const url = `${BASE}?function=${fn}&symbol=${symbol}${extra}&apikey=${KEY}`
   const res = await fetch(url, { next: { revalidate: 300 } })
   if (!res.ok) throw new Error(`Alpha Vantage timeseries failed: ${res.status}`)
   const json = await res.json()
   const key = TIMEFRAME_KEY[timeframe]
+  if (json['Information'] || json['Note']) {
+    throw new Error(json['Information'] ?? json['Note'])
+  }
   const raw: Record<string, Record<string, string>> = json[key]
   if (!raw) throw new Error(`No time series data for ${symbol}`)
 

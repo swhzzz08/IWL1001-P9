@@ -25,20 +25,40 @@ export function StockChart({ series, isLoading }: Props) {
     useEffect(() => {
         if (!containerRef.current) return
 
+        const resolveColor = (cssValue: string, fallback: string): string => {
+            const el = document.createElement('div')
+            el.style.cssText = 'position:absolute;visibility:hidden;pointer-events:none'
+            containerRef.current!.appendChild(el)
+            el.style.color = cssValue
+            const computed = getComputedStyle(el).color
+            containerRef.current!.removeChild(el)
+            const canvas = document.createElement('canvas')
+            canvas.width = canvas.height = 1
+            const ctx = canvas.getContext('2d')
+            if (!ctx) return fallback
+            ctx.fillStyle = computed
+            ctx.fillRect(0, 0, 1, 1)
+            const [r, g, b] = ctx.getImageData(0, 0, 1, 1).data
+            return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`
+        }
+
+        const textColor = resolveColor('hsl(var(--foreground))', '#0f172a')
+        const borderColor = resolveColor('hsl(var(--border))', '#e2e8f0')
+
         chartRef.current = createChart(containerRef.current, {
             layout: {
                 background: { type: ColorType.Solid, color: 'transparent' },
-                textColor: 'hsl(var(--foreground))',
-                fontFamily: 'var(--font-sans)',
+                textColor,
+                fontFamily: getComputedStyle(containerRef.current).fontFamily || 'sans-serif',
             },
             grid: {
-                vertLines: { color: 'hsl(var(--border))' },
-                horzLines: { color: 'hsl(var(--border))' },
+                vertLines: { color: borderColor },
+                horzLines: { color: borderColor },
             },
             width: containerRef.current.clientWidth,
             height: 400,
-            timeScale: { borderColor: 'hsl(var(--border))' },
-            rightPriceScale: { borderColor: 'hsl(var(--border))' },
+            timeScale: { borderColor },
+            rightPriceScale: { borderColor },
         })
 
         seriesRef.current = chartRef.current.addSeries(CandlestickSeries, {

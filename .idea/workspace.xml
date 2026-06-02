@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c8b345cd-844c-4cca-a628-d84c8903fb92" name="Changes" comment="feat: added stock chart component">
-      <change beforePath="$PROJECT_DIR$/__tests__/components/stocks/StockHeader.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/components/stocks/StockHeader.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/stocks/StockHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/stocks/StockHeader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/stocks/StockStats.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/stocks/StockStats.tsx" afterDir="false" />
+    <list default="true" id="c8b345cd-844c-4cca-a628-d84c8903fb92" name="Changes" comment="feat: components for the hints">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/stocks/timeseries/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/stocks/timeseries/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/stocks/[symbol]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/stocks/[symbol]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/stocks/StockChart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/stocks/StockChart.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/stocks/TimeframePicker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/stocks/TimeframePicker.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/stockApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/stockApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/stock.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/stock.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -223,7 +226,23 @@
       <option name="project" value="LOCAL" />
       <updated>1780409328496</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="feat: more components for stock header, stats, timeframe and testing">
+      <option name="closed" value="true" />
+      <created>1780409471728</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1780409471728</updated>
+    </task>
+    <task id="LOCAL-00010" summary="feat: components for the hints">
+      <option name="closed" value="true" />
+      <created>1780409590141</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1780409590141</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -249,7 +268,9 @@
     <MESSAGE value="feat: preppring for actual dashboard page by adding dashboard components like MarketOverview.tsx &amp; TrendingStocks.tsx" />
     <MESSAGE value="feat: built basic dashboard page" />
     <MESSAGE value="feat: added stock chart component" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: added stock chart component" />
+    <MESSAGE value="feat: more components for stock header, stats, timeframe and testing" />
+    <MESSAGE value="feat: components for the hints" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: components for the hints" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

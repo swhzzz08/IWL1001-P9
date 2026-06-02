@@ -22,7 +22,7 @@ export interface TimeSeriesPoint {
     volume: number
 }
 
-export type Timeframe = '1D' | '1W' | '1M' | '3M' | '1Y' | 'ALL'
+export type Timeframe = '1W' | '1M' | '3M' | '1Y' | 'ALL'
 
 export interface MarketIndex {
     symbol: string

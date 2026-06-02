@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { fetchTimeSeries } from '@/lib/stockApi'
 import type { Timeframe } from '@/types/stock.ts'
 
-const VALID_TIMEFRAMES: Timeframe[] = ['1D', '1W', '1M', '3M', '1Y', 'ALL']
+const VALID_TIMEFRAMES: Timeframe[] = ['1W', '1M', '3M', '1Y', 'ALL']
 
 export async function GET(request: NextRequest) {
     const symbol = request.nextUrl.searchParams.get('symbol')
