@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c8b345cd-844c-4cca-a628-d84c8903fb92" name="Changes" comment="">
+    <list default="true" id="c8b345cd-844c-4cca-a628-d84c8903fb92" name="Changes" comment="feat: added hint data and useHints.test.ts">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__tests__/hooks/useHints.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/hooks/useHints.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/hints.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/hints.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hooks/useHints.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useHints.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__tests__/components/ui/PriceChange.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/components/ui/PriceChange.test.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/LoadingSpinner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/LoadingSpinner.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/PriceChange.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/PriceChange.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jest.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/jest.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +175,15 @@
       <option name="project" value="LOCAL" />
       <updated>1780382922811</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="feat: added hint data and useHints.test.ts">
+      <option name="closed" value="true" />
+      <created>1780384751285</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1780384751285</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,7 +192,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="chore: added in file mapping&#10;&#10;chore: add Jest + React Testing Library" />
     <MESSAGE value="feat: add alpha vantage api and route handlers&#10;&#10;tested JSON with AAPL stock values" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add alpha vantage api and route handlers&#10;&#10;tested JSON with AAPL stock values" />
+    <MESSAGE value="feat: added hint data and useHints.test.ts" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: added hint data and useHints.test.ts" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
