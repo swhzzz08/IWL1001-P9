@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c8b345cd-844c-4cca-a628-d84c8903fb92" name="Changes" comment="feat: added education content (static)">
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/Footer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/Navbar.tsx" afterDir="false" />
+    <list default="true" id="c8b345cd-844c-4cca-a628-d84c8903fb92" name="Changes" comment="feat: added the navbar, footer and update root layout">
+      <change beforePath="$PROJECT_DIR$/components/dashboard/MarketIndexCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/MarketIndexCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/dashboard/MarketOverview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/MarketOverview.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/dashboard/TrendingStockRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/TrendingStockRow.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/dashboard/TrendingStocks.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/TrendingStocks.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,25 +99,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JavaScript Debug.localhost:3000.executor&quot;: &quot;Debug&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;nextjs-work&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Raiha/WebstormProjects/iwl1001-p9/__tests__/components&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2025.3.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JavaScript Debug.localhost:3000.executor": "Debug",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "frontend-work",
+    "javascript.preferred.runtime.type.id": "node",
+    "last_opened_file_path": "C:/Users/Raiha/WebstormProjects/iwl1001-p9/__tests__/components",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_interpreter_path": "node",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "advanced.settings",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2025.3.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Raiha\WebstormProjects\iwl1001-p9\__tests__\components" />
@@ -189,7 +191,15 @@
       <option name="project" value="LOCAL" />
       <updated>1780404865925</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="feat: added the navbar, footer and update root layout">
+      <option name="closed" value="true" />
+      <created>1780405421714</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1780405421714</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,7 +221,8 @@
     <MESSAGE value="feat: add alpha vantage api and route handlers&#10;&#10;tested JSON with AAPL stock values" />
     <MESSAGE value="feat: added hint data and useHints.test.ts" />
     <MESSAGE value="feat: added education content (static)" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: added education content (static)" />
+    <MESSAGE value="feat: added the navbar, footer and update root layout" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: added the navbar, footer and update root layout" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
