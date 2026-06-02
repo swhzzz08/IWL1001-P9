@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Outfit, JetBrains_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Outfit, JetBrains_Mono, Merriweather } from "next/font/google";
 import "./globals.css";
-import { cn } from "@/__tests__/lib/utils";
+import { cn } from "@/lib/utils";
+
+const merriweather = Merriweather({subsets:['latin'],variable:'--font-serif'});
 
 const jetbrainsMonoHeading = JetBrains_Mono({subsets:['latin'],variable:'--font-heading'});
 
@@ -30,7 +32,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", outfit.variable, jetbrainsMonoHeading.variable)}
+      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, outfit.variable, jetbrainsMonoHeading.variable, "font-serif", merriweather.variable)}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
