@@ -6,6 +6,7 @@
     "clsx": "^2.1.1",
     "find-package-json": "^1.2.0",
     "lightweight-charts": "^5.2.0",
+    "lucide": "^1.17.0",
     "lucide-react": "^1.17.0",
     "next": "latest",
     "postcss": "^8.5.15",

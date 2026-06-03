@@ -3,12 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="c8b345cd-844c-4cca-a628-d84c8903fb92" name="Changes" comment="feat: components for the hints">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/stocks/timeseries/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/stocks/timeseries/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/stocks/[symbol]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/stocks/[symbol]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/stocks/StockChart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/stocks/StockChart.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/stocks/TimeframePicker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/stocks/TimeframePicker.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/stockApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/stockApi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/stock.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/stock.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__tests__/components/learn/FilterTabs.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/components/learn/FilterTabs.test.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/learn/CategoryCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/learn/CategoryCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/learn/CategoryGrid.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/learn/CategoryGrid.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/learn/FilterTabs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/learn/FilterTabs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/learn/LearnSearchBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/learn/LearnSearchBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/learn/ResourceCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/learn/ResourceCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/learn/ResourceList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/learn/ResourceList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,12 +77,12 @@
     &quot;assignee&quot;: &quot;r4ihn&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/swhzzz08/IWL1001-P9.git&quot;,
-    &quot;accountId&quot;: &quot;1a9c8730-4b1c-4400-8428-746a92779054&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/swhzzz08/IWL1001-P9.git",
+    "accountId": "b63d90f0-a549-414a-98b5-af7d07a38d89"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -110,7 +113,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "frontend-work",
+    "git-widget-placeholder": "main",
     "javascript.preferred.runtime.type.id": "node",
     "last_opened_file_path": "C:/Users/Raiha/WebstormProjects/iwl1001-p9/__tests__/components",
     "node.js.detected.package.eslint": "true",
