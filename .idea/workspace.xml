@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c8b345cd-844c-4cca-a628-d84c8903fb92" name="Changes" comment="feat: components for the hints">
+    <list default="true" id="c8b345cd-844c-4cca-a628-d84c8903fb92" name="Changes" comment="feat: made the learning repository components with filtering and searching functions">
+      <change afterPath="$PROJECT_DIR$/app/learn/[category]/[slug]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/learn/[category]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/learn/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__tests__/components/learn/FilterTabs.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/components/learn/FilterTabs.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/learn/CategoryCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/learn/CategoryCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/learn/CategoryGrid.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/learn/CategoryGrid.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/learn/FilterTabs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/learn/FilterTabs.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/learn/LearnSearchBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/learn/LearnSearchBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/learn/ResourceCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/learn/ResourceCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/learn/ResourceList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/learn/ResourceList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +54,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -134,8 +129,9 @@
       <recent name="C:\Users\Raiha\WebstormProjects\iwl1001-p9\components\hints" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Raiha\WebstormProjects\iwl1001-p9" />
       <recent name="C:\Users\Raiha\WebstormProjects\iwl1001-p9\app\learn" />
+      <recent name="C:\Users\Raiha\WebstormProjects\iwl1001-p9\app\learn\[category]\[slug]" />
+      <recent name="C:\Users\Raiha\WebstormProjects\iwl1001-p9" />
     </key>
   </component>
   <component name="RunManager">
@@ -245,7 +241,15 @@
       <option name="project" value="LOCAL" />
       <updated>1780409590141</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="feat: made the learning repository components with filtering and searching functions">
+      <option name="closed" value="true" />
+      <created>1780451969439</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1780451969439</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -273,7 +277,8 @@
     <MESSAGE value="feat: added stock chart component" />
     <MESSAGE value="feat: more components for stock header, stats, timeframe and testing" />
     <MESSAGE value="feat: components for the hints" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: components for the hints" />
+    <MESSAGE value="feat: made the learning repository components with filtering and searching functions" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: made the learning repository components with filtering and searching functions" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
