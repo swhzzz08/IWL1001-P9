@@ -1,9 +1,9 @@
 import type { StockQuote, TimeSeriesPoint, Timeframe, MarketIndex } from '@/types/stock.ts'
 
 const BASE = 'https://www.alphavantage.co/query'
-const KEY = process.env.ALPHA_VANTAGE_API_KEY
+const KEY = process.env.MASSIVE_API_KEY
 
-if (!KEY) throw new Error('ALPHA_VANTAGE_API_KEY is not set')
+if (!KEY) throw new Error('MASSIVE_API_KEY is not set')
 
 export async function fetchQuote(symbol: string): Promise<StockQuote> {
   const url = `${BASE}?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${KEY}`
