@@ -24,32 +24,17 @@ export async function TrendingStocks() {
         </div>
         <span style={{ fontSize: 12, color: 'var(--color-text-subtle)' }}>{quotes.length} symbols</span>
       </div>
-
-      <div style={{
-        background: 'var(--color-surface)',
-        border: '1.5px solid var(--color-border)',
-        borderRadius: 16, overflow: 'hidden',
-        boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
-      }}>
-        {/* Header row */}
-        <div style={{
-          display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-          padding: '10px 20px', background: 'var(--color-surface-2)',
-          borderBottom: '1px solid var(--color-border)',
-        }}>
-          <span style={{ paddingLeft: 72, fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-subtle)' }}>
-            Symbol
-          </span>
+      <div style={{ background: 'var(--color-surface)', border: '1.5px solid var(--color-border)', borderRadius: 16, overflow: 'hidden', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+          padding: '10px 20px', background: 'var(--color-surface-2)', borderBottom: '1px solid var(--color-border)' }}>
+          <span style={{ paddingLeft: 72, fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-subtle)' }}>Symbol</span>
           <div style={{ display: 'flex', gap: 36, paddingRight: 28 }}>
             <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-subtle)' }}>Price</span>
             <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-subtle)' }}>Change</span>
           </div>
         </div>
-
         {quotes.length === 0 ? (
-          <div style={{ padding: '40px 20px', textAlign: 'center', color: 'var(--color-text-muted)', fontSize: 14 }}>
-            Unable to load stocks. Check your API key.
-          </div>
+          <div style={{ padding: '40px 20px', textAlign: 'center', color: 'var(--color-text-muted)', fontSize: 14 }}>Unable to load stocks.</div>
         ) : (
           quotes.map((q, i) => <TrendingStockRow key={q.symbol} quote={q} rank={i + 1} />)
         )}
