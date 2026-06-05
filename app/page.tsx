@@ -71,7 +71,7 @@ export default function HomePage() {
             }}>
               <BookOpen size={16} /> Start Learning <ArrowRight size={14} />
             </Link>
-            <Link href="/stocks/AAPL" style={{
+            <Link href="/stocks" style={{
               display: 'inline-flex', alignItems: 'center', gap: 8,
               background: 'var(--color-surface)',
               border: '1.5px solid var(--color-border)',
