@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c8b345cd-844c-4cca-a628-d84c8903fb92" name="Changes" comment="Added .env.example for organisation of keys and configs">
+    <list default="true" id="c8b345cd-844c-4cca-a628-d84c8903fb92" name="Changes" comment="Added mock data and commented out api routing for testing">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/stockApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/stockApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +180,8 @@
       <workItem from="1779258355807" duration="1025000" />
       <workItem from="1780462621456" duration="203000" />
       <workItem from="1780973145439" duration="1230000" />
-      <workItem from="1780985428575" duration="4121000" />
+      <workItem from="1780985428575" duration="4929000" />
+      <workItem from="1780990472472" duration="1045000" />
     </task>
     <task id="LOCAL-00001" summary="chore: added in file mapping&#10;&#10;chore: add Jest + React Testing Library">
       <option name="closed" value="true" />
@@ -283,7 +287,15 @@
       <option name="project" value="LOCAL" />
       <updated>1780987670918</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Added mock data and commented out api routing for testing">
+      <option name="closed" value="true" />
+      <created>1780989706799</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1780989706799</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -314,7 +326,8 @@
     <MESSAGE value="feat: made the learning repository components with filtering and searching functions" />
     <MESSAGE value="fix: changed API key" />
     <MESSAGE value="Added .env.example for organisation of keys and configs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added .env.example for organisation of keys and configs" />
+    <MESSAGE value="Added mock data and commented out api routing for testing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added mock data and commented out api routing for testing" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
