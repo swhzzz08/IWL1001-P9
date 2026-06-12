@@ -31,3 +31,21 @@ export interface MarketIndex {
     change: number
     changePercent: number
 }
+export interface NewsArticle {
+  title: string
+  description: string | null
+  url: string
+  source: string
+  publishedAt: string
+  sentiment: 'positive' | 'neutral' | 'negative'
+  sentimentScore: number // -1 to 1
+}
+
+export interface SentimentSummary {
+  score: number       // -1 to 1
+  label: 'Positive' | 'Neutral' | 'Negative'
+  positive: number    // count
+  neutral: number
+  negative: number
+  total: number
+}
