@@ -1,6 +1,7 @@
 'use client'
 import { TrendingUp, TrendingDown, ExternalLink } from 'lucide-react'
 import type { StockQuote } from '@/types/stock'
+import { WatchlistButton } from './WatchlistButton'
 
 function fmt(n: number) {
   return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2 }).format(n)
@@ -29,12 +30,7 @@ export function StockHeader({ quote, isLoading }: { quote: StockQuote | null; is
   const sign = up ? '+' : ''
 
   return (
-    <div style={{
-      background: 'var(--color-surface)',
-      border: '1.5px solid var(--color-border)',
-      borderRadius: 16, overflow: 'hidden',
-      boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
-    }}>
+    <div style={{ background: 'var(--color-surface)', border: '1.5px solid var(--color-border)', borderRadius: 16, overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.06)' }}>
       <div style={{ height: 4, background: up ? 'linear-gradient(90deg,#22c55e,#16a34a)' : 'linear-gradient(90deg,#f87171,#dc2626)' }} />
       <div style={{ padding: '24px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 16 }}>
         <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
@@ -57,7 +53,8 @@ export function StockHeader({ quote, isLoading }: { quote: StockQuote | null; is
                 <ExternalLink size={14} />
               </a>
             </div>
-            <p style={{ fontSize: 13, color: 'var(--color-text-muted)', margin: '4px 0 0' }}>{quote.name}</p>
+            <p style={{ fontSize: 13, color: 'var(--color-text-muted)', margin: '4px 0 10px' }}>{quote.name}</p>
+            <WatchlistButton symbol={quote.symbol} />
           </div>
         </div>
 
