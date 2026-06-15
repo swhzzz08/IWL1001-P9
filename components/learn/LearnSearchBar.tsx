@@ -1,22 +1,25 @@
 'use client'
-
 import { Search } from 'lucide-react'
 
-interface Props {
-    value: string
-    onChange: (v: string) => void
-}
+interface Props { value: string; onChange: (v: string) => void }
 
 export function LearnSearchBar({ value, onChange }: Props) {
     return (
-        <div className="relative max-w-md">
-            <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
+        <div style={{ position: 'relative', maxWidth: 360 }}>
+            <Search size={14} style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', color: 'var(--color-text-subtle)', pointerEvents: 'none' }} />
             <input
                 type="search"
                 value={value}
-                onChange={(e) => onChange(e.target.value)}
+                onChange={e => onChange(e.target.value)}
                 placeholder="Search articles…"
-                className="h-10 w-full rounded-lg border border-input bg-background pl-9 pr-3 text-sm outline-none focus:ring-1 focus:ring-ring"
+                style={{
+                    width: '100%', height: 40, paddingLeft: 36, paddingRight: 12,
+                    borderRadius: 10, border: '1.5px solid var(--color-border)',
+                    background: 'var(--color-surface)', fontSize: 13,
+                    color: 'var(--color-text)', outline: 'none', transition: 'border-color 0.15s',
+                }}
+                onFocus={e => (e.target as HTMLInputElement).style.borderColor = '#93c5fd'}
+                onBlur={e => (e.target as HTMLInputElement).style.borderColor = 'var(--color-border)'}
             />
         </div>
     )

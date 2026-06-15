@@ -1,94 +1,140 @@
 import { CategoryGrid } from '@/components/learn/CategoryGrid'
 import { ResourceList } from '@/components/learn/ResourceList'
 import { categories } from '@/data/education'
-import { BookOpen, GraduationCap, Clock, ArrowRight } from 'lucide-react'
+import { GraduationCap, BookOpen, ArrowRight, Sparkles } from 'lucide-react'
 import Link from 'next/link'
 
 export const metadata = {
     title: 'Learn — MarketWise',
-    description: 'Educational resources on stocks, options, ETFs, and more.',
+    description: 'Financial education for beginners.',
 }
 
 const STATS = [
-    { value: '7', label: 'Topics covered' },
+    { value: '8', label: 'Topics' },
     { value: '7+', label: 'Articles' },
-    { value: 'Free', label: 'Always free' },
+    { value: '100%', label: 'Free' },
+]
+
+const LEARNING_PATHS = [
+    { emoji: '🌱', title: 'Complete Beginner', desc: 'Start with What Is a Stock, then ETFs, then Risk Management.', color: '#f0fdf4', border: '#86efac' },
+    { emoji: '📈', title: 'Chart Reader', desc: 'Go straight to Technical Analysis — candlesticks, RSI, moving averages.', color: '#eff6ff', border: '#93c5fd' },
+    { emoji: '🏦', title: 'Value Investor', desc: 'Study Fundamentals first — P/E ratios, earnings, balance sheets.', color: '#fdf4ff', border: '#d8b4fe' },
 ]
 
 export default function LearnPage() {
     return (
-        <div className="flex flex-col">
-            {/* Hero */}
-            <section className="relative overflow-hidden hero-grid border-b border-border">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent pointer-events-none" />
-                <div className="mx-auto max-w-7xl px-4 py-12 sm:py-16 relative">
-                    <div className="flex items-start gap-4">
-                        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-md">
-                            <GraduationCap className="h-6 w-6" />
+        <div>
+            {/* ── HERO ── */}
+            <section style={{
+                position: 'relative', overflow: 'hidden',
+                background: 'linear-gradient(135deg, #1e3a5f 0%, #1e40af 50%, #312e81 100%)',
+                borderBottom: '1px solid var(--color-border)',
+            }}>
+                {/* Grid pattern */}
+                <div style={{
+                    position: 'absolute', inset: 0, opacity: 0.1, pointerEvents: 'none',
+                    backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
+                    backgroundSize: '28px 28px',
+                }} />
+                {/* Glow blobs */}
+                <div style={{ position: 'absolute', top: -60, right: -60, width: 300, height: 300, borderRadius: '50%', background: 'rgba(99,102,241,0.3)', filter: 'blur(60px)', pointerEvents: 'none' }} />
+                <div style={{ position: 'absolute', bottom: -40, left: 100, width: 200, height: 200, borderRadius: '50%', background: 'rgba(59,130,246,0.2)', filter: 'blur(40px)', pointerEvents: 'none' }} />
+
+                <div style={{ maxWidth: 1200, margin: '0 auto', padding: '64px 24px 72px', position: 'relative' }}>
+                    {/* Badge */}
+                    <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: 999, padding: '6px 14px', fontSize: 12, fontWeight: 700, color: 'rgba(255,255,255,0.9)', marginBottom: 24 }}>
+                        <Sparkles size={12} /> Free financial education for everyone
+                    </div>
+
+                    <div style={{ display: 'flex', alignItems: 'flex-start', gap: 20, flexWrap: 'wrap' }}>
+                        <div style={{ width: 56, height: 56, borderRadius: 16, background: 'rgba(255,255,255,0.15)', border: '1px solid rgba(255,255,255,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                            <GraduationCap size={28} color="white" />
                         </div>
                         <div>
-                            <h1 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
+                            <h1 style={{ fontFamily: 'var(--font-heading)', fontWeight: 800, fontSize: 'clamp(32px, 5vw, 52px)', color: 'white', margin: 0, lineHeight: 1.1 }}>
                                 Financial Education Hub
                             </h1>
-                            <p className="mt-2 text-muted-foreground max-w-xl leading-relaxed">
+                            <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.75)', margin: '12px 0 0', maxWidth: 560, lineHeight: 1.7 }}>
                                 Everything you need to understand markets — from what a stock is to reading financial statements and managing risk.
                             </p>
                         </div>
                     </div>
 
-                    {/* Stats row */}
-                    <div className="mt-8 flex flex-wrap gap-6">
+                    {/* Stats */}
+                    <div style={{ display: 'flex', gap: 32, marginTop: 36, flexWrap: 'wrap' }}>
                         {STATS.map(({ value, label }) => (
-                            <div key={label} className="flex items-baseline gap-2">
-                                <span className="font-heading text-2xl font-bold text-primary">{value}</span>
-                                <span className="text-sm text-muted-foreground">{label}</span>
+                            <div key={label} style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
+                                <span style={{ fontFamily: 'var(--font-heading)', fontSize: 32, fontWeight: 800, color: 'white' }}>{value}</span>
+                                <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', fontWeight: 600 }}>{label}</span>
                             </div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            <div className="mx-auto max-w-7xl w-full px-4 py-10 space-y-12">
-                {/* Categories */}
+            <div style={{ maxWidth: 1200, margin: '0 auto', padding: '48px 24px 80px', display: 'flex', flexDirection: 'column', gap: 56 }}>
+
+                {/* ── LEARNING PATHS ── */}
                 <section>
-                    <div className="flex items-center justify-between mb-5">
-                        <div>
-                            <h2 className="font-heading text-lg font-bold">Browse by Topic</h2>
-                            <p className="text-xs text-muted-foreground mt-0.5">Pick a subject to explore</p>
-                        </div>
+                    <div style={{ marginBottom: 20 }}>
+                        <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 22, fontWeight: 800, color: 'var(--color-text)', margin: '0 0 6px' }}>
+                            Where should I start?
+                        </h2>
+                        <p style={{ fontSize: 14, color: 'var(--color-text-muted)', margin: 0 }}>
+                            Choose a path based on your goal
+                        </p>
+                    </div>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 14 }}>
+                        {LEARNING_PATHS.map(({ emoji, title, desc, color, border }) => (
+                            <div key={title} style={{ background: color, border: `1.5px solid ${border}`, borderRadius: 16, padding: '20px' }}>
+                                <div style={{ fontSize: 28, marginBottom: 10 }}>{emoji}</div>
+                                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: 15, fontWeight: 800, color: 'var(--color-text)', margin: '0 0 6px' }}>{title}</h3>
+                                <p style={{ fontSize: 12, color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.65 }}>{desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                {/* ── BROWSE BY TOPIC ── */}
+                <section>
+                    <div style={{ marginBottom: 20 }}>
+                        <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 22, fontWeight: 800, color: 'var(--color-text)', margin: '0 0 6px' }}>
+                            Browse by Topic
+                        </h2>
+                        <p style={{ fontSize: 14, color: 'var(--color-text-muted)', margin: 0 }}>Pick a subject to explore</p>
                     </div>
                     <CategoryGrid categories={categories} />
                 </section>
 
-                {/* All articles */}
+                {/* ── ALL ARTICLES ── */}
                 <section>
-                    <div className="mb-5">
-                        <h2 className="font-heading text-lg font-bold">All Articles</h2>
-                        <p className="text-xs text-muted-foreground mt-0.5">Search and filter by topic or difficulty</p>
+                    <div style={{ marginBottom: 20 }}>
+                        <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 22, fontWeight: 800, color: 'var(--color-text)', margin: '0 0 6px' }}>
+                            All Articles
+                        </h2>
+                        <p style={{ fontSize: 14, color: 'var(--color-text-muted)', margin: 0 }}>Search and filter by topic or difficulty</p>
                     </div>
                     <ResourceList />
                 </section>
 
-                {/* Beginner CTA */}
-                <section className="rounded-2xl border border-border bg-card p-6 sm:p-8">
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 justify-between">
-                        <div className="flex items-start gap-4">
-                            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                                <BookOpen className="h-5 w-5" />
+                {/* ── CTA ── */}
+                <section style={{ background: 'var(--color-surface)', border: '1.5px solid var(--color-border)', borderRadius: 20, padding: '32px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24, flexWrap: 'wrap' }}>
+                        <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
+                            <div style={{ width: 44, height: 44, borderRadius: 12, background: '#eff6ff', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                                <BookOpen size={20} color="#2563eb" />
                             </div>
                             <div>
-                                <h3 className="font-heading font-bold">Not sure where to start?</h3>
-                                <p className="mt-1 text-sm text-muted-foreground">
-                                    Begin with "What Is a Stock?" — our most-read beginner article.
+                                <h3 style={{ fontFamily: 'var(--font-heading)', fontWeight: 800, fontSize: 17, color: 'var(--color-text)', margin: '0 0 4px' }}>
+                                    Ready to apply what you've learned?
+                                </h3>
+                                <p style={{ fontSize: 13, color: 'var(--color-text-muted)', margin: 0 }}>
+                                    Open a real stock chart and practice reading the candlesticks, SMA lines and RSI.
                                 </p>
                             </div>
                         </div>
-                        <Link
-                            href="/learn/stocks/what-is-a-stock.ts"
-                            className="shrink-0 inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-all"
-                        >
-                            Read article
-                            <ArrowRight className="h-3.5 w-3.5" />
+                        <Link href="/stocks/AAPL" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '11px 22px', borderRadius: 12, fontSize: 13, fontWeight: 700, background: '#2563eb', color: 'white', textDecoration: 'none', flexShrink: 0 }}>
+                            Open AAPL chart <ArrowRight size={14} />
                         </Link>
                     </div>
                 </section>
