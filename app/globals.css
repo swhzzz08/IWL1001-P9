@@ -33,7 +33,7 @@
   --color-background: #060c1a;
   --color-surface: #0f172a;
   --color-surface-2: #1e293b;
-  --color-border: rgba(255,255,255,0.07);
+  --color-border: rgba(255, 255, 255, 0.07);
   --color-text: #f1f5f9;
   --color-text-muted: #94a3b8;
   --color-text-subtle: #475569;
@@ -45,9 +45,13 @@
   --color-down-text: #fca5a5;
 }
 
-*, *::before, *::after { box-sizing: border-box; }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 
-html { font-family: var(--font-sans); }
+html {
+  font-family: var(--font-sans);
+}
 
 body {
   background: var(--color-background);
@@ -75,6 +79,7 @@ body {
   background: var(--color-up-light);
   color: var(--color-up-text);
 }
+
 .badge-down {
   background: var(--color-down-light);
   color: var(--color-down-text);
@@ -82,9 +87,15 @@ body {
 
 /* Shimmer skeleton */
 @keyframes shimmer {
-  0% { background-position: -600px 0; }
-  100% { background-position: 600px 0; }
+  0% {
+    background-position: -600px 0;
+  }
+
+  100% {
+    background-position: 600px 0;
+  }
 }
+
 .skeleton {
   background: linear-gradient(90deg, var(--color-surface-2) 25%, var(--color-border) 50%, var(--color-surface-2) 75%);
   background-size: 600px 100%;
@@ -94,14 +105,44 @@ body {
 
 /* Fade up animation */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-.fade-up { animation: fadeUp 0.5s ease forwards; }
-.fade-up-1 { animation: fadeUp 0.5s 0.1s ease both; }
-.fade-up-2 { animation: fadeUp 0.5s 0.2s ease both; }
-.fade-up-3 { animation: fadeUp 0.5s 0.3s ease both; }
+
+.fade-up {
+  animation: fadeUp 0.5s ease forwards;
+}
+
+.fade-up-1 {
+  animation: fadeUp 0.5s 0.1s ease both;
+}
+
+.fade-up-2 {
+  animation: fadeUp 0.5s 0.2s ease both;
+}
+
+.fade-up-3 {
+  animation: fadeUp 0.5s 0.3s ease both;
+}
 
 /* Pulse dot */
-@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
-.pulse { animation: pulse 2s infinite; }
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1
+  }
+
+  50% {
+    opacity: .4
+  }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
