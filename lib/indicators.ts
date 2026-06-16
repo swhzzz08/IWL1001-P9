@@ -93,3 +93,117 @@ export function interpretRSI(value: number): { label: string; color: string; bg:
     desc: 'RSI between 40–60 is considered neutral — no strong momentum in either direction.',
   }
 }
+
+// ─── ARIMA (simplified ARIMA(1,1,1)) ───────────────────────────────────────
+export interface ARIMAResult {
+  predictions: { date: string; value: number }[]
+  upperBand:   { date: string; value: number }[]
+  lowerBand:   { date: string; value: number }[]
+  confidence:  number   // 0–100
+  recommendation: 'Buy' | 'Hold' | 'Sell'
+  targetPrice: number
+  lastActualPrice: number
+}
+
+function addDays(dateStr: string, days: number): string {
+  const d = new Date(dateStr)
+  d.setDate(d.getDate() + days)
+  // Skip weekends
+  while (d.getDay() === 0 || d.getDay() === 6) d.setDate(d.getDate() + 1)
+  return d.toISOString().split('T')[0]
+}
+
+export function calculateARIMA(
+  series: TimeSeriesPoint[],
+  forecastDays = 30
+): ARIMAResult | null {
+  if (series.length < 30) return null
+
+  const closes = series.map(p => p.close)
+  const n = closes.length
+
+  // Step 1: First differences (I=1)
+  const diff: number[] = []
+  for (let i = 1; i < n; i++) diff.push(closes[i] - closes[i - 1])
+
+  // Step 2: Estimate AR(1) coefficient via OLS
+  let sumXY = 0, sumXX = 0
+  for (let i = 1; i < diff.length; i++) {
+    sumXY += diff[i - 1] * diff[i]
+    sumXX += diff[i - 1] * diff[i - 1]
+  }
+  const phi = sumXX !== 0 ? Math.max(-0.95, Math.min(0.95, sumXY / sumXX)) : 0
+
+  // Step 3: Estimate MA(1) coefficient from residuals
+  const residuals: number[] = [diff[0]]
+  for (let i = 1; i < diff.length; i++) {
+    residuals.push(diff[i] - phi * diff[i - 1])
+  }
+  let sumRR = 0, sumR2 = 0
+  for (let i = 1; i < residuals.length; i++) {
+    sumRR += residuals[i - 1] * residuals[i]
+    sumR2 += residuals[i - 1] * residuals[i - 1]
+  }
+  const theta = sumR2 !== 0 ? Math.max(-0.95, Math.min(0.95, sumRR / sumR2)) : 0
+
+  // Step 4: Forecast differences
+  const forecastDiffs: number[] = []
+  let lastDiff = diff[diff.length - 1]
+  let lastResidual = residuals[residuals.length - 1]
+
+  for (let h = 0; h < forecastDays; h++) {
+    const nextDiff = phi * lastDiff + theta * lastResidual
+    forecastDiffs.push(nextDiff)
+    lastResidual = 0 // future residuals are 0 in expectation
+    lastDiff = nextDiff
+  }
+
+  // Step 5: Reconstruct price level
+  let price = closes[n - 1]
+  const predictions: { date: string; value: number }[] = []
+  let date = series[n - 1].time
+
+  for (let h = 0; h < forecastDays; h++) {
+    price += forecastDiffs[h]
+    price = Math.max(price, closes[n - 1] * 0.5) // floor at 50% of current
+    date = addDays(date, 1)
+    predictions.push({ date, value: parseFloat(price.toFixed(2)) })
+  }
+
+  // Step 6: Confidence bands (based on residual std dev)
+  const residualMean = residuals.reduce((a, b) => a + b, 0) / residuals.length
+  const residualStd = Math.sqrt(
+    residuals.reduce((s, r) => s + (r - residualMean) ** 2, 0) / residuals.length
+  )
+
+  const upperBand = predictions.map((p, i) => ({
+    date: p.date,
+    value: parseFloat((p.value + residualStd * Math.sqrt(i + 1) * 1.96).toFixed(2)),
+  }))
+  const lowerBand = predictions.map((p, i) => ({
+    date: p.date,
+    value: parseFloat(Math.max(0, p.value - residualStd * Math.sqrt(i + 1) * 1.96).toFixed(2)),
+  }))
+
+  // Step 7: Confidence score (inverse of relative std dev, capped)
+  const relativeStd = residualStd / closes[n - 1]
+  const confidence = Math.round(Math.max(10, Math.min(90, (1 - relativeStd * 10) * 100)))
+
+  // Step 8: Recommendation
+  const targetPrice = predictions[predictions.length - 1].value
+  const currentPrice = closes[n - 1]
+  const pctChange = ((targetPrice - currentPrice) / currentPrice) * 100
+
+  const recommendation: 'Buy' | 'Hold' | 'Sell' =
+    pctChange > 3 ? 'Buy' : pctChange < -3 ? 'Sell' : 'Hold'
+
+  return {
+    predictions,
+    upperBand,
+    lowerBand,
+    confidence,
+    recommendation,
+    targetPrice,
+    lastActualPrice: currentPrice,
+  }
+}

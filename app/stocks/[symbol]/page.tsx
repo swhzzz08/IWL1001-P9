@@ -6,6 +6,7 @@ import { StockChart } from '@/components/stocks/StockChart'
 import { TimeframePicker } from '@/components/stocks/TimeframePicker'
 import { StockStats } from '@/components/stocks/StockStats'
 import { RSIPanel } from '@/components/stocks/RSIPanel'
+import { ARIMAForecast } from '@/components/stocks/ARIMAForecast'
 import { NewsSentiment } from '@/components/stocks/NewsSentiment'
 import { HintPanel } from '@/components/hints/HintPanel'
 import { useStockQuote, useTimeSeries } from '@/hooks/useStockData'
@@ -18,7 +19,7 @@ type Tab = 'chart' | 'technicals' | 'news'
 export default function StockPage({ params }: { params: Promise<{ symbol: string }> }) {
   const { symbol } = use(params)
   const upper = symbol.toUpperCase()
-  const [timeframe, setTimeframe] = useState<Timeframe>('1M')
+  const [timeframe, setTimeframe] = useState<Timeframe>('3M')
   const [tab, setTab] = useState<Tab>('chart')
   const { quote, isLoading: quoteLoading } = useStockQuote(upper)
   const { series, isLoading: seriesLoading } = useTimeSeries(upper, timeframe)
@@ -73,27 +74,22 @@ export default function StockPage({ params }: { params: Promise<{ symbol: string
             </div>
             <div style={{ display: 'flex', gap: 20, padding: '10px 20px', borderTop: '1px solid var(--color-border)', background: 'var(--color-surface-2)', fontSize: 11, color: 'var(--color-text-muted)', flexWrap: 'wrap' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                <div style={{ width: 12, height: 12, borderRadius: 3, background: '#22c55e' }} />
-                Bullish (close &gt; open)
+                <div style={{ width: 12, height: 12, borderRadius: 3, background: '#22c55e' }} /> Bullish (close &gt; open)
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                <div style={{ width: 12, height: 12, borderRadius: 3, background: '#ef4444' }} />
-                Bearish (close &lt; open)
+                <div style={{ width: 12, height: 12, borderRadius: 3, background: '#ef4444' }} /> Bearish (close &lt; open)
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                <div style={{ width: 16, height: 2, borderRadius: 1, background: '#f59e0b' }} />
-                SMA 20
+                <div style={{ width: 16, height: 2, borderRadius: 1, background: '#f59e0b' }} /> SMA 20
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                <div style={{ width: 16, height: 2, borderRadius: 1, background: '#8b5cf6' }} />
-                SMA 50
+                <div style={{ width: 16, height: 2, borderRadius: 1, background: '#8b5cf6' }} /> SMA 50
               </div>
             </div>
           </div>
 
           {quote && <StockStats quote={quote} />}
 
-          {/* Educational tip */}
           <div style={{ display: 'flex', gap: 14, alignItems: 'flex-start', background: '#eff6ff', border: '1.5px solid #bfdbfe', borderRadius: 14, padding: '16px 20px' }}>
             <div style={{ width: 32, height: 32, borderRadius: 8, background: '#dbeafe', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
               <Lightbulb size={15} color="#2563eb" />
@@ -101,10 +97,8 @@ export default function StockPage({ params }: { params: Promise<{ symbol: string
             <div>
               <p style={{ fontSize: 13, fontWeight: 700, color: '#1e40af', margin: '0 0 4px' }}>How to read this chart</p>
               <p style={{ fontSize: 12, color: '#3b82f6', margin: 0, lineHeight: 1.7 }}>
-                Each candle shows one trading day — green means the price went up, red means it went down.
-                The <strong>SMA 20</strong> (amber line) and <strong>SMA 50</strong> (purple line) show the average price over 20 and 50 days.
-                When price is <strong>above</strong> the SMA, it's generally bullish. When <strong>below</strong>, bearish.
-                Click the Technical Analysis tab for RSI momentum analysis.
+                Each candle represents one trading day. The body shows the open and close price. The wicks show the high and low.
+                <strong> Green = price went up. Red = price went down.</strong> Toggle SMA lines above the chart. Click the Technical Analysis tab for RSI and ARIMA forecast.
               </p>
             </div>
           </div>
@@ -114,7 +108,7 @@ export default function StockPage({ params }: { params: Promise<{ symbol: string
       {/* ── Technical Analysis tab ── */}
       {tab === 'technicals' && (
         <>
-          {/* Chart with SMA still visible */}
+          {/* Chart */}
           <div style={{ background: 'var(--color-surface)', border: '1.5px solid var(--color-border)', borderRadius: 16, overflow: 'hidden', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px 20px', borderBottom: '1px solid var(--color-border)' }}>
               <h2 style={{ fontSize: 12, fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-text-subtle)', margin: 0 }}>Price + Moving Averages</h2>
@@ -132,8 +126,8 @@ export default function StockPage({ params }: { params: Promise<{ symbol: string
             </h3>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px,1fr))', gap: 12 }}>
               {[
-                { color: '#f59e0b', label: 'SMA 20 (Short-term)', desc: 'Average closing price over the past 20 days. Reacts quickly to price changes. Used to identify short-term trends and potential support/resistance levels.' },
-                { color: '#8b5cf6', label: 'SMA 50 (Medium-term)', desc: 'Average closing price over the past 50 days. Slower moving, filters out noise. A "golden cross" (SMA 20 crossing above SMA 50) is often seen as a bullish signal.' },
+                { color: '#f59e0b', label: 'SMA 20 — Short-term', desc: 'Average closing price over 20 days. Reacts quickly to price changes. A "golden cross" (SMA 20 crossing above SMA 50) is often seen as a bullish signal.' },
+                { color: '#8b5cf6', label: 'SMA 50 — Medium-term', desc: 'Average closing price over 50 days. Slower moving, filters out noise. When price is above SMA 50, it generally indicates an uptrend.' },
               ].map(({ color, label, desc }) => (
                 <div key={label} style={{ background: 'var(--color-surface-2)', borderRadius: 12, padding: '14px 16px', borderLeft: `3px solid ${color}` }}>
                   <p style={{ fontSize: 13, fontWeight: 700, color: 'var(--color-text)', margin: '0 0 6px' }}>{label}</p>
@@ -145,6 +139,9 @@ export default function StockPage({ params }: { params: Promise<{ symbol: string
 
           {/* RSI Panel */}
           <RSIPanel series={series} />
+
+          {/* ARIMA Forecast */}
+          <ARIMAForecast series={series} />
         </>
       )}
 
