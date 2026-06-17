@@ -2,12 +2,12 @@ import { Suspense } from 'react'
 import { MarketOverview } from '@/components/dashboard/MarketOverview'
 import { TrendingStocks } from '@/components/dashboard/TrendingStocks'
 import Link from 'next/link'
-import { BookOpen, TrendingUp, BarChart2, Shield, ArrowRight, Sparkles, GraduationCap, Star } from 'lucide-react'
+import { BookOpen, TrendingUp, BarChart2, Shield, ArrowRight, Sparkles } from 'lucide-react'
 
 const FEATURES = [
-  { icon: BarChart2, title: 'Live Charts', desc: 'Candlestick charts with real data and multiple timeframes.', accent: '#2563eb', bg: '#eff6ff' },
-  { icon: BookOpen, title: 'Learn Finance', desc: 'Plain-language guides on stocks, ETFs and technical analysis.', accent: '#059669', bg: '#ecfdf5' },
-  { icon: Shield, title: 'Invest Responsibly', desc: 'Understand risk before you invest. Education first, always.', accent: '#7c3aed', bg: '#f5f3ff' },
+  { icon: BarChart2, title: 'Live Charts', desc: 'Candlestick charts with real data and multiple timeframes.', accent: '#0f766e', bg: '#f0fdfa' },
+  { icon: BookOpen, title: 'Learn Finance', desc: 'Plain-language guides on stocks, ETFs and technical analysis.', accent: '#7c3aed', bg: '#f5f3ff' },
+  { icon: Shield, title: 'Invest Responsibly', desc: 'Understand risk before you invest. Education first, always.', accent: '#ea580c', bg: '#fff7ed' },
 ]
 
 const HOW_IT_WORKS = [
@@ -21,39 +21,26 @@ export default function HomePage() {
   return (
     <div>
       {/* ── HERO ── */}
-      <section style={{
-        position: 'relative', overflow: 'hidden',
-        borderBottom: '1px solid var(--color-border)',
-        background: 'var(--color-surface)',
-      }}>
-        <div className="hero-grid" style={{ position: 'absolute', inset: 0, opacity: 0.6, pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', top: -120, left: -80, width: 500, height: 500, borderRadius: '50%', background: 'radial-gradient(circle, #2563eb18 0%, transparent 70%)', pointerEvents: 'none' }} />
+      <section style={{ position: 'relative', overflow: 'hidden', borderBottom: '1px solid var(--color-border)', background: 'var(--color-surface)' }}>
+        <div className="hero-grid" style={{ position: 'absolute', inset: 0, opacity: 0.7, pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', top: -100, left: -80, width: 500, height: 500, borderRadius: '50%', background: 'radial-gradient(circle, #0f766e12 0%, transparent 70%)', pointerEvents: 'none' }} />
 
-        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '72px 24px 80px' }}>
-          {/* Badge */}
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: 999, padding: '6px 14px', fontSize: 12, fontWeight: 700, color: '#1d4ed8', marginBottom: 28 }}>
-            <Sparkles size={12} />
-            Free educational platform · Not financial advice
+        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '72px 24px 80px', position: 'relative' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#f0fdfa', border: '1px solid #99f6e4', borderRadius: 999, padding: '6px 14px', fontSize: 12, fontWeight: 700, color: '#0f766e', marginBottom: 28 }}>
+            <Sparkles size={12} /> Free educational platform · Not financial advice
           </div>
 
-          {/* Headline — sensible size */}
-          <h1 style={{
-            fontFamily: 'var(--font-heading)', fontWeight: 800,
-            fontSize: 'clamp(36px, 4.5vw, 58px)',
-            lineHeight: 1.1, letterSpacing: '-0.03em',
-            color: 'var(--color-text)', margin: '0 0 20px', maxWidth: 680,
-          }}>
+          <h1 style={{ fontFamily: 'var(--font-heading)', fontWeight: 800, fontSize: 'clamp(36px, 4.5vw, 58px)', lineHeight: 1.08, letterSpacing: '-0.03em', color: 'var(--color-text)', margin: '0 0 20px', maxWidth: 680 }}>
             Learn to invest.<br />
-            <span style={{ color: '#2563eb' }}>Track the market.</span>
+            <span style={{ color: '#0f766e' }}>Track the market.</span>
           </h1>
 
-          <p style={{ fontSize: 17, color: 'var(--color-text-muted)', lineHeight: 1.7, margin: '0 0 36px', maxWidth: 500 }}>
+          <p style={{ fontSize: 17, color: 'var(--color-text-muted)', lineHeight: 1.7, margin: '0 0 36px', maxWidth: 500, fontFamily: 'var(--font-sans)' }}>
             Live market data, interactive candlestick charts, and structured financial education — built for total beginners.
           </p>
 
-          {/* CTAs — friend's /stocks link preserved */}
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 56 }}>
-            <Link href="/learn" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'linear-gradient(135deg,#2563eb,#4f46e5)', color: 'white', padding: '13px 24px', borderRadius: 12, fontSize: 14, fontWeight: 700, textDecoration: 'none', boxShadow: '0 8px 24px #2563eb30' }}>
+            <Link href="/learn" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'linear-gradient(135deg,#0f766e,#0d9488)', color: 'white', padding: '13px 24px', borderRadius: 12, fontSize: 14, fontWeight: 700, textDecoration: 'none', boxShadow: '0 8px 24px #0f766e30' }}>
               <BookOpen size={16} /> Start Learning <ArrowRight size={14} />
             </Link>
             <Link href="/stocks" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'var(--color-surface)', border: '1.5px solid var(--color-border)', color: 'var(--color-text)', padding: '13px 24px', borderRadius: 12, fontSize: 14, fontWeight: 700, textDecoration: 'none' }}>
@@ -61,16 +48,15 @@ export default function HomePage() {
             </Link>
           </div>
 
-          {/* Feature cards */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))', gap: 14, maxWidth: 800 }}>
             {FEATURES.map(({ icon: Icon, title, desc, accent, bg }) => (
-              <div key={title} style={{ background: 'var(--color-surface)', border: '1.5px solid var(--color-border)', borderRadius: 14, padding: '16px', display: 'flex', gap: 12, alignItems: 'flex-start', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
-                <div style={{ width: 38, height: 38, borderRadius: 10, background: bg, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <div key={title} style={{ background: 'var(--color-surface)', border: '1.5px solid var(--color-border)', borderRadius: 14, padding: '18px', display: 'flex', gap: 14, alignItems: 'flex-start', boxShadow: '0 2px 8px rgba(0,0,0,0.03)' }}>
+                <div style={{ width: 40, height: 40, borderRadius: 10, background: bg, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                   <Icon size={18} color={accent} />
                 </div>
                 <div>
-                  <p style={{ fontWeight: 700, fontSize: 13, color: 'var(--color-text)', margin: '0 0 3px' }}>{title}</p>
-                  <p style={{ fontSize: 11, color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.6 }}>{desc}</p>
+                  <p style={{ fontWeight: 700, fontSize: 14, color: 'var(--color-text)', margin: '0 0 4px', fontFamily: 'var(--font-heading)' }}>{title}</p>
+                  <p style={{ fontSize: 12, color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.6 }}>{desc}</p>
                 </div>
               </div>
             ))}
@@ -79,17 +65,17 @@ export default function HomePage() {
       </section>
 
       {/* ── HOW IT WORKS ── */}
-      <section style={{ background: 'var(--color-surface-2)', borderBottom: '1px solid var(--color-border)', padding: '56px 24px' }}>
+      <section style={{ background: '#fafaf9', borderBottom: '1px solid var(--color-border)', padding: '56px 24px' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: 36 }}>
-            <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 26, fontWeight: 800, color: 'var(--color-text)', margin: '0 0 8px' }}>How it works</h2>
-            <p style={{ fontSize: 14, color: 'var(--color-text-muted)', margin: 0 }}>Get started in 4 simple steps</p>
+          <div style={{ textAlign: 'center', marginBottom: 40 }}>
+            <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 28, fontWeight: 800, color: 'var(--color-text)', margin: '0 0 8px' }}>How it works</h2>
+            <p style={{ fontSize: 15, color: 'var(--color-text-muted)', margin: 0 }}>Get started in 4 simple steps</p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px,1fr))', gap: 24 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px,1fr))', gap: 32 }}>
             {HOW_IT_WORKS.map(({ step, title, desc }) => (
-              <div key={step}>
-                <div style={{ fontSize: 11, fontWeight: 800, color: '#2563eb', letterSpacing: '0.1em', marginBottom: 10 }}>STEP {step}</div>
-                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: 15, fontWeight: 800, color: 'var(--color-text)', margin: '0 0 6px' }}>{title}</h3>
+              <div key={step} style={{ position: 'relative', paddingLeft: 20, borderLeft: '3px solid #99f6e4' }}>
+                <div style={{ fontSize: 11, fontWeight: 800, color: '#0f766e', letterSpacing: '0.12em', marginBottom: 8 }}>STEP {step}</div>
+                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: 16, fontWeight: 700, color: 'var(--color-text)', margin: '0 0 6px' }}>{title}</h3>
                 <p style={{ fontSize: 13, color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.65 }}>{desc}</p>
               </div>
             ))}
@@ -99,31 +85,25 @@ export default function HomePage() {
 
       {/* ── MARKET DATA ── */}
       <section style={{ maxWidth: 1200, margin: '0 auto', padding: '56px 24px' }}>
-        <Suspense fallback={<MarketSkeleton />}>
-          <MarketOverview />
-        </Suspense>
+        <Suspense fallback={<MarketSkeleton />}><MarketOverview /></Suspense>
         <div style={{ marginTop: 48 }}>
-          <Suspense fallback={<TrendingSkeleton />}>
-            <TrendingStocks />
-          </Suspense>
+          <Suspense fallback={<TrendingSkeleton />}><TrendingStocks /></Suspense>
         </div>
       </section>
 
       {/* ── CTA BANNER ── */}
       <section style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px 72px' }}>
-        <div style={{ background: 'linear-gradient(135deg,#1e40af 0%,#4f46e5 100%)', borderRadius: 20, padding: '48px', position: 'relative', overflow: 'hidden', boxShadow: '0 20px 60px #2563eb25' }}>
+        <div style={{ background: 'linear-gradient(135deg,#134e4a 0%,#0f766e 60%,#0d9488 100%)', borderRadius: 20, padding: '48px', position: 'relative', overflow: 'hidden', boxShadow: '0 20px 60px #0f766e25' }}>
           <div className="hero-grid" style={{ position: 'absolute', inset: 0, opacity: 0.15 }} />
-          <div style={{ position: 'absolute', right: -30, top: -30, width: 180, height: 180, borderRadius: '50%', background: 'rgba(255,255,255,0.06)' }} />
+          <div style={{ position: 'absolute', right: -30, top: -30, width: 200, height: 200, borderRadius: '50%', background: 'rgba(255,255,255,0.06)' }} />
           <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 24 }}>
             <div>
-              <h2 style={{ fontFamily: 'var(--font-heading)', fontWeight: 800, fontSize: 26, color: 'white', margin: '0 0 10px' }}>
-                New to investing?
-              </h2>
-              <p style={{ color: '#bfdbfe', fontSize: 15, margin: 0, maxWidth: 420, lineHeight: 1.65 }}>
+              <h2 style={{ fontFamily: 'var(--font-heading)', fontWeight: 800, fontSize: 28, color: 'white', margin: '0 0 10px' }}>New to investing?</h2>
+              <p style={{ color: '#99f6e4', fontSize: 15, margin: 0, maxWidth: 420, lineHeight: 1.65 }}>
                 Start with our beginner guides — learn to read charts, understand P/E ratios, and build smart investing habits.
               </p>
             </div>
-            <Link href="/learn" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'white', color: '#2563eb', padding: '13px 24px', borderRadius: 12, fontSize: 14, fontWeight: 700, textDecoration: 'none', boxShadow: '0 4px 16px rgba(0,0,0,0.15)', flexShrink: 0 }}>
+            <Link href="/learn" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'white', color: '#0f766e', padding: '13px 24px', borderRadius: 12, fontSize: 14, fontWeight: 700, textDecoration: 'none', boxShadow: '0 4px 16px rgba(0,0,0,0.15)', flexShrink: 0 }}>
               Browse lessons <ArrowRight size={14} />
             </Link>
           </div>

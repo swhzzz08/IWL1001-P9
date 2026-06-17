@@ -9,7 +9,6 @@ function fmt(n: number) {
 export function TrendingStockRow({ quote, rank }: { quote: StockQuote; rank?: number }) {
   const up = quote.change >= 0
   const sign = up ? '+' : ''
-
   return (
     <>
       <style>{`.stock-row:hover { background: var(--color-surface-2) !important; }`}</style>
@@ -23,10 +22,7 @@ export function TrendingStockRow({ quote, rank }: { quote: StockQuote; rank?: nu
           {rank !== undefined && (
             <span style={{ width: 20, fontSize: 11, fontWeight: 700, color: 'var(--color-text-subtle)', fontFamily: 'monospace', textAlign: 'center' }}>{rank}</span>
           )}
-          <div style={{ width: 40, height: 40, borderRadius: 10, flexShrink: 0,
-            background: up ? '#f0fdf4' : '#fef2f2',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: 11, fontWeight: 800, color: up ? '#15803d' : '#b91c1c' }}>
+          <div style={{ width: 40, height: 40, borderRadius: 10, flexShrink: 0, background: '#f0fdfa', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, fontWeight: 800, color: '#0f766e' }}>
             {quote.symbol.slice(0, 2)}
           </div>
           <div>
@@ -36,9 +32,7 @@ export function TrendingStockRow({ quote, rank }: { quote: StockQuote; rank?: nu
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <span style={{ fontSize: 14, fontWeight: 700, color: 'var(--color-text)', fontFamily: 'var(--font-heading)' }}>{fmt(quote.price)}</span>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 5,
-            background: up ? '#f0fdf4' : '#fef2f2', color: up ? '#15803d' : '#b91c1c',
-            borderRadius: 8, padding: '5px 10px', fontSize: 12, fontWeight: 700 }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 5, background: up ? '#f0fdf4' : '#fef2f2', color: up ? '#15803d' : '#b91c1c', borderRadius: 8, padding: '5px 10px', fontSize: 12, fontWeight: 700 }}>
             {up ? <TrendingUp size={11} /> : <TrendingDown size={11} />}
             {sign}{quote.changePercent.toFixed(2)}%
           </div>
