@@ -41,7 +41,7 @@ export function HintPanelContent() {
                             className={`shrink-0 rounded-full px-2.5 py-1 text-xs font-medium transition-colors ${
                                 active
                                     ? 'bg-primary text-primary-foreground'
-                                    : 'bg-muted text-muted-foreground hover:bg-muted/80'
+                                    : 'bg-surface-2 text-muted-foreground hover:bg-surface-2/80'
                             }`}
                         >
                             {label}
@@ -56,7 +56,7 @@ export function HintPanelContent() {
                     <div key={hint.id}>
                         <button
                             onClick={() => setExpandedId(expandedId === hint.id ? null : hint.id)}
-                            className="flex w-full items-center gap-3 px-4 py-3 text-left hover:bg-muted/50 transition-colors"
+                            className="flex w-full items-center gap-3 px-4 py-3 text-left hover:bg-surface-2 transition-colors"
                         >
                             <div className="h-5 w-5 shrink-0 rounded-full border-2 border-muted-foreground/30" />
                             <span className="flex-1 text-sm font-medium text-foreground">{hint.title}</span>

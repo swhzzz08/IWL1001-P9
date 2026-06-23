@@ -13,9 +13,10 @@ export function HintWidget() {
             layout
             layoutId="hint-widget"
             transition={{ type: 'spring', stiffness: 400, damping: 35 }}
-            className="fixed bottom-6 left-6 z-40 flex flex-col overflow-hidden rounded-2xl border border-border bg-background shadow-2xl"
+            className="fixed bottom-6 left-6 z-40"
             style={isOpen ? { width: 288 } : { width: 'auto' }}
         >
+          <div className="flex flex-col overflow-hidden rounded-2xl border border-border bg-background shadow-2xl">
             {!isOpen && (
                 <button
                     onClick={toggle}
@@ -48,6 +49,7 @@ export function HintWidget() {
                     <HintPanelContent />
                 </motion.div>
             )}
+          </div>
         </motion.div>
     )
 }
