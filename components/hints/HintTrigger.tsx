@@ -1,7 +1,6 @@
 'use client'
 
-import { HelpCircle } from 'lucide-react'
-import { cn } from '@/lib/utils'
+import { Lightbulb, ChevronUp, ChevronDown } from 'lucide-react'
 
 interface Props {
     isOpen: boolean
@@ -13,14 +12,11 @@ export function HintTrigger({ isOpen, onToggle }: Props) {
         <button
             onClick={onToggle}
             aria-label={isOpen ? 'Close trading hints' : 'Open trading hints'}
-            className={cn(
-                'fixed bottom-6 right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full shadow-lg transition-colors',
-                isOpen
-                    ? 'bg-primary text-primary-foreground'
-                    : 'bg-card border border-border text-muted-foreground hover:text-foreground hover:border-primary'
-            )}
+            className="fixed bottom-6 left-6 z-40 flex items-center gap-2 rounded-full px-4 py-2.5 shadow-lg transition-colors bg-primary text-primary-foreground hover:bg-primary/90"
         >
-            <HelpCircle className="h-5 w-5" />
+            <Lightbulb className="h-4 w-4" />
+            <span className="text-sm font-semibold">Trading Hints</span>
+            {isOpen ? <ChevronDown className="h-3.5 w-3.5" /> : <ChevronUp className="h-3.5 w-3.5" />}
         </button>
     )
 }
