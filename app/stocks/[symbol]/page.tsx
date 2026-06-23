@@ -8,7 +8,7 @@ import { StockStats } from '@/components/stocks/StockStats'
 import { RSIPanel } from '@/components/stocks/RSIPanel'
 import { ARIMAForecast } from '@/components/stocks/ARIMAForecast'
 import { NewsSentiment } from '@/components/stocks/NewsSentiment'
-import { HintPanel } from '@/components/hints/HintPanel'
+import { HintWidget } from '@/components/hints/HintWidget'
 import { useStockQuote, useTimeSeries } from '@/hooks/useStockData'
 import type { Timeframe } from '@/types/stock'
 import Link from 'next/link'
@@ -148,7 +148,7 @@ export default function StockPage({ params }: { params: Promise<{ symbol: string
       {/* ── News & Sentiment tab ── */}
       {tab === 'news' && <NewsSentiment symbol={upper} />}
 
-      <HintPanel />
+      <HintWidget />
     </div>
   )
 }
