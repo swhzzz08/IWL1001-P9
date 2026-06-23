@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c8b345cd-844c-4cca-a628-d84c8903fb92" name="Changes" comment="Added mock data and commented out api routing for testing">
+    <list default="true" id="c8b345cd-844c-4cca-a628-d84c8903fb92" name="Changes" comment="Test: Change position of the hint panel and where it is supposed to be anchored">
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/hints/HintPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/hints/HintPanel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/stocks/StockChart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/stocks/StockChart.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/education.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/education.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
@@ -59,6 +62,13 @@
       </list>
     </option>
   </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="false" />
+    <option name="myAllFileTypesSelected" value="true" />
+    <option name="mySelectedFileTypes">
+      <set />
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -79,11 +89,26 @@
     &quot;accountId&quot;: &quot;b63d90f0-a549-414a-98b5-af7d07a38d89&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
   <component name="ProjectId" id="3DydgMNAxVCy3y2gDTyYno18mGs" />
   <component name="ProjectSessionTemplates">
+    <option name="inlineTemplate">
+      <template>
+        <option name="modeId" value="InlineAgent" />
+        <option name="model">
+          <model>
+            <option name="modelType" value="builtin_family" />
+            <option name="modelValue" value="auto" />
+          </model>
+        </option>
+        <option name="targetType" value="LOCAL" />
+      </template>
+    </option>
     <option name="panelTemplate">
       <template>
         <option name="modeId" value="Ask" />
@@ -109,6 +134,7 @@
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;copilot.chat.legacySessionMetadata.migrated&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
@@ -118,7 +144,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2025.3.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
@@ -137,6 +163,8 @@
       <recent name="C:\Users\Raiha\WebstormProjects\iwl1001-p9\components\hints" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Raiha\WebstormProjects\iwl1001-p9\app" />
+      <recent name="C:\Users\Raiha\WebstormProjects\iwl1001-p9\docs\superpowers\plans" />
       <recent name="C:\Users\Raiha\WebstormProjects\iwl1001-p9\app\learn" />
       <recent name="C:\Users\Raiha\WebstormProjects\iwl1001-p9\app\learn\[category]\[slug]" />
       <recent name="C:\Users\Raiha\WebstormProjects\iwl1001-p9" />
@@ -181,7 +209,15 @@
       <workItem from="1780462621456" duration="203000" />
       <workItem from="1780973145439" duration="1230000" />
       <workItem from="1780985428575" duration="4929000" />
-      <workItem from="1780990472472" duration="1045000" />
+      <workItem from="1780990472472" duration="1357000" />
+      <workItem from="1781068374295" duration="6243000" />
+      <workItem from="1781151764934" duration="630000" />
+      <workItem from="1781165708257" duration="3812000" />
+      <workItem from="1781248953639" duration="2000" />
+      <workItem from="1781251102709" duration="2535000" />
+      <workItem from="1782098254856" duration="2928000" />
+      <workItem from="1782104620897" duration="34000" />
+      <workItem from="1782183983410" duration="1468000" />
     </task>
     <task id="LOCAL-00001" summary="chore: added in file mapping&#10;&#10;chore: add Jest + React Testing Library">
       <option name="closed" value="true" />
@@ -295,7 +331,23 @@
       <option name="project" value="LOCAL" />
       <updated>1780989706799</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Fix: Removed redundant installs and dependenicies in package.json. &#10;&#10;Upgrade: Tailwindcss from v3 to v4">
+      <option name="closed" value="true" />
+      <created>1780991686246</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1780991686246</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Removed: github workflow">
+      <option name="closed" value="true" />
+      <created>1780991843430</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1780991843430</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -327,7 +379,10 @@
     <MESSAGE value="fix: changed API key" />
     <MESSAGE value="Added .env.example for organisation of keys and configs" />
     <MESSAGE value="Added mock data and commented out api routing for testing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added mock data and commented out api routing for testing" />
+    <MESSAGE value="Fix: Removed redundant installs and dependenicies in package.json. &#10;&#10;Upgrade: Tailwindcss from v3 to v4" />
+    <MESSAGE value="Removed: github workflow" />
+    <MESSAGE value="Test: Change position of the hint panel and where it is supposed to be anchored" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test: Change position of the hint panel and where it is supposed to be anchored" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

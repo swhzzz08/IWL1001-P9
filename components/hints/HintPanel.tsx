@@ -31,11 +31,11 @@ export function HintPanel() {
         <>
             <HintTrigger isOpen={isOpen} onToggle={toggle} />
 
-            {/* Drawer */}
+            {/* Floating popup */}
             {isOpen && (
-                <aside className="fixed right-0 top-0 z-30 flex h-full w-80 flex-col border-l border-border bg-background shadow-xl">
+                <aside className="fixed bottom-20 right-6 z-30 flex w-80 max-h-[70vh] flex-col rounded-xl border border-border bg-background shadow-2xl">
                     {/* Header */}
-                    <div className="flex items-center justify-between border-b border-border px-4 py-3">
+                    <div className="flex items-center justify-between border-b border-border px-4 py-3 rounded-t-xl">
                         <h2 className="font-heading text-sm font-bold">Trading Hints</h2>
                         <button onClick={close} aria-label="Close hints panel">
                             <X className="h-4 w-4" />

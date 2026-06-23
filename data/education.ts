@@ -61,9 +61,9 @@ export const categories: Category[] = [
 
 export const articles: Article[] = [
     {
-        slug: 'what-is-a-stock.ts',
+        slug: 'what-is-a-stock',
         title: 'What Is a Stock?',
-        summary: 'A stock.ts represents ownership in a company. When you buy shares, you become a partial owner entitled to a share of the company\'s assets and earnings.',
+        summary: 'A stock represents ownership in a company. When you buy shares, you become a partial owner entitled to a share of the company\'s assets and earnings.',
         category: 'Stocks',
         difficulty: 'Beginner',
         readTimeMinutes: 5,
@@ -71,7 +71,7 @@ export const articles: Article[] = [
         body: `A stock (also called a share or equity) represents a unit of ownership in a company. When a company wants to raise money, it can "go public" through an Initial Public Offering (IPO), selling portions of ownership to investors.\n\nAs a shareholder, you can profit in two ways:\n\n1. **Capital appreciation** — the stock price rises above what you paid.\n2. **Dividends** — some companies distribute a portion of profits to shareholders.\n\nStocks trade on exchanges (NYSE, NASDAQ) during market hours (9:30 AM–4:00 PM ET, weekdays). The price fluctuates based on supply and demand, driven by earnings, economic conditions, and investor sentiment.`,
     },
     {
-        slug: 'how-to-read-a-stock.ts-chart',
+        slug: 'how-to-read-a-stock-chart',
         title: 'How to Read a Stock Chart',
         summary: 'Stock charts visually represent price history. Learning to read them is the foundation of technical analysis.',
         category: 'Stocks',
@@ -93,7 +93,7 @@ export const articles: Article[] = [
     {
         slug: 'what-are-options',
         title: 'What Are Options?',
-        summary: 'Options are contracts that give you the right — but not the obligation — to buy or sell a stock.ts at a specific price before a specific date.',
+        summary: 'Options are contracts that give you the right — but not the obligation — to buy or sell a stock at a specific price before a specific date.',
         category: 'Options',
         difficulty: 'Intermediate',
         readTimeMinutes: 10,
@@ -113,7 +113,7 @@ export const articles: Article[] = [
     {
         slug: 'introduction-to-etfs',
         title: 'Introduction to ETFs',
-        summary: 'ETFs (Exchange-Traded Funds) hold a basket of assets and trade like a single stock.ts. They\'re one of the most efficient vehicles for diversified investing.',
+        summary: 'ETFs (Exchange-Traded Funds) hold a basket of assets and trade like a single stock. They\'re one of the most efficient vehicles for diversified investing.',
         category: 'ETFs',
         difficulty: 'Beginner',
         readTimeMinutes: 6,

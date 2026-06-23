@@ -1,4 +1,3 @@
-'use client'
 import type { Timeframe } from '@/types/stock'
 
 const TFS: { value: Timeframe; label: string }[] = [

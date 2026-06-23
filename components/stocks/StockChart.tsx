@@ -11,7 +11,7 @@ import {
     type LineData,
     ColorType,
 } from 'lightweight-charts'
-import type { TimeSeriesPoint } from '@/types/stock.ts'
+import type { TimeSeriesPoint } from '@/types/stock'
 import { LoadingSpinner } from '@/components/ui/LoadingSpinner'
 import { calculateSMA } from '@/lib/indicators'
 

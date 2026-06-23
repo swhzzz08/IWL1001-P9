@@ -1,5 +1,3 @@
-'use client'
-
 interface Props { categories: string[]; selected: string; onSelect: (cat: string) => void }
 
 export function FilterTabs({ categories, selected, onSelect }: Props) {

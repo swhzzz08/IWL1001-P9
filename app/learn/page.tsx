@@ -1,10 +1,11 @@
+import type { Metadata } from 'next'
 import { CategoryGrid } from '@/components/learn/CategoryGrid'
 import { ResourceList } from '@/components/learn/ResourceList'
 import { categories } from '@/data/education'
 import { GraduationCap, BookOpen, ArrowRight, Sparkles } from 'lucide-react'
 import Link from 'next/link'
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Learn — MarketWise',
   description: 'Financial education for beginners.',
 }
