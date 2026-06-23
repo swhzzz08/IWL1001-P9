@@ -1,18 +1,19 @@
 'use client'
 
-import { motion } from 'motion/react'
+import { motion, useReducedMotion } from 'motion/react'
 import { Lightbulb, ChevronUp, Minus } from 'lucide-react'
 import { useHints } from '@/hooks/useHints'
 import { HintPanelContent } from './HintPanelContent'
 
 export function HintWidget() {
     const { isOpen, toggle } = useHints()
+    const shouldReduceMotion = useReducedMotion()
 
     return (
         <motion.div
             layout
             layoutId="hint-widget"
-            transition={{ type: 'spring', stiffness: 400, damping: 35 }}
+            transition={shouldReduceMotion ? { duration: 0 } : { type: 'spring', stiffness: 400, damping: 35 }}
             className="fixed bottom-6 left-6 z-40"
             style={isOpen ? { width: 288 } : { width: 'auto' }}
         >
