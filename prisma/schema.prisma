@@ -1,0 +1,99 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id           Int         @id @default(autoincrement())
+  username     String
+  email        String      @unique
+  passwordHash String?
+  createdAt    DateTime    @default(now())
+  portfolios   Portfolio[]
+  watchlists   Watchlist[]
+
+  @@map("users")
+}
+
+model Portfolio {
+  id            Int           @id @default(autoincrement())
+  userId        Int
+  portfolioName String        @map("portfolio_name")
+  baseCurrency  String        @default("USD") @map("base_currency")
+  cashBalance   Float         @default(100000) @map("cash_balance")
+  createdAt     DateTime      @default(now()) @map("created_at")
+  user          User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  transactions  Transaction[]
+  holdings      Holding[]
+
+  @@map("portfolios")
+}
+
+model Transaction {
+  id              Int       @id @default(autoincrement())
+  portfolioId     Int       @map("portfolio_id")
+  tickerSymbol    String    @map("ticker_symbol")
+  transactionType String    @map("transaction_type")
+  quantity        Float
+  price           Float
+  fees            Float     @default(0)
+  transactionDate DateTime  @default(now()) @map("transaction_date")
+  portfolio       Portfolio @relation(fields: [portfolioId], references: [id], onDelete: Cascade)
+
+  @@map("transactions")
+}
+
+model Holding {
+  id           Int       @id @default(autoincrement())
+  portfolioId  Int       @map("portfolio_id")
+  tickerSymbol String    @map("ticker_symbol")
+  quantity     Float
+  averageCost  Float     @map("average_cost")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+  portfolio    Portfolio @relation(fields: [portfolioId], references: [id], onDelete: Cascade)
+
+  @@map("holdings")
+}
+
+model Watchlist {
+  id            Int              @id @default(autoincrement())
+  userId        Int              @map("user_id")
+  watchlistName String           @map("watchlist_name")
+  createdAt     DateTime         @default(now()) @map("created_at")
+  user          User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  stocks        WatchlistStock[]
+
+  @@map("watchlists")
+}
+
+model WatchlistStock {
+  id           Int       @id @default(autoincrement())
+  watchlistId  Int       @map("watchlist_id")
+  tickerSymbol String    @map("ticker_symbol")
+  addedAt      DateTime  @default(now()) @map("added_at")
+  watchlist    Watchlist @relation(fields: [watchlistId], references: [id], onDelete: Cascade)
+
+  @@map("watchlist_stocks")
+}
+
+model EducationalContent {
+  id              Int      @id @default(autoincrement())
+  topic           String
+  title           String
+  content         String
+  difficultyLevel String?  @map("difficulty_level")
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  @@map("educational_content")
+}
+
+model StockCache {
+  tickerSymbol String   @id @map("ticker_symbol")
+  data         Json
+  cachedAt     DateTime @default(now()) @map("cached_at")
+
+  @@map("stock_cache")
+}
