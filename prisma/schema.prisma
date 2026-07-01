@@ -6,14 +6,22 @@ datasource db {
   provider = "postgresql"
 }
 
+enum Role {
+  USER
+  ADMIN
+}
+
 model User {
-  id           Int         @id @default(autoincrement())
+  id           Int          @id @default(autoincrement())
   username     String
-  email        String      @unique
+  email        String       @unique
   passwordHash String?
-  createdAt    DateTime    @default(now())
+  role         Role         @default(USER)
+  createdAt    DateTime     @default(now())
   portfolios   Portfolio[]
   watchlists   Watchlist[]
+  bookmarks    Bookmark[]
+  pageVisits   PageVisit[]
 
   @@map("users")
 }
@@ -80,12 +88,13 @@ model WatchlistStock {
 }
 
 model EducationalContent {
-  id              Int      @id @default(autoincrement())
+  id              Int        @id @default(autoincrement())
   topic           String
   title           String
   content         String
-  difficultyLevel String?  @map("difficulty_level")
-  createdAt       DateTime @default(now()) @map("created_at")
+  difficultyLevel String?    @map("difficulty_level")
+  createdAt       DateTime   @default(now()) @map("created_at")
+  bookmarks       Bookmark[]
 
   @@map("educational_content")
 }
@@ -96,4 +105,26 @@ model StockCache {
   cachedAt     DateTime @default(now()) @map("cached_at")
 
   @@map("stock_cache")
+}
+
+model Bookmark {
+  id        Int                @id @default(autoincrement())
+  userId    Int                @map("user_id")
+  articleId Int                @map("article_id")
+  createdAt DateTime           @default(now()) @map("created_at")
+  user      User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  article   EducationalContent @relation(fields: [articleId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, articleId])
+  @@map("bookmarks")
+}
+
+model PageVisit {
+  id        Int      @id @default(autoincrement())
+  userId    Int      @map("user_id")
+  page      String
+  visitedAt DateTime @default(now()) @map("visited_at")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("page_visits")
 }
