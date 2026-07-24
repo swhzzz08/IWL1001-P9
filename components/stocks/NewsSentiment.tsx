@@ -68,7 +68,7 @@ function SentimentGauge({ summary }: { summary: SentimentSummary }) {
       <div style={{ marginTop: 14, display: 'flex', gap: 8, alignItems: 'flex-start', background: '#f8fafc', borderRadius: 8, padding: '10px 12px' }}>
         <BookOpen size={12} color="var(--color-text-subtle)" style={{ flexShrink: 0, marginTop: 1 }} />
         <p style={{ fontSize: 11, color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.6 }}>
-          <strong>What is sentiment?</strong> Sentiment analysis uses NLP to determine whether news articles are positive, negative, or neutral. A bullish sentiment often correlates with price increases, but is not a guarantee.
+          <strong>What is sentiment?</strong> Sentiment analysis uses NLP to determine whether news articles are positive, negative or neutral. A bullish sentiment often correlates with price increases, but is not a guarantee.
         </p>
       </div>
     </div>

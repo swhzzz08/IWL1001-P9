@@ -26,7 +26,7 @@ const DEFS: Record<string, string> = {
   'Market Cap': 'Price × total shares outstanding. Measures company size. Large cap = over $10B.',
   'P/E Ratio': 'How much investors pay for $1 of earnings. High P/E = growth expectations; Low P/E = possible undervaluation.',
   '52W High': 'Highest price in the past 52 weeks. Proximity here often signals strong momentum.',
-  '52W Low': 'Lowest price in the past 52 weeks. A stock near its low may be undervalued — or struggling.',
+  '52W Low': 'Lowest price in the past 52 weeks. A stock near its low may be undervalued or struggling.',
 }
 
 function StatCard({ label, value }: { label: string; value: string }) {

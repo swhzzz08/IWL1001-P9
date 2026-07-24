@@ -196,7 +196,7 @@ export function ARIMAForecast({ series }: Props) {
             <p style={{ fontSize: 12, fontWeight: 700, color: '#1e40af', margin: '0 0 4px' }}>What is ARIMA?</p>
             <p style={{ fontSize: 12, color: '#3b82f6', margin: 0, lineHeight: 1.7 }}>
               ARIMA stands for <strong>AutoRegressive Integrated Moving Average</strong>. It's a statistical model that uses a stock's own past price patterns to forecast future prices.
-              It works by finding the trend direction (AR), removing it to make the data stable (I), and smoothing out noise (MA).
+              It works by finding the trend direction (AR), removing it to make the data stable (I) and smoothing out noise (MA).
               The <strong>confidence band</strong> shows the range of likely outcomes — wider bands mean more uncertainty.
             </p>
           </div>
@@ -209,11 +209,11 @@ export function ARIMAForecast({ series }: Props) {
           </p>
           <p style={{ fontSize: 12, color: rec.color, margin: 0, lineHeight: 1.7, opacity: 0.85 }}>
             {result.recommendation === 'Buy' &&
-              `The model predicts a ${sign}${pctChange.toFixed(1)}% price increase over the next 30 days. When the forecast suggests a rise of more than 3%, the model recommends buying — but always do your own research first.`}
+              `The model predicts a ${sign}${pctChange.toFixed(1)}% price increase over the next 30 days. When the forecast suggests a rise of more than 3%, the model recommends buying but remember to always do your own research first.`}
             {result.recommendation === 'Sell' &&
-              `The model predicts a ${pctChange.toFixed(1)}% price decrease over the next 30 days. When the forecast suggests a fall of more than 3%, the model recommends selling — but always do your own research first.`}
+              `The model predicts a ${pctChange.toFixed(1)}% price decrease over the next 30 days. When the forecast suggests a fall of more than 3%, the model recommends selling but remember to always do your own research first.`}
             {result.recommendation === 'Hold' &&
-              `The model predicts only a ${sign}${pctChange.toFixed(1)}% price change — within the ±3% neutral zone. This suggests the stock may trade sideways, so holding may be the most appropriate position.`}
+              `The model predicts only a ${sign}${pctChange.toFixed(1)}% price change within the ±3% neutral zone. This suggests the stock may trade sideways, so holding may be the most appropriate position.`}
           </p>
         </div>
 

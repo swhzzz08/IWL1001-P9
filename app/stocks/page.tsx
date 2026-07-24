@@ -20,10 +20,10 @@ export default function StocksBrowsePage() {
               <Search size={12} /> Browse stocks first
             </div>
             <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(32px, 5vw, 54px)', lineHeight: 1.05, margin: 0, color: 'var(--color-text)' }}>
-              Pick a stock, then open its chart.
+              Pick a stock, then open its chart
             </h1>
             <p style={{ marginTop: 14, marginBottom: 0, fontSize: 16, lineHeight: 1.7, color: 'var(--color-text-muted)' }}>
-              Use this page to scan the most active symbols in the app. Click any stock to open the chart view with price history, stats, and the hint panel.
+              Use this page to scan the most active symbols in the app. Click any stock to open the chart view with price history, stats and the hint panel.
             </p>
           </div>
 

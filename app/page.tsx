@@ -36,7 +36,7 @@ export default function HomePage() {
           </h1>
 
           <p style={{ fontSize: 17, color: 'var(--color-text-muted)', lineHeight: 1.7, margin: '0 0 36px', maxWidth: 500, fontFamily: 'var(--font-sans)' }}>
-            Live market data, interactive candlestick charts, and structured financial education — built for total beginners.
+            Live market data, interactive candlestick charts and structured financial education built for total beginners.
           </p>
 
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 56 }}>
@@ -68,7 +68,7 @@ export default function HomePage() {
       <section style={{ background: '#fafaf9', borderBottom: '1px solid var(--color-border)', padding: '56px 24px' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: 40 }}>
-            <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 28, fontWeight: 800, color: 'var(--color-text)', margin: '0 0 8px' }}>How it works</h2>
+            <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 28, fontWeight: 800, color: 'var(--color-text)', margin: '0 0 8px' }}>How It Works</h2>
             <p style={{ fontSize: 15, color: 'var(--color-text-muted)', margin: 0 }}>Get started in 4 simple steps</p>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px,1fr))', gap: 32 }}>
@@ -100,7 +100,7 @@ export default function HomePage() {
             <div>
               <h2 style={{ fontFamily: 'var(--font-heading)', fontWeight: 800, fontSize: 28, color: 'white', margin: '0 0 10px' }}>New to investing?</h2>
               <p style={{ color: '#99f6e4', fontSize: 15, margin: 0, maxWidth: 420, lineHeight: 1.65 }}>
-                Start with our beginner guides — learn to read charts, understand P/E ratios, and build smart investing habits.
+                Start with our beginner guides — learn to read charts, understand P/E ratios and build smart investing habits.
               </p>
             </div>
             <Link href="/learn" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'white', color: '#0f766e', padding: '13px 24px', borderRadius: 12, fontSize: 14, fontWeight: 700, textDecoration: 'none', boxShadow: '0 4px 16px rgba(0,0,0,0.15)', flexShrink: 0 }}>

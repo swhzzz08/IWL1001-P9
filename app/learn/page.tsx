@@ -44,7 +44,7 @@ export default function LearnPage() {
                 Financial Education Hub
               </h1>
               <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.75)', margin: '12px 0 0', maxWidth: 560, lineHeight: 1.7 }}>
-                Everything you need to understand markets — from what a stock is to reading financial statements and managing risk.
+                Everything you need to understand about markets — from what a stock is to reading financial statements and managing risk.
               </p>
             </div>
           </div>

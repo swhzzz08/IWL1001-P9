@@ -46,7 +46,7 @@ export function Footer() {
               <strong>Educational purposes only.</strong> Not financial advice. Data may be delayed. Always do your own research before investing.
             </span>
           </div>
-          <p style={{ fontSize: 12, color: 'var(--color-text-subtle)', alignSelf: 'center' }}>© 2025 MarketWise</p>
+          <p style={{ fontSize: 12, color: 'var(--color-text-subtle)', alignSelf: 'center' }}>© 2026 MarketWise</p>
         </div>
       </div>
     </footer>
