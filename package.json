@@ -9,7 +9,7 @@
     "jsonwebtoken": "^9.0.3",
     "lightweight-charts": "^5.2.0",
     "lucide-react": "^1.17.0",
-    "motion": "^12.40.0",
+    "motion": "^12.42.2",
     "next": "^16.2.7",
     "pg": "^8.22.0",
     "radix-ui": "^1.4.3",
