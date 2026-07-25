@@ -11,7 +11,7 @@ export const hints: Hint[] = [
     {
         id: 'candlestick-basics',
         title: 'Reading Candlesticks',
-        body: 'Each candle shows open, high, low, and close. A green candle means the close was higher than the open. A red candle means the close was lower. The wicks show the full price range for that period.',
+        body: 'Each candle shows open, high, low and close. A green candle means the close was higher than the open. A red candle means the close was lower. The wicks show the full price range for that period.',
         category: 'Reading Charts',
     },
     {
@@ -77,7 +77,7 @@ export const hints: Hint[] = [
     {
         id: 'diversification',
         title: 'Diversification',
-        body: 'Spreading investments across different sectors, asset classes, and geographies reduces the risk that any single loss destroys your portfolio. However, over-diversification can dilute returns. Most retail investors benefit from 10-20 holdings.',
+        body: 'Spreading investments across different sectors, asset classes and geographies reduces the risk that any single loss destroys your portfolio. However, over-diversification can dilute returns. Most retail investors benefit from 10-20 holdings.',
         category: 'Risk Management',
     },
     {
@@ -95,13 +95,13 @@ export const hints: Hint[] = [
     {
         id: 'scaling-out',
         title: 'Scaling Out of Positions',
-        body: 'Rather than selling your entire position at once, consider selling in thirds: one-third at the first target, one-third at the second, and letting the last third run with a trailing stop. This locks in profit while staying in winning trades.',
+        body: 'Rather than selling your entire position at once, consider selling in thirds: one-third at the first target, one-third at the second and letting the last third run with a trailing stop. This locks in profit while staying in winning trades.',
         category: 'Entry & Exit',
     },
     {
         id: 'trailing-stop',
         title: 'Trailing Stops',
-        body: 'A trailing stop moves up (for long trades) as price rises, locking in profits while leaving room for the trend to continue. Common methods: a fixed dollar amount, a percentage, or below a moving average.',
+        body: 'A trailing stop moves up (for long trades) as price rises, locking in profits while leaving room for the trend to continue. Common methods: a fixed dollar amount, a percentage or below a moving average.',
         category: 'Entry & Exit',
     },
     {
@@ -113,19 +113,19 @@ export const hints: Hint[] = [
     {
         id: 'trading-journal',
         title: 'Keep a Trading Journal',
-        body: 'Record every trade: entry, exit, size, reason, and outcome. Reviewing your journal regularly reveals patterns in your mistakes. Most traders improve dramatically simply by tracking what they actually did vs. what they planned.',
+        body: 'Record every trade: entry, exit, size, reason and outcome. Reviewing your journal regularly reveals patterns in your mistakes. Most traders improve dramatically simply by tracking what they actually did vs. what they planned.',
         category: 'Psychology',
     },
     {
         id: 'revenge-trading',
         title: 'Avoid Revenge Trading',
-        body: 'After a loss, the urge to immediately make it back leads to impulsive trades with poor setups. The best action after a loss is to step away, review what happened, and only re-enter when a clean setup appears.',
+        body: 'After a loss, the urge to immediately make it back leads to impulsive trades with poor setups. The best action after a loss is to step away, review what happened and only re-enter when a clean setup appears.',
         category: 'Psychology',
     },
     {
         id: 'plan-the-trade',
         title: 'Plan the Trade, Trade the Plan',
-        body: 'Write down your entry, stop loss, and target before entering any trade. Once in the trade, do not change the plan based on emotions. If your rules say exit, exit. If they say stay, stay.',
+        body: 'Write down your entry, stop loss and target before entering any trade. Once in the trade, do not change the plan based on emotions. If your rules say exit, exit. If they say stay, stay.',
         category: 'Psychology',
     },
     {
