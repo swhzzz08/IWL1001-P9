@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma"
 import { NextRequest, NextResponse } from "next/server"
 import jwt from "jsonwebtoken"
+import { SUPPORTED_SYMBOLS } from "@/lib/stocks"
 
 const JWT_SECRET = process.env.JWT_SECRET || "dev-secret-change-in-production"
 
@@ -56,6 +57,14 @@ export async function POST(req: NextRequest) {
 
     if (!symbol) {
       return NextResponse.json({ error: "Symbol is required" }, { status: 400 })
+    }
+
+    // Validate symbol against supported list
+    if (!SUPPORTED_SYMBOLS.includes(symbol.toUpperCase())) {
+      return NextResponse.json(
+        { error: `"${symbol.toUpperCase()}" is not supported. Supported stocks: ${SUPPORTED_SYMBOLS.join(', ')}.` },
+        { status: 404 }
+      )
     }
 
     let targetWatchlistId = watchlistId

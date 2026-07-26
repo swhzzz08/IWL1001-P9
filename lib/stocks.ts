@@ -1,0 +1,1 @@
+export const SUPPORTED_SYMBOLS = ['AAPL', 'MSFT', 'NVDA', 'GOOGL', 'AMZN', 'META', 'TSLA']

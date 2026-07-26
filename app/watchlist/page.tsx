@@ -4,7 +4,8 @@ import { useState } from 'react'
 import { useWatchlist } from '@/hooks/useWatchlist'
 import { useStockQuote } from '@/hooks/useStockData'
 import Link from 'next/link'
-import { Star, Trash2, TrendingUp, TrendingDown, Plus, BookOpen, ArrowRight } from 'lucide-react'
+import { Star, Trash2, TrendingUp, TrendingDown, Plus, BookOpen, ArrowRight, AlertCircle } from 'lucide-react'
+import { SUPPORTED_SYMBOLS } from '@/lib/stocks'
 
 function fmt(n: number) {
   return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2 }).format(n)
@@ -90,34 +91,57 @@ function WatchlistRow({ symbol, onRemove }: { symbol: string; onRemove: () => vo
 
 function AddStockForm({ onAdd }: { onAdd: (s: string) => void }) {
   const [input, setInput] = useState('')
-
+  const [error, setError] = useState('')
+ 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     const s = input.trim().toUpperCase()
-    if (s) { onAdd(s); setInput('') }
+    if (!s) return
+ 
+    if (!SUPPORTED_SYMBOLS.includes(s)) {
+      setError(`"${s}" is not supported. Try: ${SUPPORTED_SYMBOLS.join(', ')}.`)
+      return
+    }
+ 
+    setError('')
+    onAdd(s)
+    setInput('')
   }
-
+ 
   return (
-    <form onSubmit={handleSubmit} style={{ display: 'flex', gap: 8 }}>
-      <input
-        value={input}
-        onChange={e => setInput(e.target.value)}
-        placeholder="Add ticker… e.g. TSLA"
-        style={{
-          flex: 1, height: 40, padding: '0 14px',
-          borderRadius: 10, border: '1.5px solid var(--color-border)',
-          background: 'var(--color-surface-2)', fontSize: 13,
-          color: 'var(--color-text)', outline: 'none',
-        }}
-      />
-      <button type="submit" style={{
-        display: 'inline-flex', alignItems: 'center', gap: 6,
-        padding: '0 16px', height: 40, borderRadius: 10, fontSize: 13, fontWeight: 700,
-        background: '#2563eb', color: 'white', border: 'none', cursor: 'pointer',
-      }}>
-        <Plus size={15} /> Add
-      </button>
-    </form>
+    <>
+      <form onSubmit={handleSubmit} style={{ display: 'flex', gap: 8 }}>
+        <input
+          value={input}
+          onChange={e => { setInput(e.target.value); if (error) setError('') }}
+          placeholder="Add ticker… e.g. AAPL"
+          style={{
+            flex: 1, height: 40, padding: '0 14px',
+            borderRadius: 10, border: `1.5px solid ${error ? '#fca5a5' : 'var(--color-border)'}`,
+            background: 'var(--color-surface-2)', fontSize: 13,
+            color: 'var(--color-text)', outline: 'none',
+          }}
+        />
+        <button type="submit" style={{
+          display: 'inline-flex', alignItems: 'center', gap: 6,
+          padding: '0 16px', height: 40, borderRadius: 10, fontSize: 13, fontWeight: 700,
+          background: '#0f766e', color: 'white', border: 'none', cursor: 'pointer',
+        }}>
+          <Plus size={15} /> Add
+        </button>
+      </form>
+ 
+      {error && (
+        <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8, marginTop: 10, background: '#fef2f2', border: '1px solid #fca5a5', borderRadius: 8, padding: '10px 12px' }}>
+          <AlertCircle size={14} color="#dc2626" style={{ flexShrink: 0, marginTop: 1 }} />
+          <p style={{ fontSize: 13, color: '#b91c1c', margin: 0 }}>{error}</p>
+        </div>
+      )}
+ 
+      <p style={{ fontSize: 11, color: 'var(--color-text-subtle)', margin: '10px 0 0' }}>
+        Supported: {SUPPORTED_SYMBOLS.join(', ')}
+      </p>
+    </>
   )
 }
 
