@@ -1,14 +1,11 @@
+'use client'
+
 import type { Metadata } from 'next'
 import { CategoryGrid } from '@/components/learn/CategoryGrid'
 import { ResourceList } from '@/components/learn/ResourceList'
 import { categories } from '@/data/education'
-import { GraduationCap, BookOpen, ArrowRight, Sparkles } from 'lucide-react'
+import { GraduationCap, BookOpen, ArrowRight, Sparkles, Sprout, TrendingUp, Landmark } from 'lucide-react'
 import Link from 'next/link'
-
-export const metadata: Metadata = {
-  title: 'Learn — MarketWise',
-  description: 'Financial education for beginners.',
-}
 
 const STATS = [
   { value: '8', label: 'Topics' },
@@ -17,15 +14,42 @@ const STATS = [
 ]
 
 const LEARNING_PATHS = [
-  { emoji: '🌱', title: 'Complete Beginner', desc: 'Start with What Is a Stock, then ETFs, then Risk Management.', color: '#f0fdf4', border: '#86efac' },
-  { emoji: '📈', title: 'Chart Reader', desc: 'Go straight to Technical Analysis — candlesticks, RSI, moving averages.', color: '#f0fdfa', border: '#99f6e4' },
-  { emoji: '🏦', title: 'Value Investor', desc: 'Study Fundamentals first — P/E ratios, earnings, balance sheets.', color: '#fdf4ff', border: '#d8b4fe' },
+  {
+    icon: Sprout,
+    title: 'Complete Beginner',
+    desc: 'Start with What Is a Stock, then ETFs, then Risk Management.',
+    color: '#f0fdf4',
+    border: '#86efac',
+    iconColor: '#16a34a',
+    href: '/learn/stocks',
+    cta: 'Start here →'
+  },
+  {
+    icon: TrendingUp,
+    title: 'Chart Reader',
+    desc: 'Go straight to Technical Analysis — candlesticks, RSI, moving averages.',
+    color: '#f0fdfa',
+    border: '#99f6e4',
+    iconColor: '#0f766e',
+    href: '/learn/technical-analysis',
+    cta: 'Read charts →'
+  },
+  {
+    icon: Landmark,
+    title: 'Value Investor',
+    desc: 'Study Fundamentals first — P/E ratios, earnings, balance sheets.',
+    color: '#fdf4ff',
+    border: '#d8b4fe',
+    iconColor: '#9333ea',
+    href: '/learn/fundamentals',
+    cta: 'Study fundamentals →'
+  },
 ]
 
 export default function LearnPage() {
   return (
     <div>
-      {/* ── HERO ── */}
+      {/* HERO */}
       <section style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(135deg, #134e4a 0%, #0f766e 55%, #0d9488 100%)', borderBottom: '1px solid var(--color-border)' }}>
         <div style={{ position: 'absolute', inset: 0, opacity: 0.1, pointerEvents: 'none', backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
         <div style={{ position: 'absolute', top: -60, right: -60, width: 300, height: 300, borderRadius: '50%', background: 'rgba(99,255,220,0.1)', filter: 'blur(60px)', pointerEvents: 'none' }} />
@@ -62,24 +86,44 @@ export default function LearnPage() {
 
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '48px 24px 80px', display: 'flex', flexDirection: 'column', gap: 56 }}>
 
-        {/* ── LEARNING PATHS ── */}
+        {/* LEARNING PATHS */}
         <section>
-          <div style={{ marginBottom: 20 }}>
-            <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 24, fontWeight: 800, color: 'var(--color-text)', margin: '0 0 6px' }}>Where should I start?</h2>
-            <p style={{ fontSize: 14, color: 'var(--color-text-muted)', margin: 0 }}>Choose a learning path based on your goal</p>
-          </div>
+            <div style={{ marginBottom: 20 }}>
+    <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 24, fontWeight: 800, color: 'var(--color-text)', margin: '0 0 6px' }}>Where Should I Start?</h2>
+    <p style={{ fontSize: 14, color: 'var(--color-text-muted)', margin: 0 }}>Choose a learning path based on your goal</p>
+  </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 14 }}>
-            {LEARNING_PATHS.map(({ emoji, title, desc, color, border }) => (
-              <div key={title} style={{ background: color, border: `1.5px solid ${border}`, borderRadius: 16, padding: '20px' }}>
-                <div style={{ fontSize: 28, marginBottom: 10 }}>{emoji}</div>
-                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: 15, fontWeight: 700, color: 'var(--color-text)', margin: '0 0 6px' }}>{title}</h3>
-                <p style={{ fontSize: 12, color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.65 }}>{desc}</p>
-              </div>
-            ))}
-          </div>
+  {LEARNING_PATHS.map(({ icon: Icon, title, desc, color, border, iconColor, href, cta }) => (
+    <Link key={title} href={href} style={{ textDecoration: 'none' }}>
+      <div style={{
+        background: color, border: `1.5px solid ${border}`,
+        borderRadius: 16, padding: '20px', height: '100%',
+        transition: 'all 0.2s', cursor: 'pointer',
+      }}
+        onMouseEnter={e => {
+          const el = e.currentTarget as HTMLElement
+          el.style.transform = 'translateY(-2px)'
+          el.style.boxShadow = `0 8px 24px ${border}60`
+        }}
+        onMouseLeave={e => {
+          const el = e.currentTarget as HTMLElement
+          el.style.transform = 'none'
+          el.style.boxShadow = 'none'
+        }}
+      >
+        <div style={{ width: 40, height: 40, borderRadius: 10, background: 'rgba(255,255,255,0.7)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 12 }}>
+          <Icon size={20} color={iconColor} />
+        </div>
+        <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: 15, fontWeight: 700, color: 'var(--color-text)', margin: '0 0 6px' }}>{title}</h3>
+        <p style={{ fontSize: 12, color: 'var(--color-text-muted)', margin: '0 0 14px', lineHeight: 1.65 }}>{desc}</p>
+        <p style={{ fontSize: 12, fontWeight: 700, color: iconColor, margin: 0 }}>{cta}</p>
+      </div>
+    </Link>
+  ))}
+</div>  
         </section>
 
-        {/* ── BROWSE BY TOPIC ── */}
+        {/* BROWSE BY TOPIC */}
         <section>
           <div style={{ marginBottom: 20 }}>
             <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 24, fontWeight: 800, color: 'var(--color-text)', margin: '0 0 6px' }}>Browse by Topic</h2>
@@ -88,16 +132,16 @@ export default function LearnPage() {
           <CategoryGrid categories={categories} />
         </section>
 
-        {/* ── ALL ARTICLES ── */}
+        {/* ALL ARTICLES */}
         <section>
           <div style={{ marginBottom: 20 }}>
             <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 24, fontWeight: 800, color: 'var(--color-text)', margin: '0 0 6px' }}>All Articles</h2>
-            <p style={{ fontSize: 14, color: 'var(--color-text-muted)', margin: 0 }}>Search and filter by topic or difficulty</p>
+            <p style={{ fontSize: 14, color: 'var(--color-text-muted)', margin: 0 }}>Search and filter by topic</p>
           </div>
           <ResourceList />
         </section>
 
-        {/* ── CTA ── */}
+        {/* CTA */}
         <section style={{ background: '#f0fdfa', border: '1.5px solid #99f6e4', borderRadius: 20, padding: '32px' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24, flexWrap: 'wrap' }}>
             <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
