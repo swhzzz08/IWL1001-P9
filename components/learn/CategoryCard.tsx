@@ -6,6 +6,7 @@ import {
     Shield, BookOpen, Coins, Landmark,
 } from 'lucide-react'
 import type { Category } from '@/types/education'
+import { articles } from '@/data/education'
 
 const ICONS: Record<string, React.ComponentType<{ size?: number; color?: string }>> = {
     TrendingUp, Layers, PieChart, BarChart2,
@@ -26,6 +27,8 @@ const COLORS = [
 export function CategoryCard({ category, index = 0 }: { category: Category; index?: number }) {
     const Icon = ICONS[category.iconName] ?? BookOpen
     const color = COLORS[index % COLORS.length]
+
+    const actualCount = articles.filter(a => a.category === category.name).length
 
     return (
         <Link href={`/learn/${category.slug}`} style={{ textDecoration: 'none' }}>
@@ -64,7 +67,7 @@ export function CategoryCard({ category, index = 0 }: { category: Category; inde
                     </p>
                 </div>
                 <p style={{ fontSize: 12, color: 'var(--color-text-muted)', margin: 0 }}>
-                    {category.articleCount} articles
+                    {actualCount} {actualCount === 1 ? 'article' : 'articles'}
                 </p>
             </div>
         </Link>

@@ -1,5 +1,5 @@
 // Simple lexicon-based sentiment analysis for financial news
-// No external library needed - works client and server side
+// No external library needed and it works client and server side
 
 const POSITIVE_WORDS = new Set([
   'surge', 'surges', 'surging', 'soar', 'soars', 'soaring', 'rally', 'rallies', 'rallying',
