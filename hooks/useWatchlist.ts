@@ -1,110 +1,87 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useCallback } from 'react'
+import useSWR from 'swr'
+import { useSession } from 'next-auth/react'
 import { SUPPORTED_SYMBOLS } from '@/lib/stocks'
-
-const STORAGE_KEY = 'marketwise_watchlist'
-
-// List of stocks supported by your website
-const VALID_SYMBOLS = [
-  'AAPL',
-  'MSFT',
-  'GOOGL',
-  'AMZN',
-  'META',
-  'TSLA',
-  'NVDA',
-]
 
 export interface WatchlistItem {
   symbol: string
   addedAt: string
 }
 
+interface WatchlistStockDTO {
+  tickerSymbol: string
+  addedAt: string
+}
+
+interface WatchlistDTO {
+  id: number
+  stocks: WatchlistStockDTO[]
+}
+
+const fetcher = (url: string) =>
+  fetch(url).then(res => {
+    if (!res.ok) throw new Error('Failed to load watchlist')
+    return res.json() as Promise<WatchlistDTO[]>
+  })
+
 export function useWatchlist() {
-  const [watchlist, setWatchlist] = useState<WatchlistItem[]>([])
-  const [loaded, setLoaded] = useState(false)
+  const { status } = useSession()
+  const authenticated = status === 'authenticated'
 
-  // Load watchlist from localStorage
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem(STORAGE_KEY)
-      if (stored) {
-        const parsed: WatchlistItem[] = JSON.parse(stored)
+  const { data, isLoading, mutate } = useSWR(
+    authenticated ? '/api/watchlist' : null,
+    fetcher
+  )
 
-        // Remove any unsupported stocks that may already exist
-        const filtered = parsed.filter(item =>
-          VALID_SYMBOLS.includes(item.symbol.toUpperCase())
-        )
+  const watchlist: WatchlistItem[] = (data?.[0]?.stocks ?? []).map(s => ({
+    symbol: s.tickerSymbol,
+    addedAt: s.addedAt,
+  }))
 
-        setWatchlist(filtered)
-      }
-    } catch (error) {
-      console.error('Failed to load watchlist:', error)
-    }
-
-    setLoaded(true)
-  }, [])
-
-  // Save watchlist to localStorage
-  useEffect(() => {
-    if (!loaded) return
-
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(watchlist))
-    } catch (error) {
-      console.error('Failed to save watchlist:', error)
-    }
-  }, [watchlist, loaded])
-
-  const addToWatchlist = useCallback((symbol: string) => {
+  const addToWatchlist = useCallback(async (symbol: string) => {
+    if (!authenticated) return
     const upper = symbol.toUpperCase().trim()
+    if (!upper || !SUPPORTED_SYMBOLS.includes(upper)) return
+    if (watchlist.some(item => item.symbol === upper)) return
 
-    if (!upper) return
-
-    // Prevent unsupported stocks from being added
-    if (!VALID_SYMBOLS.includes(upper)) {
-      console.warn(`${upper} is not a supported stock.`)
-      return
-    }
-
-    if (!SUPPORTED_SYMBOLS.includes(upper)) return
-
-    setWatchlist(prev => {
-      if (prev.find(item => item.symbol === upper)) {
-        return prev
-      }
-
-      return [
-        ...prev,
-        {
-          symbol: upper,
-          addedAt: new Date().toISOString(),
-        },
-      ]
+    await fetch('/api/watchlist', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ symbol: upper }),
     })
-  }, [])
+    mutate()
+  }, [authenticated, watchlist, mutate])
 
-  const removeFromWatchlist = useCallback((symbol: string) => {
-    const upper = symbol.toUpperCase()
-
-    setWatchlist(prev =>
-      prev.filter(item => item.symbol !== upper)
-    )
-  }, [])
+  const removeFromWatchlist = useCallback(async (symbol: string) => {
+    if (!authenticated) return
+    await fetch('/api/watchlist', {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ symbol: symbol.toUpperCase() }),
+    })
+    mutate()
+  }, [authenticated, mutate])
 
   const isWatched = useCallback(
-    (symbol: string) => {
-      return watchlist.some(
-        item => item.symbol === symbol.toUpperCase()
-      )
-    },
+    (symbol: string) => watchlist.some(item => item.symbol === symbol.toUpperCase()),
     [watchlist]
   )
 
-  const clearWatchlist = useCallback(() => {
-    setWatchlist([])
-  }, [])
+  const clearWatchlist = useCallback(async () => {
+    if (!authenticated) return
+    await Promise.all(
+      watchlist.map(item =>
+        fetch('/api/watchlist', {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ symbol: item.symbol }),
+        })
+      )
+    )
+    mutate()
+  }, [authenticated, watchlist, mutate])
 
   return {
     watchlist,
@@ -112,6 +89,7 @@ export function useWatchlist() {
     removeFromWatchlist,
     isWatched,
     clearWatchlist,
-    loaded,
+    loaded: status !== 'loading' && !isLoading,
+    requiresAuth: status === 'unauthenticated',
   }
 }

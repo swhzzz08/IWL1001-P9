@@ -1,36 +1,31 @@
 import { prisma } from "@/lib/prisma"
 import { NextRequest, NextResponse } from "next/server"
-import jwt from "jsonwebtoken"
+import { auth } from "@/lib/auth"
 import { SUPPORTED_SYMBOLS } from "@/lib/stocks"
 
-const JWT_SECRET = process.env.JWT_SECRET || "dev-secret-change-in-production"
-
-function getUserFromToken(req: NextRequest) {
-  const token = req.cookies.get("auth-token")?.value
-  if (!token) return null
-  try {
-    return jwt.verify(token, JWT_SECRET) as { userId: number; email: string }
-  } catch {
-    return null
-  }
+async function getUserId() {
+  const session = await auth()
+  if (!session?.user?.id) return null
+  const userId = Number(session.user.id)
+  return Number.isNaN(userId) ? null : userId
 }
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   try {
-    const user = getUserFromToken(req)
-    if (!user) {
+    const userId = await getUserId()
+    if (!userId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
     const watchlists = await prisma.watchlist.findMany({
-      where: { userId: user.userId },
+      where: { userId },
       include: { stocks: true },
     })
 
     if (watchlists.length === 0) {
       const defaultWatchlist = await prisma.watchlist.create({
         data: {
-          userId: user.userId,
+          userId,
           watchlistName: "My Watchlist",
           stocks: {},
         },
@@ -48,8 +43,8 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   try {
-    const user = getUserFromToken(req)
-    if (!user) {
+    const userId = await getUserId()
+    if (!userId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
@@ -71,7 +66,7 @@ export async function POST(req: NextRequest) {
 
     if (!targetWatchlistId) {
       const defaultWatchlist = await prisma.watchlist.findFirst({
-        where: { userId: user.userId },
+        where: { userId },
       })
       if (!defaultWatchlist) {
         return NextResponse.json({ error: "No watchlist found" }, { status: 404 })
@@ -109,8 +104,8 @@ export async function POST(req: NextRequest) {
 
 export async function DELETE(req: NextRequest) {
   try {
-    const user = getUserFromToken(req)
-    if (!user) {
+    const userId = await getUserId()
+    if (!userId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
@@ -123,7 +118,7 @@ export async function DELETE(req: NextRequest) {
     const watchlist = await prisma.watchlist.findFirst({
       where: {
         id: watchlistId,
-        userId: user.userId,
+        userId,
       },
     })
 

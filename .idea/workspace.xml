@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c8b345cd-844c-4cca-a628-d84c8903fb92" name="Changes" comment="Test: &#10;- Change position anchoring of the hint button and panel.&#10;&#10;Fix: &#10;- Corrupted slugs, file name was shown instead of the text.&#10;- Fix directive declarations that are supposed to be rendered either client or serverside.">
+    <list default="true" id="c8b345cd-844c-4cca-a628-d84c8903fb92" name="Changes" comment="Fixed pathing and updated the config">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/auth/[...nextauth]/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/auth/[...nextauth]/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/auth/forgot-password/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/auth/forgot-password/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/auth/reset-password/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/auth/reset-password/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/auth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +86,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/swhzzz08/IWL1001-P9.git&quot;,
-    &quot;accountId&quot;: &quot;b63d90f0-a549-414a-98b5-af7d07a38d89&quot;
+    &quot;accountId&quot;: &quot;2613cc88-354c-41bd-948f-7b749b61e0de&quot;
   }
 }</component>
   <component name="ProblemsViewState">
@@ -128,7 +135,7 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
     &quot;copilot.chat.legacySessionMetadata.migrated&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;account-creation&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
     &quot;js.debugger.nextJs.config.created.server&quot;: &quot;true&quot;,
@@ -180,14 +187,13 @@
     <recent_temporary>
       <list>
         <item itemvalue="JavaScript Debug.localhost:3000" />
-        <item itemvalue="JavaScript Debug.localhost:3000" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-WS-253.31033.133" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-WS-253.33813.27" />
       </set>
     </attachedChunks>
   </component>
@@ -211,6 +217,8 @@
       <workItem from="1782098254856" duration="2928000" />
       <workItem from="1782104620897" duration="34000" />
       <workItem from="1782183983410" duration="2215000" />
+      <workItem from="1785122276298" duration="6416000" />
+      <workItem from="1785153277955" duration="1772000" />
     </task>
     <task id="LOCAL-00001" summary="chore: added in file mapping&#10;&#10;chore: add Jest + React Testing Library">
       <option name="closed" value="true" />
