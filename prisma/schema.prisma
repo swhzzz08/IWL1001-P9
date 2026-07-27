@@ -13,7 +13,8 @@ enum Role {
 
 model User {
   id           Int          @id @default(autoincrement())
-  username     String
+  name         String?
+  username     String?
   email        String       @unique
   passwordHash String?
   role         Role         @default(USER)
