@@ -146,9 +146,30 @@ function AddStockForm({ onAdd }: { onAdd: (s: string) => void }) {
 }
 
 export default function WatchlistPage() {
-  const { watchlist, addToWatchlist, removeFromWatchlist, clearWatchlist, loaded } = useWatchlist()
+  const { watchlist, addToWatchlist, removeFromWatchlist, clearWatchlist, loaded, requiresAuth } = useWatchlist()
 
   if (!loaded) return null
+
+  if (requiresAuth) {
+    return (
+      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '32px 24px 64px' }}>
+        <div style={{ background: 'var(--color-surface)', border: '1.5px solid var(--color-border)', borderRadius: 16, padding: '60px 24px', textAlign: 'center' }}>
+          <div style={{ width: 56, height: 56, borderRadius: 14, background: '#fef3c7', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
+            <Star size={26} color="#d97706" />
+          </div>
+          <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 20, fontWeight: 700, color: 'var(--color-text)', margin: '0 0 8px' }}>
+            Log in to see your watchlist
+          </h2>
+          <p style={{ fontSize: 14, color: 'var(--color-text-muted)', margin: '0 auto 20px', maxWidth: 340 }}>
+            Your watchlist is saved to your account, so log in to track and manage the stocks you're interested in.
+          </p>
+          <Link href="/auth/login" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '10px 20px', borderRadius: 10, fontSize: 13, fontWeight: 700, background: 'linear-gradient(135deg, #0f766e, #0d9488)', color: 'white', textDecoration: 'none' }}>
+            Log in <ArrowRight size={14} />
+          </Link>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div style={{ maxWidth: 1200, margin: '0 auto', padding: '32px 24px 64px', display: 'flex', flexDirection: 'column', gap: 20 }}>
@@ -228,7 +249,7 @@ export default function WatchlistPage() {
           <p style={{ fontSize: 12, color: '#3b82f6', margin: 0, lineHeight: 1.7 }}>
             A watchlist lets you monitor stocks you're interested in without actually buying them.
             Professional investors use watchlists to track potential opportunities and monitor price movements before making a decision.
-            Your watchlist is saved locally on your device.
+            Your watchlist is saved to your account.
           </p>
         </div>
       </div>
