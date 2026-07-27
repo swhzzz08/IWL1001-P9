@@ -3,13 +3,13 @@
 import type { Metadata } from 'next'
 import { CategoryGrid } from '@/components/learn/CategoryGrid'
 import { ResourceList } from '@/components/learn/ResourceList'
-import { categories } from '@/data/education'
+import { articles, categories } from '@/data/education'
 import { GraduationCap, BookOpen, ArrowRight, Sparkles, Sprout, TrendingUp, Landmark } from 'lucide-react'
 import Link from 'next/link'
 
 const STATS = [
-  { value: '8', label: 'Topics' },
-  { value: '7+', label: 'Articles' },
+  { value: String(categories.length), label: 'Topics' },
+  { value: `${articles.length}+`, label: 'Articles' },
   { value: '100%', label: 'Free' },
 ]
 
