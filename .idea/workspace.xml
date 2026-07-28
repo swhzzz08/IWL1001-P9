@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c8b345cd-844c-4cca-a628-d84c8903fb92" name="Changes" comment="Added SessionProviderWrapper.tsx for my desktop">
+    <list default="true" id="c8b345cd-844c-4cca-a628-d84c8903fb92" name="Changes" comment="Fixed google and github login authentication">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/migrations/migration_lock.toml" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/migrations/migration_lock.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/Navbar.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,11 +129,11 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "copilot.chat.legacySessionMetadata.migrated": "true",
-    "git-widget-placeholder": "fix-auth-bugs",
+    "git-widget-placeholder": "sign-up-page",
     "ignore.virus.scanning.warn.message": "true",
     "javascript.preferred.runtime.type.id": "node",
     "js.debugger.nextJs.config.created.server": "true",
-    "last_opened_file_path": "C:/Users/Raiha/WebstormProjects/iwl1001-p9/__tests__/components",
+    "last_opened_file_path": "C:/Users/Raiha/WebstormProjects/iwl1001-p9/components/layout",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_interpreter_path": "node",
@@ -152,11 +151,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Raiha\WebstormProjects\iwl1001-p9\components\layout" />
       <recent name="C:\Users\Raiha\WebstormProjects\iwl1001-p9\__tests__\components" />
       <recent name="C:\Users\Raiha\WebstormProjects\iwl1001-p9\hooks" />
       <recent name="C:\Users\Raiha\WebstormProjects\iwl1001-p9\lib" />
       <recent name="C:\Users\Raiha\WebstormProjects\iwl1001-p9\components\learn" />
-      <recent name="C:\Users\Raiha\WebstormProjects\iwl1001-p9\components\hints" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Raiha\WebstormProjects\iwl1001-p9\app" />
@@ -216,6 +215,7 @@
       <workItem from="1785122276298" duration="6416000" />
       <workItem from="1785153277955" duration="1772000" />
       <workItem from="1785167268155" duration="4919000" />
+      <workItem from="1785203832722" duration="532000" />
     </task>
     <task id="LOCAL-00001" summary="chore: added in file mapping&#10;&#10;chore: add Jest + React Testing Library">
       <option name="closed" value="true" />
