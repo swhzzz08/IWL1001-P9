@@ -2,6 +2,8 @@
 
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
+import { useState, useEffect } from 'react'
+import { TrendingUp, Search, Menu, X, Star, ArrowRightLeft } from 'lucide-react'
 import { useState, useEffect, useRef } from 'react'
 import { TrendingUp, Search, Menu, X, Moon, Sun, Star, BookOpen, BarChart2, AlertCircle, LogOut } from 'lucide-react'
 import { useSession, signOut } from 'next-auth/react'
@@ -122,6 +124,7 @@ export function Navbar() {
   const navLinks = [
     { href: '/', label: 'Markets' },
     { href: '/learn', label: 'Learn' },
+    { href: '/exchange', label: 'Exchange', icon: ArrowRightLeft },
     { href: '/watchlist', label: 'Watchlist', badge: watchlist.length || undefined },
   ]
 
@@ -147,7 +150,7 @@ export function Navbar() {
 
         {/* Desktop nav links */}
         <div style={{ display: 'flex', gap: 2, marginLeft: 8 }} className="hide-mobile">
-          {navLinks.map(({ href, label, badge }) => {
+          {navLinks.map(({ href, label, badge, icon: Icon }) => {
             const active = pathname === href
             return (
               <Link key={href} href={href} style={{
@@ -158,6 +161,7 @@ export function Navbar() {
                 color: active ? '#0f766e' : 'var(--color-text-muted)',
               }}>
                 {href === '/watchlist' && <Star size={13} fill={active ? '#0f766e' : 'none'} color={active ? '#0f766e' : 'var(--color-text-muted)'} />}
+                {Icon && href !== '/watchlist' && <Icon size={13} />}
                 {label}
                 {badge ? (
                   <span style={{ background: '#0f766e', color: 'white', borderRadius: 999, padding: '1px 7px', fontSize: 11, fontWeight: 800 }}>
@@ -404,6 +408,12 @@ export function Navbar() {
         }}>
           <div style={{ position: 'relative' }}>
             <Search size={14} style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', color: 'var(--color-text-subtle)' }} />
+            <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search ticker…"
+              style={{ width: '100%', height: 40, paddingLeft: 36, paddingRight: 12, borderRadius: 10, border: '1.5px solid var(--color-border)', background: 'var(--color-surface-2)', fontSize: 14, color: 'var(--color-text)', outline: 'none' }} />
+          </form>
+          {navLinks.map(({ href, label, icon: Icon }) => (
+            <Link key={href} href={href} onClick={() => setMenuOpen(false)} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '10px 14px', borderRadius: 8, fontSize: 14, fontWeight: 600, textDecoration: 'none', color: 'var(--color-text-muted)' }}>
+              {Icon && <Icon size={13} />}
             <input
               value={query}
               onChange={e => setQuery(e.target.value)}
