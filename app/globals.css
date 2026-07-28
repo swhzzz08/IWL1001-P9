@@ -62,13 +62,13 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.15;
 }
 
-/* ── Dot grid for hero sections ── */
+/* Dot grid for hero sections */
 .hero-grid {
   background-image: radial-gradient(circle, #0f766e18 1px, transparent 1px);
   background-size: 28px 28px;
 }
 
-/* ── Skeleton shimmer ── */
+/* Skeleton shimmer */
 @keyframes shimmer {
   0%   { background-position: -600px 0; }
   100% { background-position:  600px 0; }
@@ -80,7 +80,7 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 6px;
 }
 
-/* ── Fade up animations ── */
+/* Fade up animations */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(14px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -90,9 +90,15 @@ h1, h2, h3, h4, h5, h6 {
 .fade-up-2 { animation: fadeUp 0.5s 0.2s ease both; }
 .fade-up-3 { animation: fadeUp 0.5s 0.3s ease both; }
 
-/* ── Pulse dot ── */
+/* Pulse dot */
 @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
 .pulse { animation: pulse 2s infinite; }
 
-/* ── Spin ── */
+/* Spin */
 @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+
+/* Navbar search */
+input:focus {
+  border-color: #0d9488 !important;
+  box-shadow: 0 0 0 3px #0f766e15;
+}

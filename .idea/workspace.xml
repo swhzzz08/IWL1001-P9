@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c8b345cd-844c-4cca-a628-d84c8903fb92" name="Changes" comment="Test: &#10;- Change position anchoring of the hint button and panel.&#10;&#10;Fix: &#10;- Corrupted slugs, file name was shown instead of the text.&#10;- Fix directive declarations that are supposed to be rendered either client or serverside.">
+    <list default="true" id="c8b345cd-844c-4cca-a628-d84c8903fb92" name="Changes" comment="Fixed google and github login authentication">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/Navbar.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,8 +51,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -79,7 +80,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/swhzzz08/IWL1001-P9.git&quot;,
-    &quot;accountId&quot;: &quot;b63d90f0-a549-414a-98b5-af7d07a38d89&quot;
+    &quot;accountId&quot;: &quot;2613cc88-354c-41bd-948f-7b749b61e0de&quot;
   }
 }</component>
   <component name="ProblemsViewState">
@@ -119,41 +120,42 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JavaScript Debug.localhost:3000.executor&quot;: &quot;Debug&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;copilot.chat.legacySessionMetadata.migrated&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
-    &quot;js.debugger.nextJs.config.created.server&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Raiha/WebstormProjects/iwl1001-p9/__tests__/components&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2025.3.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JavaScript Debug.localhost:3000.executor": "Debug",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "copilot.chat.legacySessionMetadata.migrated": "true",
+    "git-widget-placeholder": "sign-up-page",
+    "ignore.virus.scanning.warn.message": "true",
+    "javascript.preferred.runtime.type.id": "node",
+    "js.debugger.nextJs.config.created.server": "true",
+    "last_opened_file_path": "C:/Users/Raiha/WebstormProjects/iwl1001-p9/components/layout",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_interpreter_path": "node",
+    "nodejs_package_manager_path": "npm",
+    "npm.Next.js: server-side.executor": "Debug",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2025.3.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Raiha\WebstormProjects\iwl1001-p9\components\layout" />
       <recent name="C:\Users\Raiha\WebstormProjects\iwl1001-p9\__tests__\components" />
       <recent name="C:\Users\Raiha\WebstormProjects\iwl1001-p9\hooks" />
       <recent name="C:\Users\Raiha\WebstormProjects\iwl1001-p9\lib" />
       <recent name="C:\Users\Raiha\WebstormProjects\iwl1001-p9\components\learn" />
-      <recent name="C:\Users\Raiha\WebstormProjects\iwl1001-p9\components\hints" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Raiha\WebstormProjects\iwl1001-p9\app" />
@@ -180,14 +182,13 @@
     <recent_temporary>
       <list>
         <item itemvalue="JavaScript Debug.localhost:3000" />
-        <item itemvalue="JavaScript Debug.localhost:3000" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-WS-253.31033.133" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-WS-253.33813.27" />
       </set>
     </attachedChunks>
   </component>
@@ -211,6 +212,10 @@
       <workItem from="1782098254856" duration="2928000" />
       <workItem from="1782104620897" duration="34000" />
       <workItem from="1782183983410" duration="2215000" />
+      <workItem from="1785122276298" duration="6416000" />
+      <workItem from="1785153277955" duration="1772000" />
+      <workItem from="1785167268155" duration="4919000" />
+      <workItem from="1785203832722" duration="532000" />
     </task>
     <task id="LOCAL-00001" summary="chore: added in file mapping&#10;&#10;chore: add Jest + React Testing Library">
       <option name="closed" value="true" />
@@ -348,7 +353,15 @@
       <option name="project" value="LOCAL" />
       <updated>1782185741545</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Added SessionProviderWrapper.tsx for my desktop">
+      <option name="closed" value="true" />
+      <created>1785168681308</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1785168681308</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -359,7 +372,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -384,7 +409,9 @@
     <MESSAGE value="Removed: github workflow" />
     <MESSAGE value="Test: Change position of the hint panel and where it is supposed to be anchored" />
     <MESSAGE value="Test: &#10;- Change position anchoring of the hint button and panel.&#10;&#10;Fix: &#10;- Corrupted slugs, file name was shown instead of the text.&#10;- Fix directive declarations that are supposed to be rendered either client or serverside." />
-    <option name="LAST_COMMIT_MESSAGE" value="Test: &#10;- Change position anchoring of the hint button and panel.&#10;&#10;Fix: &#10;- Corrupted slugs, file name was shown instead of the text.&#10;- Fix directive declarations that are supposed to be rendered either client or serverside." />
+    <MESSAGE value="Added more things" />
+    <MESSAGE value="Added SessionProviderWrapper.tsx for my desktop" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added SessionProviderWrapper.tsx for my desktop" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
