@@ -48,7 +48,7 @@ export async function POST(req: NextRequest) {
       }
 
       const existingHolding = portfolio.holdings.find(
-        (h) => h.tickerSymbol === symbol.toUpperCase()
+        (h: { tickerSymbol: string }) => h.tickerSymbol === symbol.toUpperCase()
       )
 
       await prisma.$transaction([
@@ -93,7 +93,7 @@ export async function POST(req: NextRequest) {
 
     if (type.toUpperCase() === "SELL") {
       const holding = portfolio.holdings.find(
-        (h) => h.tickerSymbol === symbol.toUpperCase()
+        (h: { tickerSymbol: string }) => h.tickerSymbol === symbol.toUpperCase()
       )
 
       if (!holding || holding.quantity < quantity) {
