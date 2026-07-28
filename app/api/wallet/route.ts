@@ -41,6 +41,21 @@ export async function POST(req: Request) {
       )
     }
 
+    const paymentMethod = await prisma.paymentMethod.findFirst({
+      where: { userId, isActive: true },
+      select: { id: true },
+    })
+    if (!paymentMethod) {
+      return NextResponse.json(
+        {
+          error:
+            "Add a bank account or card in your profile before depositing or withdrawing",
+          code: "PAYMENT_METHOD_REQUIRED",
+        },
+        { status: 400 }
+      )
+    }
+
     const result = await prisma.$transaction(
       async (tx) => {
         const portfolio = await tx.portfolio.findFirst({

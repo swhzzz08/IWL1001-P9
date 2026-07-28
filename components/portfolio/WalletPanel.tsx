@@ -94,6 +94,18 @@ export function WalletPanel({
             >
               Simulated deposits and withdrawals in USD, SGD, and EUR.
             </p>
+            <Link
+              href="/profile"
+              style={{
+                display: "inline-block",
+                marginTop: 4,
+                color: "#0f766e",
+                fontSize: 11,
+                fontWeight: 800,
+              }}
+            >
+              Manage bank or card details
+            </Link>
           </div>
         </div>
         <Link

@@ -27,6 +27,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  paymentMethods PaymentMethod[]
 
   @@map("users")
 }
@@ -177,6 +178,23 @@ model PasswordResetToken {
   token     String   @unique
   expires   DateTime
   createdAt DateTime @default(now())
+}
+
+model PaymentMethod {
+  id            Int      @id @default(autoincrement())
+  userId        Int      @map("user_id")
+  methodType    String   @map("method_type")
+  accountHolder String   @map("account_holder")
+  providerName  String   @map("provider_name")
+  lastFour      String   @map("last_four")
+  expiryMonth   Int?     @map("expiry_month")
+  expiryYear    Int?     @map("expiry_year")
+  isActive      Boolean  @default(true) @map("is_active")
+  createdAt     DateTime @default(now()) @map("created_at")
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, isActive])
+  @@map("payment_methods")
 }
 
 model CashActivity {

@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
-import { AlertCircle, ArrowRightLeft, BarChart2, BookOpen, BriefcaseBusiness, LogOut, Menu, Moon, Search, Star, Sun, TrendingUp, X } from 'lucide-react'
+import { AlertCircle, ArrowRightLeft, BarChart2, BookOpen, BriefcaseBusiness, CreditCard, LogOut, Menu, Moon, Search, Star, Sun, TrendingUp, X } from 'lucide-react'
 import { signOut, useSession } from 'next-auth/react'
 import { useWatchlist } from '@/hooks/useWatchlist'
 import { SUPPORTED_SYMBOLS } from '@/lib/stocks'
@@ -393,6 +393,19 @@ export function Navbar() {
                       <ArrowRightLeft size={14} color="#2563eb" />
                       Currency exchange
                     </Link>
+                    <Link
+                      href="/profile"
+                      onClick={() => setAvatarOpen(false)}
+                      style={{
+                        display: 'flex', alignItems: 'center', gap: 10,
+                        padding: '11px 16px', fontSize: 13, fontWeight: 700,
+                        color: 'var(--color-text)', textDecoration: 'none',
+                        borderBottom: '1px solid var(--color-border)',
+                      }}
+                    >
+                      <CreditCard size={14} color="#7c3aed" />
+                      Bank & card setup
+                    </Link>
                     {/* Sign out */}
                     <button
                       onClick={() => { setAvatarOpen(false); signOut() }}
@@ -525,6 +538,13 @@ export function Navbar() {
                   color: 'var(--color-text)', textDecoration: 'none',
                 }}>
                   <ArrowRightLeft size={15} color="#2563eb" /> Currency exchange
+                </Link>
+                <Link href="/profile" onClick={() => setMenuOpen(false)} style={{
+                  display: 'flex', alignItems: 'center', gap: 8,
+                  padding: '10px 14px', fontSize: 14, fontWeight: 700,
+                  color: 'var(--color-text)', textDecoration: 'none',
+                }}>
+                  <CreditCard size={15} color="#7c3aed" /> Bank & card setup
                 </Link>
                 <button onClick={() => { setMenuOpen(false); signOut() }} style={{
                   display: 'flex', alignItems: 'center', gap: 8,
