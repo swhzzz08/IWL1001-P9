@@ -40,7 +40,15 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                     credentials.password as string,
                     user.passwordHash
                 )
-                return valid ? user : null
+                return valid
+                    ? {
+                        id: String(user.id),
+                        name: user.name ?? user.username,
+                        email: user.email,
+                        image: user.image,
+                        role: user.role,
+                    }
+                    : null
             },
         }),
     ],

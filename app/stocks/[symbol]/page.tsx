@@ -8,6 +8,7 @@ import { StockStats } from '@/components/stocks/StockStats'
 import { RSIPanel } from '@/components/stocks/RSIPanel'
 import { ARIMAForecast } from '@/components/stocks/ARIMAForecast'
 import { NewsSentiment } from '@/components/stocks/NewsSentiment'
+import { TradeTicket } from '@/components/stocks/TradeTicket'
 import { HintWidget } from '@/components/hints/HintWidget'
 import { useStockQuote, useTimeSeries } from '@/hooks/useStockData'
 import type { Timeframe } from '@/types/stock'
@@ -43,6 +44,8 @@ export default function StockPage({ params }: { params: Promise<{ symbol: string
 
       {/* Header */}
       <StockHeader quote={quote ?? null} isLoading={quoteLoading} />
+
+      <TradeTicket symbol={upper} quote={quote ?? null} />
 
       {/* Tab switcher */}
       <div style={{ display: 'flex', gap: 2, padding: 4, background: 'var(--color-surface-2)', border: '1.5px solid var(--color-border)', borderRadius: 12, width: 'fit-content', flexWrap: 'wrap' }}>

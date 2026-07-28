@@ -37,10 +37,13 @@ model Portfolio {
   portfolioName String        @map("portfolio_name")
   baseCurrency  String        @default("USD") @map("base_currency")
   cashBalance   Float         @default(100000) @map("cash_balance")
+  sgdBalance    Float         @default(0) @map("sgd_balance")
+  eurBalance    Float         @default(0) @map("eur_balance")
   createdAt     DateTime      @default(now()) @map("created_at")
   user          User          @relation(fields: [userId], references: [id], onDelete: Cascade)
   transactions  Transaction[]
   holdings      Holding[]
+  cashActivities CashActivity[]
 
   @@map("portfolios")
 }
@@ -174,4 +177,21 @@ model PasswordResetToken {
   token     String   @unique
   expires   DateTime
   createdAt DateTime @default(now())
+}
+
+model CashActivity {
+  id              Int       @id @default(autoincrement())
+  portfolioId     Int       @map("portfolio_id")
+  activityType    String    @map("activity_type")
+  currency        String?
+  amount          Float
+  fromCurrency    String?   @map("from_currency")
+  toCurrency      String?   @map("to_currency")
+  convertedAmount Float?    @map("converted_amount")
+  exchangeRate    Float?    @map("exchange_rate")
+  createdAt       DateTime  @default(now()) @map("created_at")
+  portfolio       Portfolio @relation(fields: [portfolioId], references: [id], onDelete: Cascade)
+
+  @@index([portfolioId, createdAt])
+  @@map("cash_activities")
 }

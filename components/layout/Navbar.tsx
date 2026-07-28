@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
-import { AlertCircle, ArrowRightLeft, BarChart2, BookOpen, LogOut, Menu, Moon, Search, Star, Sun, TrendingUp, X } from 'lucide-react'
+import { AlertCircle, ArrowRightLeft, BarChart2, BookOpen, BriefcaseBusiness, LogOut, Menu, Moon, Search, Star, Sun, TrendingUp, X } from 'lucide-react'
 import { signOut, useSession } from 'next-auth/react'
 import { useWatchlist } from '@/hooks/useWatchlist'
 import { SUPPORTED_SYMBOLS } from '@/lib/stocks'
@@ -119,10 +119,14 @@ export function Navbar() {
     setOpen(false)
   }
 
-  const navLinks = [
+  const navLinks: {
+    href: string
+    label: string
+    icon?: typeof ArrowRightLeft
+    badge?: number
+  }[] = [
     { href: '/', label: 'Markets' },
     { href: '/learn', label: 'Learn' },
-    { href: '/exchange', label: 'Exchange', icon: ArrowRightLeft },
     { href: '/watchlist', label: 'Watchlist', badge: watchlist.length || undefined },
   ]
 
@@ -363,6 +367,32 @@ export function Navbar() {
                         </div>
                       </div>
                     </div>
+                    <Link
+                      href="/portfolio"
+                      onClick={() => setAvatarOpen(false)}
+                      style={{
+                        display: 'flex', alignItems: 'center', gap: 10,
+                        padding: '11px 16px', fontSize: 13, fontWeight: 700,
+                        color: 'var(--color-text)', textDecoration: 'none',
+                        borderBottom: '1px solid var(--color-border)',
+                      }}
+                    >
+                      <BriefcaseBusiness size={14} color="#0f766e" />
+                      My portfolio
+                    </Link>
+                    <Link
+                      href="/exchange"
+                      onClick={() => setAvatarOpen(false)}
+                      style={{
+                        display: 'flex', alignItems: 'center', gap: 10,
+                        padding: '11px 16px', fontSize: 13, fontWeight: 700,
+                        color: 'var(--color-text)', textDecoration: 'none',
+                        borderBottom: '1px solid var(--color-border)',
+                      }}
+                    >
+                      <ArrowRightLeft size={14} color="#2563eb" />
+                      Currency exchange
+                    </Link>
                     {/* Sign out */}
                     <button
                       onClick={() => { setAvatarOpen(false); signOut() }}
@@ -482,6 +512,20 @@ export function Navbar() {
                     {session?.user?.email && <p style={{ margin: 0, fontSize: 11, color: 'var(--color-text-muted)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{session.user.email}</p>}
                   </div>
                 </div>
+                <Link href="/portfolio" onClick={() => setMenuOpen(false)} style={{
+                  display: 'flex', alignItems: 'center', gap: 8,
+                  padding: '10px 14px', fontSize: 14, fontWeight: 700,
+                  color: 'var(--color-text)', textDecoration: 'none',
+                }}>
+                  <BriefcaseBusiness size={15} color="#0f766e" /> My portfolio
+                </Link>
+                <Link href="/exchange" onClick={() => setMenuOpen(false)} style={{
+                  display: 'flex', alignItems: 'center', gap: 8,
+                  padding: '10px 14px', fontSize: 14, fontWeight: 700,
+                  color: 'var(--color-text)', textDecoration: 'none',
+                }}>
+                  <ArrowRightLeft size={15} color="#2563eb" /> Currency exchange
+                </Link>
                 <button onClick={() => { setMenuOpen(false); signOut() }} style={{
                   display: 'flex', alignItems: 'center', gap: 8,
                   padding: '10px 14px', fontSize: 14, fontWeight: 600, color: '#dc2626',

@@ -1,39 +1,35 @@
-﻿import { prisma } from '@/lib/prisma'
-import { NextRequest, NextResponse } from 'next/server'
-import jwt from 'jsonwebtoken'
+import { auth } from "@/lib/auth"
+import { prisma } from "@/lib/prisma"
+import { NextResponse } from "next/server"
 
-const JWT_SECRET = process.env.JWT_SECRET || 'dev-secret-change-in-production'
-
-function getUserFromToken(req: NextRequest) {
-  const token = req.cookies.get('auth-token')?.value
-  if (!token) return null
+export async function GET() {
   try {
-    return jwt.verify(token, JWT_SECRET) as { userId: number; email: string }
-  } catch {
-    return null
-  }
-}
-
-export async function GET(req: NextRequest) {
-  try {
-    const user = getUserFromToken(req)
-    if (!user) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    const session = await auth()
+    const userId = Number(session?.user?.id)
+    if (!Number.isInteger(userId) || userId <= 0) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
     const portfolio = await prisma.portfolio.findFirst({
-      where: { userId: user.userId },
+      where: { userId },
+      orderBy: { id: "asc" },
       include: {
-        holdings: true,
+        holdings: {
+          orderBy: { tickerSymbol: "asc" },
+        },
         transactions: {
-          orderBy: { transactionDate: 'desc' },
+          orderBy: { transactionDate: "desc" },
+          take: 10,
+        },
+        cashActivities: {
+          orderBy: { createdAt: "desc" },
           take: 10,
         },
       },
     })
 
     if (!portfolio) {
-      return NextResponse.json({ error: 'Portfolio not found' }, { status: 404 })
+      return NextResponse.json({ error: "Portfolio not found" }, { status: 404 })
     }
 
     return NextResponse.json({
@@ -41,11 +37,17 @@ export async function GET(req: NextRequest) {
       portfolioName: portfolio.portfolioName,
       cashBalance: portfolio.cashBalance,
       baseCurrency: portfolio.baseCurrency,
+      balances: {
+        USD: portfolio.cashBalance,
+        SGD: portfolio.sgdBalance,
+        EUR: portfolio.eurBalance,
+      },
       holdings: portfolio.holdings,
       recentTransactions: portfolio.transactions,
+      recentCashActivities: portfolio.cashActivities,
     })
   } catch (error) {
-    console.error('Portfolio GET error:', error)
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+    console.error("Portfolio GET error:", error)
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 })
   }
 }
