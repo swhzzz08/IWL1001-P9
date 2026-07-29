@@ -159,7 +159,7 @@ export default function PortfolioPage() {
           <WalletCards size={34} color="#0f766e" />
           <h1 style={{ margin: "14px 0 8px", fontSize: 24 }}>Your portfolio awaits</h1>
           <p style={{ color: "var(--color-text-muted)", margin: "0 0 20px" }}>
-            Sign in to view your cash, holdings, and recent trades.
+            Sign in to view your cash, holdings and recent trades.
           </p>
           <Link
             href="/auth/login"
@@ -264,7 +264,7 @@ export default function PortfolioPage() {
           </p>
           <h1 style={{ margin: 0, fontSize: 32 }}>{portfolio.portfolioName}</h1>
           <p style={{ margin: "7px 0 0", color: "var(--color-text-muted)" }}>
-            Your cash, positions, and recent trading activity.
+            Your cash, positions and recent trading activity.
           </p>
         </div>
         <button

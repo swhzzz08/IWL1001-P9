@@ -31,8 +31,8 @@ export default function HomePage() {
           </div>
 
           <h1 style={{ fontFamily: 'var(--font-heading)', fontWeight: 800, fontSize: 'clamp(36px, 4.5vw, 58px)', lineHeight: 1.08, letterSpacing: '-0.03em', color: 'var(--color-text)', margin: '0 0 20px', maxWidth: 680 }}>
-            Learn to invest.<br />
-            <span style={{ color: '#0f766e' }}>Track the market.</span>
+            Learn to invest<br />
+            <span style={{ color: '#0f766e' }}>Track the market</span>
           </h1>
 
           <p style={{ fontSize: 17, color: 'var(--color-text-muted)', lineHeight: 1.7, margin: '0 0 36px', maxWidth: 500, fontFamily: 'var(--font-sans)' }}>

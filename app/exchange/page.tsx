@@ -153,10 +153,10 @@ export default function ExchangePage() {
             <Sparkles size={12} /> Live FX rates
           </div>
           <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(32px, 5vw, 54px)', lineHeight: 1.05, margin: 0 }}>
-            Convert between USD, SGD, and EUR
+            Convert between USD, SGD and EUR
           </h1>
           <p style={{ maxWidth: 720, margin: 0, fontSize: 16, lineHeight: 1.7, color: 'rgba(255,255,255,0.86)' }}>
-            Move funds between your USD, SGD, and EUR wallet balances using live exchange rates.
+            Move funds between your USD, SGD and EUR wallet balances using live exchange rates.
           </p>
         </div>
       </section>

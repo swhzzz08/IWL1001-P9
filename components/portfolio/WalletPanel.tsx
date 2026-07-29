@@ -92,7 +92,7 @@ export function WalletPanel({
                 fontSize: 12,
               }}
             >
-              Simulated deposits and withdrawals in USD, SGD, and EUR.
+              Simulated deposits and withdrawals in USD, SGD and EUR.
             </p>
             <Link
               href="/profile"
