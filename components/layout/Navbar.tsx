@@ -3,11 +3,12 @@
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
-import { AlertCircle, ArrowRightLeft, BarChart2, BookOpen, BriefcaseBusiness, CreditCard, LogOut, Menu, Moon, Search, Star, Sun, TrendingUp, X } from 'lucide-react'
+import { AlertCircle, ArrowRightLeft, BarChart2, BookOpen, BriefcaseBusiness, CreditCard, ListChecks, LogOut, Menu, Moon, Search, Star, Sun, TrendingUp, X } from 'lucide-react'
 import { signOut, useSession } from 'next-auth/react'
 import { useWatchlist } from '@/hooks/useWatchlist'
 import { SUPPORTED_SYMBOLS } from '@/lib/stocks'
 import { articles, categories } from '@/data/education'
+import { tutorials } from '@/data/tutorials'
 
 const STOCK_NAMES: Record<string, string> = {
   AAPL: 'Apple Inc.',
@@ -110,7 +111,13 @@ export function Navbar() {
     a.category.toLowerCase().includes(q)
   ).slice(0, 4)
 
-  const hasResults = matchedStocks.length > 0 || matchedArticles.length > 0
+  const matchedTutorials = q.length === 0 ? [] : tutorials.filter(t =>
+    t.title.toLowerCase().includes(q) ||
+    t.description.toLowerCase().includes(q) ||
+    t.category.toLowerCase().includes(q)
+  ).slice(0, 3)
+
+  const hasResults = matchedStocks.length > 0 || matchedArticles.length > 0 || matchedTutorials.length > 0
   const showNotFound = q.length >= 2 && !hasResults
 
   function handleSelect(path: string) {
@@ -251,6 +258,33 @@ export function Navbar() {
                       <div style={{ minWidth: 0 }}>
                         <p style={{ fontSize: 13, fontWeight: 700, color: 'var(--color-text)', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{article.title}</p>
                         <p style={{ fontSize: 11, color: 'var(--color-text-muted)', margin: 0 }}>{article.category} · {article.difficulty}</p>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              {/* Tutorials section */}
+              {matchedTutorials.length > 0 && (
+                <div style={{ borderTop: (matchedStocks.length > 0 || matchedArticles.length > 0) ? '1px solid var(--color-border)' : 'none' }}>
+                  <div style={{ padding: '10px 14px 6px', fontSize: 10, fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-text-subtle)', display: 'flex', alignItems: 'center', gap: 6 }}>
+                    <ListChecks size={10} /> Tutorials
+                  </div>
+                  {matchedTutorials.map(tutorial => (
+                    <button key={tutorial.slug} onClick={() => handleSelect(`/learn/tutorials/${tutorial.slug}`)} style={{
+                      width: '100%', display: 'flex', alignItems: 'center', gap: 10,
+                      padding: '9px 14px', background: 'none', border: 'none', cursor: 'pointer',
+                      textAlign: 'left', transition: 'background 0.1s',
+                    }}
+                      onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = 'var(--color-surface-2)'}
+                      onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = 'none'}
+                    >
+                      <div style={{ width: 32, height: 32, borderRadius: 8, background: '#fefce8', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                        <ListChecks size={14} color="#ca8a04" />
+                      </div>
+                      <div style={{ minWidth: 0 }}>
+                        <p style={{ fontSize: 13, fontWeight: 700, color: 'var(--color-text)', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{tutorial.title}</p>
+                        <p style={{ fontSize: 11, color: 'var(--color-text-muted)', margin: 0 }}>{tutorial.category} · {tutorial.steps.length} steps</p>
                       </div>
                     </button>
                   ))}

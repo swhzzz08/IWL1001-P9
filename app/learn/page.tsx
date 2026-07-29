@@ -4,7 +4,8 @@ import type { Metadata } from 'next'
 import { CategoryGrid } from '@/components/learn/CategoryGrid'
 import { ResourceList } from '@/components/learn/ResourceList'
 import { articles, categories } from '@/data/education'
-import { GraduationCap, BookOpen, ArrowRight, Sparkles, Sprout, TrendingUp, Landmark } from 'lucide-react'
+import { tutorials } from '@/data/tutorials'
+import { GraduationCap, BookOpen, ArrowRight, Sparkles, Sprout, TrendingUp, Landmark, ListChecks, Clock } from 'lucide-react'
 import Link from 'next/link'
 
 const STATS = [
@@ -121,6 +122,57 @@ export default function LearnPage() {
     </Link>
   ))}
 </div>  
+        </section>
+
+        {/* STEP-BY-STEP TUTORIALS */}
+        <section>
+          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 12, marginBottom: 20, flexWrap: 'wrap' }}>
+            <div>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: '#fefce8', color: '#a16207', borderRadius: 999, padding: '4px 10px', fontSize: 11, fontWeight: 700, marginBottom: 8 }}>
+                <ListChecks size={11} /> Hands-on tutorials
+              </div>
+              <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 24, fontWeight: 800, color: 'var(--color-text)', margin: '0 0 6px' }}>Step-by-Step Tutorials</h2>
+              <p style={{ fontSize: 14, color: 'var(--color-text-muted)', margin: 0 }}>Click through guided lessons with interactive quick checks and mini quizzes</p>
+            </div>
+            <Link href="/learn/tutorials" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 13, fontWeight: 700, color: '#0f766e', textDecoration: 'none', flexShrink: 0 }}>
+              View all tutorials <ArrowRight size={14} />
+            </Link>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 14 }}>
+            {tutorials.slice(0, 3).map(tutorial => (
+              <Link key={tutorial.slug} href={`/learn/tutorials/${tutorial.slug}`} style={{ textDecoration: 'none' }}>
+                <div style={{
+                  background: 'var(--color-surface)', border: '1.5px solid var(--color-border)',
+                  borderRadius: 16, padding: '18px', height: '100%',
+                  display: 'flex', flexDirection: 'column', gap: 8, transition: 'all 0.2s',
+                }}
+                  onMouseEnter={e => {
+                    const el = e.currentTarget as HTMLElement
+                    el.style.borderColor = '#ca8a0460'
+                    el.style.boxShadow = '0 8px 24px rgba(202,138,4,0.1)'
+                    el.style.transform = 'translateY(-2px)'
+                  }}
+                  onMouseLeave={e => {
+                    const el = e.currentTarget as HTMLElement
+                    el.style.borderColor = 'var(--color-border)'
+                    el.style.boxShadow = 'none'
+                    el.style.transform = 'none'
+                  }}
+                >
+                  <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: 15, fontWeight: 700, color: 'var(--color-text)', margin: 0, lineHeight: 1.35 }}>
+                    {tutorial.title}
+                  </h3>
+                  <p style={{ fontSize: 12, color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.6, flex: 1 }}>
+                    {tutorial.description}
+                  </p>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 11, color: 'var(--color-text-subtle)' }}>
+                    <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}><Clock size={11} /> {tutorial.estimatedMinutes} min</span>
+                    <span>{tutorial.steps.length} steps</span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
         </section>
 
         {/* BROWSE BY TOPIC */}

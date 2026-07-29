@@ -1,5 +1,3 @@
-
-
 export interface Hint {
     id: string
     title: string
@@ -41,7 +39,7 @@ export const hints: Hint[] = [
     {
         id: 'rsi-overbought',
         title: 'RSI Overbought/Oversold',
-        body: 'RSI above 70 suggests a stock.ts may be overbought (due for a pullback). RSI below 30 suggests it may be oversold (potential bounce). In a strong trend, RSI can stay overbought or oversold for extended periods.',
+        body: 'RSI above 70 suggests a stock may be overbought (due for a pullback). RSI below 30 suggests it may be oversold (potential bounce). In a strong trend, RSI can stay overbought or oversold for extended periods.',
         category: 'Indicators',
     },
     {
@@ -107,7 +105,7 @@ export const hints: Hint[] = [
     {
         id: 'fomo',
         title: 'Avoid FOMO',
-        body: 'Fear of Missing Out drives traders to chase parabolic moves near the top. If a stock.ts has already moved 30-50% and you have no position, the risk/reward is poor. There will always be another opportunity. Wait for a proper setup.',
+        body: 'Fear of Missing Out drives traders to chase parabolic moves near the top. If a stock has already moved 30-50% and you have no position, the risk/reward is poor. There will always be another opportunity. Wait for a proper setup.',
         category: 'Psychology',
     },
     {
@@ -137,7 +135,7 @@ export const hints: Hint[] = [
     {
         id: 'pe-ratio',
         title: 'Understanding P/E Ratio',
-        body: 'The Price/Earnings ratio compares a stock.ts\'s price to its annual earnings per share. A P/E of 20 means you pay $20 for every $1 of earnings. Compare P/E to industry peers and the stock.ts\'s own historical average — not just the market average.',
+        body: 'The Price/Earnings ratio compares a stock\'s price to its annual earnings per share. A P/E of 20 means you pay $20 for every $1 of earnings. Compare P/E to industry peers and the stock\'s own historical average — not just the market average.',
         category: 'Indicators',
     },
     {
