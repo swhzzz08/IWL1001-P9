@@ -7,51 +7,106 @@
 
 @theme {
   /* Brand colours — warm teal/navy educational palette */
-  --color-primary:            #0f766e;   /* teal-700 */
-  --color-primary-hover:      #0d9488;   /* teal-600 */
-  --color-primary-light:      #f0fdfa;   /* teal-50  */
-  --color-primary-text:       #0f766e;
+  --color-primary: #0f766e;
+  /* teal-700 */
+  --color-primary-hover: #0d9488;
+  /* teal-600 */
+  --color-primary-light: #f0fdfa;
+  /* teal-50  */
+  --color-primary-text: #0f766e;
   --color-primary-foreground: #ffffff;
 
   /* Surfaces */
-  --color-background:    #fafaf9;   /* warm off-white */
-  --color-surface:       #ffffff;
-  --color-surface-2:     #f5f5f4;   /* stone-100 */
-  --color-border:        #e7e5e4;   /* stone-200 */
+  --color-background: #fafaf9;
+  /* warm off-white */
+  --color-surface: #ffffff;
+  --color-surface-2: #f5f5f4;
+  /* stone-100 */
+  --color-border: #e7e5e4;
+  /* stone-200 */
 
   /* Text */
-  --color-text:             #1c1917;   /* stone-900 */
-  --color-text-muted:       #57534e;   /* stone-600 */
-  --color-text-subtle:      #a8a29e;   /* stone-400 */
-  --color-foreground:       var(--color-text);
-  --color-muted:             var(--color-text-muted);
+  --color-text: #1c1917;
+  /* stone-900 */
+  --color-text-muted: #57534e;
+  /* stone-600 */
+  --color-text-subtle: #a8a29e;
+  /* stone-400 */
+  --color-foreground: var(--color-text);
+  --color-muted: var(--color-text-muted);
   --color-muted-foreground: var(--color-text-muted);
 
   /* Semantic */
-  --color-up:            #16a34a;
-  --color-up-light:      #f0fdf4;
-  --color-up-text:       #15803d;
-  --color-down:          #dc2626;
-  --color-down-light:    #fef2f2;
-  --color-down-text:     #b91c1c;
+  --color-up: #16a34a;
+  --color-up-light: #f0fdf4;
+  --color-up-text: #15803d;
+  --color-down: #dc2626;
+  --color-down-light: #fef2f2;
+  --color-down-text: #b91c1c;
+
+  /* Where should i start - learn page */
+  --learning-card-green: #f0fdf4;
+  --learning-card-teal: #f0fdfa;
+  --learning-card-purple: #fdf4ff;
+
+  --learning-border-green: #86efac;
+  --learning-border-teal: #99f6e4;
+  --learning-border-purple: #d8b4fe;
 
   /* Fonts */
-  --font-sans:           'Plus Jakarta Sans', system-ui, sans-serif;
-  --font-heading:        'Outfit', system-ui, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-heading: 'Outfit', system-ui, sans-serif;
 
   --radius: 0.75rem;
 }
 
-/* ── Reset & base ── */
-@layer base {
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* Dark Theme */
+html.dark {
+  --color-background: #0f172a;
+  --color-surface: #111827;
+  --color-surface-2: #1f2937;
+
+  --color-border: #374151;
+
+  --color-text: #f8fafc;
+  --color-text-muted: #cbd5e1;
+  --color-text-subtle: #94a3b8;
+
+  --color-primary: #2dd4bf;
+  --color-primary-hover: #5eead4;
+  --color-primary-light: #134e4a;
+  --color-primary-text: #5eead4;
+
+  --learning-card-green: #1b2f27;
+  --learning-card-teal: #183436;
+  --learning-card-purple: #2b2136;
+
+  --learning-border-green: #2f6b4f;
+  --learning-border-teal: #2d7d7a;
+  --learning-border-purple: #6b4db0;
 }
 
-html { font-family: var(--font-sans); }
+/* Reset & base */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+html {
+  font-family: var(--font-sans);
+}
 
 body {
   background: var(--color-background);
   color: var(--color-text);
+
+  transition:
+    background-color .25s,
+    color .25s;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
@@ -70,9 +125,15 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Skeleton shimmer */
 @keyframes shimmer {
-  0%   { background-position: -600px 0; }
-  100% { background-position:  600px 0; }
+  0% {
+    background-position: -600px 0;
+  }
+
+  100% {
+    background-position: 600px 0;
+  }
 }
+
 .skeleton {
   background: linear-gradient(90deg, var(--color-surface-2) 25%, #e5e5e4 50%, var(--color-surface-2) 75%);
   background-size: 600px 100%;
@@ -82,20 +143,58 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Fade up animations */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(14px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-.fade-up   { animation: fadeUp 0.5s ease forwards; }
-.fade-up-1 { animation: fadeUp 0.5s 0.1s ease both; }
-.fade-up-2 { animation: fadeUp 0.5s 0.2s ease both; }
-.fade-up-3 { animation: fadeUp 0.5s 0.3s ease both; }
+
+.fade-up {
+  animation: fadeUp 0.5s ease forwards;
+}
+
+.fade-up-1 {
+  animation: fadeUp 0.5s 0.1s ease both;
+}
+
+.fade-up-2 {
+  animation: fadeUp 0.5s 0.2s ease both;
+}
+
+.fade-up-3 {
+  animation: fadeUp 0.5s 0.3s ease both;
+}
 
 /* Pulse dot */
-@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
-.pulse { animation: pulse 2s infinite; }
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1
+  }
+
+  50% {
+    opacity: .4
+  }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
 
 /* Spin */
-@keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+@keyframes spin {
+  from {
+    transform: rotate(0deg)
+  }
+
+  to {
+    transform: rotate(360deg)
+  }
+}
 
 /* Navbar search */
 input:focus {

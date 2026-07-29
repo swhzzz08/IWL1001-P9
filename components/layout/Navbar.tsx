@@ -40,17 +40,27 @@ export function Navbar() {
   const avatarDropdownRef = useRef<HTMLDivElement>(null)
   const [avatarOpen, setAvatarOpen] = useState(false)
 
-  useEffect(() => {
-    // Dark mode — preserve your friend's logic
-    const saved = localStorage.getItem('theme')
-    if (saved === 'dark') {
-      document.documentElement.classList.add('dark')
-      setDark(true)
-    }
-    const onScroll = () => setScrolled(window.scrollY > 8)
-    window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+useEffect(() => {
+  // Dark mode logic
+  const saved = localStorage.getItem("theme")
+
+  const prefersDark =
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+
+  const isDark =
+    saved === "dark" ||
+    (!saved && prefersDark)
+
+  document.documentElement.classList.toggle("dark", isDark)
+
+  setDark(isDark)
+
+  const onScroll = () => setScrolled(window.scrollY > 8)
+
+  window.addEventListener("scroll", onScroll)
+
+  return () => window.removeEventListener("scroll", onScroll)
+}, [])
 
   // Close search dropdown on outside click
   useEffect(() => {
@@ -166,10 +176,10 @@ export function Navbar() {
                 display: 'inline-flex', alignItems: 'center', gap: 6,
                 padding: '7px 14px', borderRadius: 8, fontSize: 14, fontWeight: 600,
                 textDecoration: 'none', transition: 'all 0.15s',
-                background: active ? '#f0fdfa' : 'transparent',
+                background: active ? 'var(--color-primary-light)' : 'transparent',
                 color: active ? '#0f766e' : 'var(--color-text-muted)',
               }}>
-                {href === '/watchlist' && <Star size={13} fill={active ? '#0f766e' : 'none'} color={active ? '#0f766e' : 'var(--color-text-muted)'} />}
+                {href === '/watchlist' && <Star size={13} fill={active ? 'var(--color-primary)' : 'none'} color={active ? 'var(--color-primary)' : 'var(--color-text-muted)'} />}
                 {Icon && href !== '/watchlist' && <Icon size={13} />}
                 {label}
                 {badge ? (
@@ -207,7 +217,7 @@ export function Navbar() {
             <div ref={dropdownRef} style={{
               position: 'absolute', top: 'calc(100% + 8px)', left: 0, right: 0,
               background: 'var(--color-surface)', border: '1.5px solid var(--color-border)',
-              borderRadius: 14, boxShadow: '0 8px 32px rgba(0,0,0,0.12)',
+              borderRadius: 14, boxShadow: dark ? '0 8px 32px rgba(0,0,0,0.55)' : '0 8px 32px rgba(0,0,0,0.12)',
               zIndex: 100, overflow: 'hidden',
             }}>
               {/* Stocks section */}
@@ -225,7 +235,7 @@ export function Navbar() {
                       onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = 'var(--color-surface-2)'}
                       onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = 'none'}
                     >
-                      <div style={{ width: 32, height: 32, borderRadius: 8, background: '#f0fdfa', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, fontWeight: 800, color: '#0f766e', flexShrink: 0 }}>
+                      <div style={{ width: 32, height: 32, borderRadius: 8, background: 'var(--color-primary-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, fontWeight: 800, color: '#0f766e', flexShrink: 0 }}>
                         {symbol.slice(0, 2)}
                       </div>
                       <div>
@@ -252,7 +262,7 @@ export function Navbar() {
                       onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = 'var(--color-surface-2)'}
                       onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = 'none'}
                     >
-                      <div style={{ width: 32, height: 32, borderRadius: 8, background: '#eff6ff', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <div style={{ width: 32, height: 32, borderRadius: 8, background: 'var(--color-primary-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                         <BookOpen size={14} color="#2563eb" />
                       </div>
                       <div style={{ minWidth: 0 }}>
@@ -279,7 +289,7 @@ export function Navbar() {
                       onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = 'var(--color-surface-2)'}
                       onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = 'none'}
                     >
-                      <div style={{ width: 32, height: 32, borderRadius: 8, background: '#fefce8', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <div style={{ width: 32, height: 32, borderRadius: 8, background: 'var(--color-primary-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                         <ListChecks size={14} color="#ca8a04" />
                       </div>
                       <div style={{ minWidth: 0 }}>
@@ -307,7 +317,7 @@ export function Navbar() {
           )}
         </div>
 
-        {/* Dark mode toggle — preserved from friend's version */}
+        {/* Dark mode toggle */}
         <button onClick={toggleDark} className="hide-mobile" style={{
           width: 38, height: 38, borderRadius: 10,
           border: '1.5px solid var(--color-border)',
@@ -368,7 +378,7 @@ export function Navbar() {
                   <div ref={avatarDropdownRef} style={{
                     position: 'absolute', top: 'calc(100% + 10px)', right: 0,
                     background: 'var(--color-surface)', border: '1.5px solid var(--color-border)',
-                    borderRadius: 14, boxShadow: '0 8px 32px rgba(0,0,0,0.12)',
+                    borderRadius: 14, boxShadow: dark ? '0 8px 32px rgba(0,0,0,0.55)' : '0 8px 32px rgba(0,0,0,0.12)',
                     zIndex: 100, minWidth: 220, overflow: 'hidden',
                   }}>
                     {/* User info header */}
@@ -449,7 +459,7 @@ export function Navbar() {
                         cursor: 'pointer', textAlign: 'left', fontSize: 13, fontWeight: 600,
                         color: '#dc2626', transition: 'background 0.1s',
                       }}
-                      onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = '#fef2f2'}
+                      onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = 'var(--color-surface-2)'}
                       onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = 'none'}
                     >
                       <LogOut size={14} />

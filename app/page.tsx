@@ -65,7 +65,7 @@ export default function HomePage() {
       </section>
 
       {/* ── HOW IT WORKS ── */}
-      <section style={{ background: '#fafaf9', borderBottom: '1px solid var(--color-border)', padding: '56px 24px' }}>
+      <section style={{ background: 'var(--color-background)', borderBottom: '1px solid var(--color-border)', padding: '56px 24px' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: 40 }}>
             <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 28, fontWeight: 800, color: 'var(--color-text)', margin: '0 0 8px' }}>How It Works</h2>

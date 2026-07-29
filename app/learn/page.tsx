@@ -19,8 +19,8 @@ const LEARNING_PATHS = [
     icon: Sprout,
     title: 'Complete Beginner',
     desc: 'Start with What Is a Stock, then ETFs, then Risk Management.',
-    color: '#f0fdf4',
-    border: '#86efac',
+    color: 'var(--learning-card-green)',
+    border: 'var(--learning-border-green)',
     iconColor: '#16a34a',
     href: '/learn/stocks',
     cta: 'Start here →'
@@ -29,8 +29,8 @@ const LEARNING_PATHS = [
     icon: TrendingUp,
     title: 'Chart Reader',
     desc: 'Go straight to Technical Analysis — candlesticks, RSI, moving averages.',
-    color: '#f0fdfa',
-    border: '#99f6e4',
+    color: 'var(--learning-card-teal)',
+    border: 'var(--learning-border-teal)',
     iconColor: '#0f766e',
     href: '/learn/technical-analysis',
     cta: 'Read charts →'
@@ -39,8 +39,8 @@ const LEARNING_PATHS = [
     icon: Landmark,
     title: 'Value Investor',
     desc: 'Study Fundamentals first — P/E ratios, earnings, balance sheets.',
-    color: '#fdf4ff',
-    border: '#d8b4fe',
+    color: 'var(--learning-card-purple)',
+    border: 'var(--learning-border-purple)',
     iconColor: '#9333ea',
     href: '/learn/fundamentals',
     cta: 'Study fundamentals →'

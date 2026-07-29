@@ -197,7 +197,7 @@ export function TutorialPlayer({ tutorial }: { tutorial: Tutorial }) {
                     You finished all {totalSteps} steps of &ldquo;{tutorial.title}&rdquo;. Head back to the tutorial list to keep going, or put it into practice right away.
                 </p>
                 <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-                    <Link href="/learn/tutorials" style={{
+                    <Link href="/learn" style={{
                         padding: '11px 22px', borderRadius: 10, background: '#0f766e', color: 'white',
                         fontSize: 13, fontWeight: 700, textDecoration: 'none',
                     }}>
