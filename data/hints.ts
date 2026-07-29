@@ -35,7 +35,7 @@ export const hints: Hint[] = [
     {
         id: 'moving-average-cross',
         title: 'Moving Average Crossovers',
-        body: 'When a shorter MA (e.g. 50-day) crosses above a longer MA (e.g. 200-day), it is called a Golden Cross — a bullish signal. The opposite (Death Cross) is bearish. These are lagging indicators, best used to confirm trends.',
+        body: 'When a shorter MA (e.g. 50-day) crosses above a longer MA (e.g. 200-day), it is called a Golden Cross — a bullish signal. The opposite (Death Cross) is bearish. These are lagging indicators which are best used to confirm trends.',
         category: 'Indicators',
     },
     {
@@ -65,7 +65,7 @@ export const hints: Hint[] = [
     {
         id: 'stop-loss',
         title: 'Always Use a Stop Loss',
-        body: 'A stop loss is a predefined price where you exit a losing trade. Place it below a recent swing low for long trades, or above a swing high for shorts. Never move a stop loss in the direction of the loss — it defeats its purpose.',
+        body: 'A stop loss is a predefined price where you exit a losing trade. Place it below a recent swing low for long trades, or above a swing high for shorts. Never move a stop loss in the direction of the loss as it defeats its purpose.',
         category: 'Risk Management',
     },
     {
