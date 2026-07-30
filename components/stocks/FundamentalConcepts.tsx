@@ -129,7 +129,7 @@ export function FundamentalConcepts({ quote }: { quote: StockQuote }) {
                 </h2>
                 <span style={{ fontSize: 11, color: 'var(--color-text-subtle)' }}>· tap a card to expand</span>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px,1fr))', gap: 12 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px,1fr))', gap: 12, alignItems: 'start' }}>
                 {concepts.map(c => <ConceptCard key={c.key} concept={c} />)}
             </div>
         </div>

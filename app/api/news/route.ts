@@ -2,8 +2,6 @@ import { NextRequest, NextResponse } from 'next/server'
 import { analyzeSentiment } from '@/lib/sentiment'
 import type { NewsArticle } from '@/types/stock'
 
-const NEWS_API_KEY = process.env.NEXT_PUBLIC_NEWS_API_KEY
-
 export async function GET(request: NextRequest) {
   const symbol = request.nextUrl.searchParams.get('symbol')
   if (!symbol) return NextResponse.json({ error: 'symbol required' }, { status: 400 })
@@ -19,7 +17,7 @@ export async function GET(request: NextRequest) {
 }
 
 async function fetchFromAlphaVantageNews(symbol: string): Promise<NewsArticle[]> {
-  const KEY = process.env.NEXT_PUBLIC_MASSIVE_API_KEY
+  const KEY = process.env.MASSIVE_API_KEY
   if (!KEY) throw new Error('No API key')
 
   const url = `https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=${symbol}&limit=10&apikey=${KEY}`

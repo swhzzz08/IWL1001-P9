@@ -1,3 +1,5 @@
+export type AccountingMethod = 'FIFO' | 'LIFO' | 'AVERAGE'
+
 export type Trade = {
   tickerSymbol: string
   transactionType: "BUY" | "SELL"
@@ -18,153 +20,84 @@ export type AccountingResult = {
   averageCost: number
 }
 
-function cloneLots(lots: Lot[]) {
-  return lots.map((lot) => ({ ...lot }))
+function sortedByDate(transactions: Trade[]): Trade[] {
+  return [...transactions].sort(
+    (a, b) =>
+      new Date(a.transactionDate).getTime() -
+      new Date(b.transactionDate).getTime()
+  )
 }
 
-/* FIFO */
+function buildResult(lots: Lot[], realisedGain: number): AccountingResult {
+  const remainingShares = lots.reduce((s, l) => s + l.quantity, 0)
+  const remainingCost = lots.reduce((s, l) => s + l.quantity * l.price, 0)
+  return {
+    realisedGain,
+    remainingShares,
+    remainingCost,
+    averageCost: remainingShares === 0 ? 0 : remainingCost / remainingShares,
+  }
+}
+
+function calculateLotMethod(
+  transactions: Trade[],
+  nextLot: (lots: Lot[]) => Lot,
+  removeLot: (lots: Lot[]) => void
+): AccountingResult {
+  const lots: Lot[] = []
+  let realisedGain = 0
+
+  for (const trade of sortedByDate(transactions)) {
+    if (trade.transactionType === "BUY") {
+      lots.push({ quantity: trade.quantity, price: trade.price })
+    } else {
+      let remaining = trade.quantity
+      while (remaining > 0 && lots.length > 0) {
+        const lot = nextLot(lots)
+        const sold = Math.min(remaining, lot.quantity)
+        realisedGain += (trade.price - lot.price) * sold
+        lot.quantity -= sold
+        remaining -= sold
+        if (lot.quantity <= 0) removeLot(lots)
+      }
+    }
+  }
+
+  return buildResult(lots, realisedGain)
+}
 
 export function calculateFIFO(transactions: Trade[]): AccountingResult {
-  const lots: Lot[] = []
-  let realisedGain = 0
-
-  const sorted = [...transactions].sort(
-    (a, b) =>
-      new Date(a.transactionDate).getTime() -
-      new Date(b.transactionDate).getTime()
+  return calculateLotMethod(
+    transactions,
+    (lots) => lots[0],
+    (lots) => { lots.shift() }
   )
-
-  for (const trade of sorted) {
-    if (trade.transactionType === "BUY") {
-      lots.push({
-        quantity: trade.quantity,
-        price: trade.price,
-      })
-    } else {
-      let remaining = trade.quantity
-
-      while (remaining > 0 && lots.length > 0) {
-        const lot = lots[0]
-
-        const sold = Math.min(remaining, lot.quantity)
-
-        realisedGain += (trade.price - lot.price) * sold
-
-        lot.quantity -= sold
-        remaining -= sold
-
-        if (lot.quantity <= 0) {
-          lots.shift()
-        }
-      }
-    }
-  }
-
-  const remainingShares = lots.reduce((s, l) => s + l.quantity, 0)
-
-  const remainingCost = lots.reduce(
-    (s, l) => s + l.quantity * l.price,
-    0
-  )
-
-  return {
-    realisedGain,
-    remainingShares,
-    remainingCost,
-    averageCost:
-      remainingShares === 0
-        ? 0
-        : remainingCost / remainingShares,
-  }
 }
-
-/* LIFO */
 
 export function calculateLIFO(transactions: Trade[]): AccountingResult {
-  const lots: Lot[] = []
-
-  let realisedGain = 0
-
-  const sorted = [...transactions].sort(
-    (a, b) =>
-      new Date(a.transactionDate).getTime() -
-      new Date(b.transactionDate).getTime()
+  return calculateLotMethod(
+    transactions,
+    (lots) => lots[lots.length - 1],
+    (lots) => { lots.pop() }
   )
-
-  for (const trade of sorted) {
-    if (trade.transactionType === "BUY") {
-      lots.push({
-        quantity: trade.quantity,
-        price: trade.price,
-      })
-    } else {
-      let remaining = trade.quantity
-
-      while (remaining > 0 && lots.length > 0) {
-        const lot = lots[lots.length - 1]
-
-        const sold = Math.min(remaining, lot.quantity)
-
-        realisedGain += (trade.price - lot.price) * sold
-
-        lot.quantity -= sold
-        remaining -= sold
-
-        if (lot.quantity <= 0) {
-          lots.pop()
-        }
-      }
-    }
-  }
-
-  const remainingShares = lots.reduce((s, l) => s + l.quantity, 0)
-
-  const remainingCost = lots.reduce(
-    (s, l) => s + l.quantity * l.price,
-    0
-  )
-
-  return {
-    realisedGain,
-    remainingShares,
-    remainingCost,
-    averageCost:
-      remainingShares === 0
-        ? 0
-        : remainingCost / remainingShares,
-  }
 }
-
-/* Average Cost */
 
 export function calculateAverageCost(
   transactions: Trade[]
 ): AccountingResult {
   let shares = 0
-
   let totalCost = 0
-
   let realisedGain = 0
 
-  const sorted = [...transactions].sort(
-    (a, b) =>
-      new Date(a.transactionDate).getTime() -
-      new Date(b.transactionDate).getTime()
-  )
-
-  for (const trade of sorted) {
+  for (const trade of sortedByDate(transactions)) {
     if (trade.transactionType === "BUY") {
       shares += trade.quantity
       totalCost += trade.quantity * trade.price
     } else {
       if (shares <= 0) continue
-
       const avg = totalCost / shares
-
       realisedGain += (trade.price - avg) * trade.quantity
-
       shares -= trade.quantity
-
       totalCost -= avg * trade.quantity
     }
   }
@@ -173,14 +106,18 @@ export function calculateAverageCost(
     realisedGain,
     remainingShares: shares,
     remainingCost: totalCost,
-    averageCost:
-      shares === 0
-        ? 0
-        : totalCost / shares,
+    averageCost: shares === 0 ? 0 : totalCost / shares,
   }
 }
 
-/* Unrealised Gain */
+export function calculateByMethod(
+  method: AccountingMethod,
+  trades: Trade[]
+): AccountingResult {
+  if (method === 'FIFO') return calculateFIFO(trades)
+  if (method === 'LIFO') return calculateLIFO(trades)
+  return calculateAverageCost(trades)
+}
 
 export function calculateUnrealisedGain(
   result: AccountingResult,
@@ -192,21 +129,11 @@ export function calculateUnrealisedGain(
   )
 }
 
-/* Scenario Explorer */
-
 export function simulateScenario(
   result: AccountingResult,
   futurePrice: number
 ) {
-  const portfolioValue =
-    futurePrice * result.remainingShares
-
-  const unrealisedGain =
-    portfolioValue - result.remainingCost
-
-  return {
-    futurePrice,
-    portfolioValue,
-    unrealisedGain,
-  }
+  const portfolioValue = futurePrice * result.remainingShares
+  const unrealisedGain = portfolioValue - result.remainingCost
+  return { futurePrice, portfolioValue, unrealisedGain }
 }

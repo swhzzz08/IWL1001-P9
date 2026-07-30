@@ -2,10 +2,9 @@
 
 import { useEffect, useMemo, useState } from 'react'
 import { FlaskConical } from 'lucide-react'
-import { calculateFIFO, calculateLIFO, calculateAverageCost, simulateScenario, type Trade } from '@/lib/accounting'
+import { calculateByMethod, simulateScenario, type AccountingMethod, type Trade } from '@/lib/accounting'
 import { formatCurrency, formatPercent } from '@/lib/formatters'
 import type { StockQuote } from '@/types/stock'
-import type { AccountingMethod } from '@/components/portfolio/AccountingMethodPanel'
 
 type QuoteMap = Record<string, StockQuote | undefined>
 
@@ -17,12 +16,6 @@ const PRESETS = [
     { label: '+25%', multiplier: 1.25 },
     { label: '+50%', multiplier: 1.50 },
 ]
-
-function calculate(method: AccountingMethod, trades: Trade[]) {
-    if (method === 'FIFO') return calculateFIFO(trades)
-    if (method === 'LIFO') return calculateLIFO(trades)
-    return calculateAverageCost(trades)
-}
 
 interface Props {
     trades: Trade[]
@@ -37,16 +30,16 @@ export function ScenarioExplorer({ trades, quotes, currency, selectedSymbol, met
         () => trades.filter(t => t.tickerSymbol === selectedSymbol),
         [trades, selectedSymbol]
     )
-    const result = useMemo(() => calculate(method, symbolTrades), [method, symbolTrades])
+    const result = useMemo(() => calculateByMethod(method, symbolTrades), [method, symbolTrades])
     const currentPrice = quotes[selectedSymbol]?.price ?? result.averageCost
 
     const [hypotheticalPrice, setHypotheticalPrice] = useState(currentPrice)
 
-    // Reset the hypothetical price whenever the selected symbol (and thus current price) changes
+    // Reset when the user picks a different symbol — intentionally not on every price tick
     useEffect(() => {
         setHypotheticalPrice(currentPrice)
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [selectedSymbol, currentPrice])
+    }, [selectedSymbol])
 
     const todayValue = currentPrice * result.remainingShares
     const scenario = simulateScenario(result, hypotheticalPrice)

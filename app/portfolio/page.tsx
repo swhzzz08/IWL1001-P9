@@ -46,7 +46,6 @@ type Portfolio = {
   }
   holdings: Holding[]
   transactions: Transaction[]
-  recentTransactions: Transaction[]
   error?: string
 }
 
@@ -75,6 +74,7 @@ export default function PortfolioPage() {
       }
 
       const data = (await response.json()) as Portfolio
+      // caught locally at line 99 (catch block)
       if (!response.ok) throw new Error(data.error || "Could not load portfolio")
 
       setUnauthorized(false)
@@ -565,7 +565,7 @@ export default function PortfolioPage() {
         >
           <h2 style={{ margin: 0, fontSize: 17 }}>Recent trades</h2>
         </div>
-        {(portfolio.recentTransactions ?? []).length === 0 ? (
+        {(portfolio.transactions.slice(0, 10) ?? []).length === 0 ? (
           <p
             style={{
               padding: 24,
@@ -578,7 +578,7 @@ export default function PortfolioPage() {
             No trades recorded yet.
           </p>
         ) : (
-          (portfolio.recentTransactions ?? []).map((transaction) => {
+          (portfolio.transactions.slice(0, 10) ?? []).map((transaction) => {
             const isBuy = transaction.transactionType === "BUY"
             return (
               <div

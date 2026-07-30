@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c8b345cd-844c-4cca-a628-d84c8903fb92" name="Changes" comment="Fixed google and github login authentication">
+    <list default="true" id="c8b345cd-844c-4cca-a628-d84c8903fb92" name="Changes" comment="fix small bugs for dark mode (CSS styling).&#10;fix empty portfolio routing when logging in using Google or Github OAuth 2.0.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/news/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/news/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/portfolio/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/portfolio/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/learn/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/learn/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/portfolio/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/portfolio/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/portfolio/AccountingMethodPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/portfolio/AccountingMethodPanel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/portfolio/ScenarioExplorer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/portfolio/ScenarioExplorer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/stocks/FundamentalConcepts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/stocks/FundamentalConcepts.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/stocks/NewsSentiment.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/stocks/NewsSentiment.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/accounting.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/accounting.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,35 +128,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JavaScript Debug.localhost:3000.executor": "Debug",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "copilot.chat.legacySessionMetadata.migrated": "true",
-    "git-widget-placeholder": "sign-up-page",
-    "ignore.virus.scanning.warn.message": "true",
-    "javascript.preferred.runtime.type.id": "node",
-    "js.debugger.nextJs.config.created.server": "true",
-    "last_opened_file_path": "C:/Users/Raiha/WebstormProjects/iwl1001-p9/components/layout",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_interpreter_path": "node",
-    "nodejs_package_manager_path": "npm",
-    "npm.Next.js: server-side.executor": "Debug",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2025.3.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JavaScript Debug.localhost:3000.executor&quot;: &quot;Debug&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;copilot.chat.legacySessionMetadata.migrated&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
+    &quot;js.debugger.nextJs.config.created.server&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Raiha/WebstormProjects/iwl1001-p9/components/layout&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.Next.js: server-side.executor&quot;: &quot;Debug&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2025.3.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Raiha\WebstormProjects\iwl1001-p9\components\layout" />
@@ -216,6 +224,7 @@
       <workItem from="1785153277955" duration="1772000" />
       <workItem from="1785167268155" duration="4919000" />
       <workItem from="1785203832722" duration="532000" />
+      <workItem from="1785387791552" duration="1119000" />
     </task>
     <task id="LOCAL-00001" summary="chore: added in file mapping&#10;&#10;chore: add Jest + React Testing Library">
       <option name="closed" value="true" />
@@ -411,7 +420,8 @@
     <MESSAGE value="Test: &#10;- Change position anchoring of the hint button and panel.&#10;&#10;Fix: &#10;- Corrupted slugs, file name was shown instead of the text.&#10;- Fix directive declarations that are supposed to be rendered either client or serverside." />
     <MESSAGE value="Added more things" />
     <MESSAGE value="Added SessionProviderWrapper.tsx for my desktop" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added SessionProviderWrapper.tsx for my desktop" />
+    <MESSAGE value="fix small bugs for dark mode (CSS styling).&#10;fix empty portfolio routing when logging in using Google or Github OAuth 2.0." />
+    <option name="LAST_COMMIT_MESSAGE" value="fix small bugs for dark mode (CSS styling).&#10;fix empty portfolio routing when logging in using Google or Github OAuth 2.0." />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

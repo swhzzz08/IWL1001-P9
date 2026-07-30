@@ -10,28 +10,32 @@ export async function GET() {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
-    const portfolio = await prisma.portfolio.findFirst({
+    const include = {
+      holdings: { orderBy: { tickerSymbol: "asc" } },
+      // Full transaction history — required for correct FIFO/LIFO/Average Cost calculations.
+      // (Capping with `take` would silently drop older lots and produce wrong results.)
+      transactions: { orderBy: { transactionDate: "desc" } },
+      cashActivities: { orderBy: { createdAt: "desc" }, take: 10 },
+    } as const
+
+    let portfolio = await prisma.portfolio.findFirst({
       where: { userId },
       orderBy: { id: "asc" },
-      include: {
-        holdings: {
-          orderBy: { tickerSymbol: "asc" },
-        },
-        // Full transaction history — required for correct FIFO/LIFO/Average Cost calculations.
-        // (Capping this with `take` would silently drop older lots and produce wrong results
-        // for any account with more than a handful of trades.)
-        transactions: {
-          orderBy: { transactionDate: "desc" },
-        },
-        cashActivities: {
-          orderBy: { createdAt: "desc" },
-          take: 10,
-        },
-      },
+      include,
     })
 
+    // Auto-create a portfolio for OAuth sign-ups (Google/GitHub) which bypass /api/auth/register
     if (!portfolio) {
-      return NextResponse.json({ error: "Portfolio not found" }, { status: 404 })
+      const user = await prisma.user.findUnique({ where: { id: userId }, select: { name: true, username: true } })
+      portfolio = await prisma.portfolio.create({
+        data: {
+          userId,
+          portfolioName: `${user?.name ?? user?.username ?? "My"} Portfolio`,
+          baseCurrency: "USD",
+          cashBalance: 100000,
+        },
+        include,
+      })
     }
 
     return NextResponse.json({
@@ -45,10 +49,9 @@ export async function GET() {
         EUR: portfolio.eurBalance,
       },
       holdings: portfolio.holdings,
-      // Full history — powers the Accounting Method Explorer / Scenario Explorer.
+      // Full history — required for FIFO/LIFO/Average Cost calculations.
+      // (Capping with `take` would silently drop older lots and produce wrong results.)
       transactions: portfolio.transactions,
-      // Capped slice — just for the "Recent trades" list in the UI.
-      recentTransactions: portfolio.transactions.slice(0, 10),
       recentCashActivities: portfolio.cashActivities,
     })
   } catch (error) {

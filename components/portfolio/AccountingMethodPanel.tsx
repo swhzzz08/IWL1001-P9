@@ -2,11 +2,11 @@
 
 import { useMemo } from 'react'
 import { Calculator, Info } from 'lucide-react'
-import { calculateFIFO, calculateLIFO, calculateAverageCost, calculateUnrealisedGain, type Trade, type AccountingResult } from '@/lib/accounting'
+import { calculateByMethod, calculateUnrealisedGain, type AccountingMethod, type Trade, type AccountingResult } from '@/lib/accounting'
 import { formatCurrency } from '@/lib/formatters'
 import type { StockQuote } from '@/types/stock'
 
-export type AccountingMethod = 'FIFO' | 'LIFO' | 'AVERAGE'
+export type { AccountingMethod } from '@/lib/accounting'
 
 type QuoteMap = Record<string, StockQuote | undefined>
 
@@ -24,9 +24,9 @@ const METHOD_BLURB: Record<AccountingMethod, string> = {
 
 function computeAll(trades: Trade[]) {
     return {
-        FIFO: calculateFIFO(trades),
-        LIFO: calculateLIFO(trades),
-        AVERAGE: calculateAverageCost(trades),
+        FIFO: calculateByMethod('FIFO', trades),
+        LIFO: calculateByMethod('LIFO', trades),
+        AVERAGE: calculateByMethod('AVERAGE', trades),
     } as Record<AccountingMethod, AccountingResult>
 }
 

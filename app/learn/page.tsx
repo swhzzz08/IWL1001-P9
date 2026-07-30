@@ -1,6 +1,5 @@
 'use client'
 
-import type { Metadata } from 'next'
 import { CategoryGrid } from '@/components/learn/CategoryGrid'
 import { ResourceList } from '@/components/learn/ResourceList'
 import { articles, categories } from '@/data/education'
@@ -124,8 +123,8 @@ export default function LearnPage() {
         <div style={{ width: 40, height: 40, borderRadius: 10, background: 'rgba(255,255,255,0.7)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 12 }}>
           <Icon size={20} color={iconColor} />
         </div>
-        <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: 15, fontWeight: 700, color: 'var(--color-text)', margin: '0 0 6px' }}>{title}</h3>
-        <p style={{ fontSize: 12, color: 'var(--color-text-muted)', margin: '0 0 14px', lineHeight: 1.65 }}>{desc}</p>
+        <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: 15, fontWeight: 700, color: '#0f172a', margin: '0 0 6px' }}>{title}</h3>
+        <p style={{ fontSize: 12, color: '#475569', margin: '0 0 14px', lineHeight: 1.65 }}>{desc}</p>
         <p style={{ fontSize: 12, fontWeight: 700, color: iconColor, margin: 0 }}>{cta}</p>
       </div>
     </Link>
