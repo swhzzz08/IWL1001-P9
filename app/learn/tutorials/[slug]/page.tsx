@@ -14,8 +14,8 @@ export default function TutorialPage({ params }: { params: Promise<{ slug: strin
 
     return (
         <div style={{ maxWidth: 940, margin: '0 auto', padding: '32px 24px 80px' }}>
-            <Link href="/learn/tutorials" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 13, color: 'var(--color-text-muted)', textDecoration: 'none', marginBottom: 20 }}>
-                <ArrowLeft size={14} /> All tutorials
+            <Link href="/learn#tutorials" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 13, color: 'var(--color-text-muted)', textDecoration: 'none', marginBottom: 20 }}>
+                <ArrowLeft size={14} /> Back to Learn
             </Link>
 
             <div style={{ marginBottom: 24 }}>

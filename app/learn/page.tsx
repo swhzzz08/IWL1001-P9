@@ -5,8 +5,15 @@ import { CategoryGrid } from '@/components/learn/CategoryGrid'
 import { ResourceList } from '@/components/learn/ResourceList'
 import { articles, categories } from '@/data/education'
 import { tutorials } from '@/data/tutorials'
-import { GraduationCap, BookOpen, ArrowRight, Sparkles, Sprout, TrendingUp, Landmark, ListChecks, Clock } from 'lucide-react'
+import { useAllTutorialProgress } from '@/hooks/useTutorialProgress'
+import { GraduationCap, BookOpen, ArrowRight, Sparkles, Sprout, TrendingUp, Landmark, ListChecks, Clock, CheckCircle2 } from 'lucide-react'
 import Link from 'next/link'
+
+const DIFFICULTY_COLORS: Record<string, { bg: string; color: string }> = {
+  Beginner: { bg: '#f0fdf4', color: '#15803d' },
+  Intermediate: { bg: '#fffbeb', color: '#d97706' },
+  Advanced: { bg: '#fef2f2', color: '#b91c1c' },
+}
 
 const STATS = [
   { value: String(categories.length), label: 'Topics' },
@@ -19,8 +26,8 @@ const LEARNING_PATHS = [
     icon: Sprout,
     title: 'Complete Beginner',
     desc: 'Start with What Is a Stock, then ETFs, then Risk Management.',
-    color: 'var(--learning-card-green)',
-    border: 'var(--learning-border-green)',
+    color: '#f0fdf4',
+    border: '#86efac',
     iconColor: '#16a34a',
     href: '/learn/stocks',
     cta: 'Start here →'
@@ -29,8 +36,8 @@ const LEARNING_PATHS = [
     icon: TrendingUp,
     title: 'Chart Reader',
     desc: 'Go straight to Technical Analysis — candlesticks, RSI, moving averages.',
-    color: 'var(--learning-card-teal)',
-    border: 'var(--learning-border-teal)',
+    color: '#f0fdfa',
+    border: '#99f6e4',
     iconColor: '#0f766e',
     href: '/learn/technical-analysis',
     cta: 'Read charts →'
@@ -39,8 +46,8 @@ const LEARNING_PATHS = [
     icon: Landmark,
     title: 'Value Investor',
     desc: 'Study Fundamentals first — P/E ratios, earnings, balance sheets.',
-    color: 'var(--learning-card-purple)',
-    border: 'var(--learning-border-purple)',
+    color: '#fdf4ff',
+    border: '#d8b4fe',
     iconColor: '#9333ea',
     href: '/learn/fundamentals',
     cta: 'Study fundamentals →'
@@ -48,6 +55,8 @@ const LEARNING_PATHS = [
 ]
 
 export default function LearnPage() {
+  const progress = useAllTutorialProgress(tutorials.map(t => t.slug))
+
   return (
     <div>
       {/* HERO */}
@@ -125,53 +134,72 @@ export default function LearnPage() {
         </section>
 
         {/* STEP-BY-STEP TUTORIALS */}
-        <section>
-          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 12, marginBottom: 20, flexWrap: 'wrap' }}>
-            <div>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: '#fefce8', color: '#a16207', borderRadius: 999, padding: '4px 10px', fontSize: 11, fontWeight: 700, marginBottom: 8 }}>
-                <ListChecks size={11} /> Hands-on tutorials
-              </div>
-              <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 24, fontWeight: 800, color: 'var(--color-text)', margin: '0 0 6px' }}>Step-by-Step Tutorials</h2>
-              <p style={{ fontSize: 14, color: 'var(--color-text-muted)', margin: 0 }}>Click through guided lessons with interactive quick checks and mini quizzes</p>
+        <section id="tutorials">
+          <div style={{ marginBottom: 20 }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: '#fefce8', color: '#a16207', borderRadius: 999, padding: '4px 10px', fontSize: 11, fontWeight: 700, marginBottom: 8 }}>
+              <ListChecks size={11} /> Hands-on format
             </div>
-            <Link href="/learn/tutorials" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 13, fontWeight: 700, color: '#0f766e', textDecoration: 'none', flexShrink: 0 }}>
-              View all tutorials <ArrowRight size={14} />
-            </Link>
+            <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 24, fontWeight: 800, color: 'var(--color-text)', margin: '0 0 6px' }}>Step-by-Step Tutorials</h2>
+            <p style={{ fontSize: 14, color: 'var(--color-text-muted)', margin: 0 }}>Click through guided lessons with quick checks and quizzes — a more interactive approach to learning.</p>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 14 }}>
-            {tutorials.slice(0, 3).map(tutorial => (
-              <Link key={tutorial.slug} href={`/learn/tutorials/${tutorial.slug}`} style={{ textDecoration: 'none' }}>
-                <div style={{
-                  background: 'var(--color-surface)', border: '1.5px solid var(--color-border)',
-                  borderRadius: 16, padding: '18px', height: '100%',
-                  display: 'flex', flexDirection: 'column', gap: 8, transition: 'all 0.2s',
-                }}
-                  onMouseEnter={e => {
-                    const el = e.currentTarget as HTMLElement
-                    el.style.borderColor = '#ca8a0460'
-                    el.style.boxShadow = '0 8px 24px rgba(202,138,4,0.1)'
-                    el.style.transform = 'translateY(-2px)'
+            {tutorials.map(tutorial => {
+              const diff = DIFFICULTY_COLORS[tutorial.difficulty] ?? DIFFICULTY_COLORS.Beginner
+              const stepsDone = progress[tutorial.slug]?.completedStepIds.length ?? 0
+              const totalSteps = tutorial.steps.length
+              const pct = totalSteps > 0 ? Math.round((stepsDone / totalSteps) * 100) : 0
+              const isComplete = pct === 100
+
+              return (
+                <Link key={tutorial.slug} href={`/learn/tutorials/${tutorial.slug}`} style={{ textDecoration: 'none' }}>
+                  <div style={{
+                    background: 'var(--color-surface)', border: '1.5px solid var(--color-border)',
+                    borderRadius: 16, padding: '18px', height: '100%',
+                    display: 'flex', flexDirection: 'column', gap: 8, transition: 'all 0.2s',
                   }}
-                  onMouseLeave={e => {
-                    const el = e.currentTarget as HTMLElement
-                    el.style.borderColor = 'var(--color-border)'
-                    el.style.boxShadow = 'none'
-                    el.style.transform = 'none'
-                  }}
-                >
-                  <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: 15, fontWeight: 700, color: 'var(--color-text)', margin: 0, lineHeight: 1.35 }}>
-                    {tutorial.title}
-                  </h3>
-                  <p style={{ fontSize: 12, color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.6, flex: 1 }}>
-                    {tutorial.description}
-                  </p>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 11, color: 'var(--color-text-subtle)' }}>
-                    <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}><Clock size={11} /> {tutorial.estimatedMinutes} min</span>
-                    <span>{tutorial.steps.length} steps</span>
+                    onMouseEnter={e => {
+                      const el = e.currentTarget as HTMLElement
+                      el.style.borderColor = '#ca8a0460'
+                      el.style.boxShadow = '0 8px 24px rgba(202,138,4,0.1)'
+                      el.style.transform = 'translateY(-2px)'
+                    }}
+                    onMouseLeave={e => {
+                      const el = e.currentTarget as HTMLElement
+                      el.style.borderColor = 'var(--color-border)'
+                      el.style.boxShadow = 'none'
+                      el.style.transform = 'none'
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
+                      <span style={{ ...diff, borderRadius: 999, padding: '3px 10px', fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                        {tutorial.difficulty}
+                      </span>
+                      {isComplete && <CheckCircle2 size={16} color="#16a34a" />}
+                    </div>
+
+                    <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: 15, fontWeight: 700, color: 'var(--color-text)', margin: 0, lineHeight: 1.35 }}>
+                      {tutorial.title}
+                    </h3>
+                    <p style={{ fontSize: 12, color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.6, flex: 1 }}>
+                      {tutorial.description}
+                    </p>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 11, color: 'var(--color-text-subtle)' }}>
+                      <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}><Clock size={11} /> {tutorial.estimatedMinutes} min</span>
+                      <span>{tutorial.steps.length} steps</span>
+                    </div>
+
+                    <div>
+                      <div style={{ height: 5, borderRadius: 999, background: 'var(--color-surface-2)', overflow: 'hidden', marginBottom: 4 }}>
+                        <div style={{ height: '100%', width: `${pct}%`, background: isComplete ? '#16a34a' : '#ca8a04', borderRadius: 999, transition: 'width 0.3s' }} />
+                      </div>
+                      <p style={{ fontSize: 10.5, color: 'var(--color-text-subtle)', margin: 0 }}>
+                        {stepsDone}/{totalSteps} steps complete
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              )
+            })}
           </div>
         </section>
 

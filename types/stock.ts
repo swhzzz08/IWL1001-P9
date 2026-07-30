@@ -7,6 +7,9 @@ export interface StockQuote {
     volume: number
     marketCap: number
     peRatio: number | null
+    eps: number | null            // Earnings Per Share
+    roe: number | null            // Return on Equity, as a percentage (e.g. 24.5 means 24.5%)
+    debtToEquity: number | null   // Total Debt / Shareholder Equity
     weekHigh52: number
     weekLow52: number
     open: number

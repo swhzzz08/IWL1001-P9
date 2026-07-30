@@ -264,7 +264,7 @@ export const tutorials: Tutorial[] = [
                     question: 'You hold a U.S. stock that rose 8% in USD over a year. Over the same year, the US dollar weakened significantly against your home currency. What happens to your return measured in your home currency?',
                     options: [
                         { id: 'a', text: 'Your home-currency return will be exactly 8%, currency never affects it', correct: false },
-                        { id: 'b', text: 'Your home-currency return will likely be lower than 8%, and could even be negative', correct: true },
+                        { id: 'b', text: 'Your home-currency return will likely be lower than 8% and could even be negative', correct: true },
                         { id: 'c', text: 'Your home-currency return is always higher than the USD return', correct: false },
                     ],
                     explanation: 'If the dollar weakens against your home currency, each USD converts back to less home currency than before, dragging down your total return — potentially enough to offset or reverse the 8% USD gain.',
@@ -273,7 +273,7 @@ export const tutorials: Tutorial[] = [
             {
                 id: 'takeaway',
                 title: 'Step 4 — The takeaway',
-                content: `You don't need to predict currency moves to invest sensibly — but you should be aware that holding foreign-currency assets adds a second source of volatility on top of the stock's own price moves. Some long-term investors accept this as diversification; others specifically hedge currency exposure. Neither is "correct" — it depends on your goals.`,
+                content: `You don't need to predict currency moves to invest sensibly but you should be aware that holding foreign-currency assets adds a second source of volatility on top of the stock's own price moves. Some long-term investors accept this as diversification; others specifically hedge currency exposure. Neither is "correct" — it depends on your goals.`,
             },
         ],
     },

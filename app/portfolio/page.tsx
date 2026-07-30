@@ -2,6 +2,9 @@
 
 import { formatCurrency } from "@/lib/formatters"
 import { WalletPanel } from "@/components/portfolio/WalletPanel"
+import { AccountingMethodPanel, type AccountingMethod } from "@/components/portfolio/AccountingMethodPanel"
+import { ScenarioExplorer } from "@/components/portfolio/ScenarioExplorer"
+import type { Trade } from "@/lib/accounting"
 import type { StockQuote } from "@/types/stock"
 import {
   ArrowDownRight,
@@ -42,6 +45,7 @@ type Portfolio = {
     EUR: number
   }
   holdings: Holding[]
+  transactions: Transaction[]
   recentTransactions: Transaction[]
   error?: string
 }
@@ -55,6 +59,8 @@ export default function PortfolioPage() {
   const [refreshing, setRefreshing] = useState(false)
   const [unauthorized, setUnauthorized] = useState(false)
   const [error, setError] = useState("")
+  const [selectedSymbol, setSelectedSymbol] = useState("")
+  const [accountingMethod, setAccountingMethod] = useState<AccountingMethod>("FIFO")
 
   const loadPortfolio = useCallback(async (refresh = false) => {
     refresh ? setRefreshing(true) : setLoading(true)
@@ -106,6 +112,29 @@ export default function PortfolioPage() {
   useEffect(() => {
     void loadPortfolio()
   }, [loadPortfolio])
+
+  const trades: Trade[] = useMemo(() => {
+    if (!portfolio?.transactions) return []
+    return portfolio.transactions.map((t) => ({
+      tickerSymbol: t.tickerSymbol,
+      transactionType: t.transactionType as "BUY" | "SELL",
+      quantity: t.quantity,
+      price: t.price,
+      transactionDate: t.transactionDate,
+    }))
+  }, [portfolio])
+
+  const tradeSymbols = useMemo(
+    () => Array.from(new Set(trades.map((t) => t.tickerSymbol))).sort(),
+    [trades]
+  )
+
+  useEffect(() => {
+    if (tradeSymbols.length === 0) return
+    if (!selectedSymbol || !tradeSymbols.includes(selectedSymbol)) {
+      setSelectedSymbol(tradeSymbols[0])
+    }
+  }, [tradeSymbols, selectedSymbol])
 
   const totals = useMemo(() => {
     if (!portfolio) return { holdingsValue: 0, costBasis: 0, totalValue: 0 }
@@ -159,7 +188,7 @@ export default function PortfolioPage() {
           <WalletCards size={34} color="#0f766e" />
           <h1 style={{ margin: "14px 0 8px", fontSize: 24 }}>Your portfolio awaits</h1>
           <p style={{ color: "var(--color-text-muted)", margin: "0 0 20px" }}>
-            Sign in to view your cash, holdings and recent trades.
+            Sign in to view your cash, holdings, and recent trades.
           </p>
           <Link
             href="/auth/login"
@@ -500,6 +529,26 @@ export default function PortfolioPage() {
         )}
       </section>
 
+      <AccountingMethodPanel
+        trades={trades}
+        quotes={quotes}
+        currency={currency}
+        selectedSymbol={selectedSymbol}
+        onSelectSymbol={setSelectedSymbol}
+        method={accountingMethod}
+        onMethodChange={setAccountingMethod}
+      />
+
+      {selectedSymbol && (
+        <ScenarioExplorer
+          trades={trades}
+          quotes={quotes}
+          currency={currency}
+          selectedSymbol={selectedSymbol}
+          method={accountingMethod}
+        />
+      )}
+
       <section
         style={{
           background: "var(--color-surface)",
@@ -516,7 +565,7 @@ export default function PortfolioPage() {
         >
           <h2 style={{ margin: 0, fontSize: 17 }}>Recent trades</h2>
         </div>
-        {portfolio.recentTransactions.length === 0 ? (
+        {(portfolio.recentTransactions ?? []).length === 0 ? (
           <p
             style={{
               padding: 24,
@@ -529,7 +578,7 @@ export default function PortfolioPage() {
             No trades recorded yet.
           </p>
         ) : (
-          portfolio.recentTransactions.map((transaction) => {
+          (portfolio.recentTransactions ?? []).map((transaction) => {
             const isBuy = transaction.transactionType === "BUY"
             return (
               <div

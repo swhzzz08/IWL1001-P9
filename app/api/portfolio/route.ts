@@ -17,9 +17,11 @@ export async function GET() {
         holdings: {
           orderBy: { tickerSymbol: "asc" },
         },
+        // Full transaction history — required for correct FIFO/LIFO/Average Cost calculations.
+        // (Capping this with `take` would silently drop older lots and produce wrong results
+        // for any account with more than a handful of trades.)
         transactions: {
           orderBy: { transactionDate: "desc" },
-          take: 10,
         },
         cashActivities: {
           orderBy: { createdAt: "desc" },
@@ -43,7 +45,10 @@ export async function GET() {
         EUR: portfolio.eurBalance,
       },
       holdings: portfolio.holdings,
-      recentTransactions: portfolio.transactions,
+      // Full history — powers the Accounting Method Explorer / Scenario Explorer.
+      transactions: portfolio.transactions,
+      // Capped slice — just for the "Recent trades" list in the UI.
+      recentTransactions: portfolio.transactions.slice(0, 10),
       recentCashActivities: portfolio.cashActivities,
     })
   } catch (error) {

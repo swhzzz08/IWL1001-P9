@@ -5,6 +5,7 @@ import { StockHeader } from '@/components/stocks/StockHeader'
 import { StockChart } from '@/components/stocks/StockChart'
 import { TimeframePicker } from '@/components/stocks/TimeframePicker'
 import { StockStats } from '@/components/stocks/StockStats'
+import { FundamentalConcepts } from '@/components/stocks/FundamentalConcepts'
 import { RSIPanel } from '@/components/stocks/RSIPanel'
 import { ARIMAForecast } from '@/components/stocks/ARIMAForecast'
 import { NewsSentiment } from '@/components/stocks/NewsSentiment'
@@ -13,9 +14,9 @@ import { HintWidget } from '@/components/hints/HintWidget'
 import { useStockQuote, useTimeSeries } from '@/hooks/useStockData'
 import type { Timeframe } from '@/types/stock'
 import Link from 'next/link'
-import { ChevronLeft, Lightbulb, BarChart2, Newspaper, TrendingUp } from 'lucide-react'
+import { ChevronLeft, Lightbulb, BarChart2, Newspaper, TrendingUp, Landmark } from 'lucide-react'
 
-type Tab = 'chart' | 'technicals' | 'news'
+type Tab = 'chart' | 'fundamentals' | 'technicals' | 'news'
 
 export default function StockPage({ params }: { params: Promise<{ symbol: string }> }) {
   const { symbol } = use(params)
@@ -27,6 +28,7 @@ export default function StockPage({ params }: { params: Promise<{ symbol: string
 
   const tabs: { id: Tab; label: string; icon: typeof BarChart2 }[] = [
     { id: 'chart', label: 'Chart & Stats', icon: BarChart2 },
+    { id: 'fundamentals', label: 'Fundamentals', icon: Landmark },
     { id: 'technicals', label: 'Technical Analysis', icon: TrendingUp },
     { id: 'news', label: 'News & Sentiment', icon: Newspaper },
   ]
@@ -108,7 +110,12 @@ export default function StockPage({ params }: { params: Promise<{ symbol: string
         </>
       )}
 
-      {/* ── Technical Analysis tab ── */}
+      {/* Fundamentals tab */}
+      {tab === 'fundamentals' && quote && (
+        <FundamentalConcepts quote={quote} />
+      )}
+
+      {/* Technical Analysis tab */}
       {tab === 'technicals' && (
         <>
           {/* Chart */}
@@ -148,7 +155,7 @@ export default function StockPage({ params }: { params: Promise<{ symbol: string
         </>
       )}
 
-      {/* ── News & Sentiment tab ── */}
+      {/* News & Sentiment tab */}
       {tab === 'news' && <NewsSentiment symbol={upper} />}
 
       <HintWidget />

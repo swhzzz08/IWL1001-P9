@@ -25,6 +25,7 @@ const DEFS: Record<string, string> = {
   'Volume': 'Shares traded today. High volume often signals stronger conviction in a price move.',
   'Market Cap': 'Price × total shares outstanding. Measures company size. Large cap = over $10B.',
   'P/E Ratio': 'How much investors pay for $1 of earnings. High P/E = growth expectations; Low P/E = possible undervaluation.',
+  'EPS': 'Earnings Per Share = Net Income ÷ Shares Outstanding. Shows profit generated per share.',
   '52W High': 'Highest price in the past 52 weeks. Proximity here often signals strong momentum.',
   '52W Low': 'Lowest price in the past 52 weeks. A stock near its low may be undervalued or struggling.',
 }
@@ -64,6 +65,7 @@ export function StockStats({ quote }: { quote: StockQuote }) {
     { label: 'Volume', value: fmtVol(quote.volume) },
     { label: 'Market Cap', value: fmtCap(quote.marketCap) },
     { label: 'P/E Ratio', value: quote.peRatio?.toFixed(2) ?? 'N/A' },
+    { label: 'EPS', value: quote.eps != null ? `$${quote.eps.toFixed(2)}` : 'N/A' },
     { label: '52W High', value: fmt(quote.weekHigh52) },
     { label: '52W Low', value: fmt(quote.weekLow52) },
   ]

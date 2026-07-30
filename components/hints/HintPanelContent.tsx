@@ -9,25 +9,25 @@ const CATEGORIES: Array<Hint['category'] | null> = [
   null,
   'Reading Charts',
   'Indicators',
-  'Entry & Exit',
+  'Investing Approach',
   'Risk Management',
-  'Psychology',
+  'Investor Mindset',
 ]
 
 const CATEGORY_LABELS: Record<string, string> = {
   'null': 'All',
   'Reading Charts': 'Charts',
   'Indicators': 'Indicators',
-  'Entry & Exit': 'Entry/Exit',
+  'Investing Approach': 'Approach',
   'Risk Management': 'Risk',
-  'Psychology': 'Psychology',
+  'Investor Mindset': 'Mindset',
 }
 
 const CATEGORY_COLORS: Record<string, { bg: string; color: string }> = {
   'Reading Charts': { bg: '#eff6ff', color: '#2563eb' },
   'Risk Management': { bg: '#fef2f2', color: '#dc2626' },
-  'Entry & Exit': { bg: '#f0fdf4', color: '#16a34a' },
-  'Psychology': { bg: '#fdf4ff', color: '#9333ea' },
+  'Investing Approach': { bg: '#f0fdf4', color: '#16a34a' },
+  'Investor Mindset': { bg: '#fdf4ff', color: '#9333ea' },
   'Indicators': { bg: '#fffbeb', color: '#d97706' },
 }
 

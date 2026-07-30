@@ -2,11 +2,11 @@
 import type { Hint } from '@/data/hints'
 
 const CATEGORY_COLORS: Record<Hint['category'], { bg: string; color: string }> = {
-  'Reading Charts':  { bg: '#eff6ff', color: '#2563eb' },
-  'Risk Management': { bg: '#fef2f2', color: '#dc2626' },
-  'Entry & Exit':    { bg: '#f0fdf4', color: '#16a34a' },
-  'Psychology':      { bg: '#fdf4ff', color: '#9333ea' },
-  'Indicators':      { bg: '#fffbeb', color: '#d97706' },
+  'Reading Charts':     { bg: '#eff6ff', color: '#2563eb' },
+  'Risk Management':    { bg: '#fef2f2', color: '#dc2626' },
+  'Investing Approach': { bg: '#f0fdf4', color: '#16a34a' },
+  'Investor Mindset':   { bg: '#fdf4ff', color: '#9333ea' },
+  'Indicators':         { bg: '#fffbeb', color: '#d97706' },
 }
 
 export function HintCard({ hint }: { hint: Hint }) {

@@ -6,6 +6,20 @@ import { MOCK_QUOTES, getMockTimeSeries } from '@/lib/mockStockData'
 // const KEY = process.env.NEXT_PUBLIC_MASSIVE_API_KEY
 // if (!KEY) throw new Error('NEXT_PUBLIC_MASSIVE_API_KEY is not set')
 
+// Applies a small random jitter (up to ~0.3%) to the base mock price on every fetch, so quotes
+// tick slightly like a real live market instead of being perfectly static. change/changePercent
+// are recomputed to stay consistent with the jittered price. Everything else (P/E, EPS, ROE,
+// volume, market cap, 52-week range, etc.) stays as the stable illustrative baseline.
+function withJitter(mock: StockQuote): StockQuote {
+  const jitterPct = (Math.random() - 0.5) * 0.006 // roughly ±0.3%
+  const price = Math.round(mock.price * (1 + jitterPct) * 100) / 100
+  const change = Math.round((price - mock.previousClose) * 100) / 100
+  const changePercent = mock.previousClose !== 0
+    ? Math.round((change / mock.previousClose) * 10000) / 100
+    : 0
+  return { ...mock, price, change, changePercent }
+}
+
 export async function fetchQuote(symbol: string): Promise<StockQuote> {
   // -- Real implementation --
   // const url = `${BASE}?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${KEY}`
@@ -19,13 +33,14 @@ export async function fetchQuote(symbol: string): Promise<StockQuote> {
   //   price: parseFloat(q['05. price']), change: parseFloat(q['09. change']),
   //   changePercent: parseFloat(q['10. change percent'].replace('%', '')),
   //   volume: parseInt(q['06. volume'], 10), marketCap: 0, peRatio: null,
+  //   eps: null, roe: null, debtToEquity: null, // these come from Alpha Vantage's OVERVIEW endpoint, not GLOBAL_QUOTE
   //   weekHigh52: parseFloat(q['03. high']), weekLow52: parseFloat(q['04. low']),
   //   open: parseFloat(q['02. open']), previousClose: parseFloat(q['08. previous close']),
   // }
 
   const mock = MOCK_QUOTES[symbol]
   if (!mock) throw new Error(`No mock data for symbol: ${symbol}`)
-  return mock
+  return withJitter(mock)
 }
 
 export async function fetchTimeSeries(
